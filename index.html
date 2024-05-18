@@ -12,9 +12,9 @@
         }
 
         /* Full-screen container */
-        body,
-        html {
+        body, html {
             height: 100%;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,57 +24,40 @@
             font-family: Arial, sans-serif;
         }
 
-        /* Star Wars ship */
-        .starship {
+        /* YouTube video container */
+        .video-container {
             position: absolute;
-            left: -200px;
-            top: 50%;
-            width: 100px;
-            height: auto;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 1C10.345 1 9 2.345 9 4c0 1.391.823 2.588 2.008 3.163L12 15l.992-7.837C14.177 6.588 15 5.391 15 4c0-1.655-1.345-3-3-3zm0 1c.551 0 1 .449 1 1s-.449 1-1 1-1-.449-1-1 .449-1 1-1z"/></svg>') no-repeat center center;
-            background-size: contain;
-            animation: moveShip 5s linear infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Redirection message */
-        .message {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: moveMessage 5s linear infinite;
-        }
-
-        @keyframes moveShip {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(2000px);
-            }
-        }
-
-        @keyframes moveMessage {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(2000px);
-            }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
 
 <body>
-    <div class="message">Redirecting to <a href="dhirendra_resume-openfont.pdf">dhirendra_resume-openfont.pdf</a></div>
-    <div class="starship"></div>
+    <div class="video-container">
+        <iframe id="video" src="https://www.youtube.com/embed/6ga4IICXyCE?autoplay=1&controls=0&showinfo=0&rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
     <script>
-        // Redirect after the animation
-        setTimeout(function () {
+        // Function to redirect to the PDF after the video ends
+        var video = document.getElementById('video');
+        var duration = 13000; // Duration of the video in milliseconds (13 seconds)
+
+        // Redirect after the video duration
+        setTimeout(function() {
             window.location.href = "dhirendra_resume-openfont.pdf";
-        }, 5000); // 5 seconds to match the animation duration
+        }, duration);
     </script>
+    <p style="position: absolute; bottom: 10px; width: 100%; text-align: center;">Redirecting to <a href="dhirendra_resume-openfont.pdf">dhirendra_resume-openfont.pdf</a></p>
 </body>
 
 </html>
