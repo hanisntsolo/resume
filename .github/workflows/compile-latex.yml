@@ -1,0 +1,26 @@
+name: Compile LaTeX document
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up LaTeX
+        uses: dante-ev/latex-action@v2
+
+      - name: Compile LaTeX document
+        run: latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" -output-directory=output deedy_resume-openfont.tex
+
+      - name: Upload PDF to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
