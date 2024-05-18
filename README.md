@@ -1,3 +1,119 @@
+
+# Resume Project
+
+This repository contains the LaTeX source files for my resume and is set up to automatically compile and deploy the resume to GitHub Pages using GitHub Actions.
+
+## Steps to Set Up
+
+### 1. Clone the Repository
+
+Clone the repository to your local machine:
+
+```bash
+git clone https://github.com/hanisntsolo/resume.git
+cd resume
+```
+
+### 2. Set Up GitHub Actions Workflow
+
+Create a GitHub Actions workflow to compile the LaTeX document and deploy it to GitHub Pages.
+
+Create a file `.github/workflows/deploy.yml` with the following content:
+
+```yaml
+name: Compile LaTeX document
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up LaTeX
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: deedy_resume-openfont.tex
+          compiler: xelatex
+          args: -output-directory=output
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          destination_dir: resume
+```
+
+### 3. Enable GitHub Pages
+
+Go to the repository settings on GitHub and navigate to "Settings" > "Pages". Ensure the source is set to the `gh-pages` branch and the folder is `/ (root)`.
+
+### 4. Verify File Placement
+
+Ensure the compiled PDF is located at:
+
+```
+https://hanisntsolo.github.io/resume/dhirendra_resume-openfont.pdf
+```
+
+### 5. Create a Redirect `index.html`
+
+Create an `index.html` file to redirect from `https://hanisntsolo.github.io/resume` to the PDF file.
+
+```bash
+# Ensure you are on the gh-pages branch
+git checkout gh-pages
+
+# Navigate to the resume directory
+cd resume
+
+# Create the index.html file
+echo '<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="0; url=dhirendra_resume-openfont.pdf">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <p>Redirecting to <a href="dhirendra_resume-openfont.pdf">dhirendra_resume-openfont.pdf</a></p>
+</body>
+</html>' > index.html
+
+# Add and commit the file
+git add index.html
+git commit -m "Add index.html for redirecting to renamed PDF"
+
+# Push the changes
+git push origin gh-pages
+```
+
+### Access the PDF
+
+- **Direct PDF URL:** `https://hanisntsolo.github.io/resume/dhirendra_resume-openfont.pdf`
+- **Redirect URL:** `https://hanisntsolo.github.io/resume`
+
+### Clearing Browser Cache
+
+If you face any issues with redirection, try clearing your browser cache or accessing the URL in an incognito window.
+
+### Summary
+
+This setup ensures that the LaTeX document for your resume is automatically compiled and deployed to GitHub Pages. The compiled PDF is accessible at the specified URL, with an `index.html` file ensuring a smooth redirection.
+
+By following these steps, you can maintain and update your resume efficiently.
+
+
+
 Deedy-Resume
 =========================
 
