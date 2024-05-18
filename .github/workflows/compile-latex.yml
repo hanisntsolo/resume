@@ -28,4 +28,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./output  # Directory containing your compiled PDF
-          destination_dir: /  # Directory where the site will be hosted
+          destination_dir: ./  # Directory where the site will be hosted
