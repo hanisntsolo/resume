@@ -1,13 +1,13 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.3.15)  18 MAY 2024 11:07
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.3.15)  18 MAY 2024 11:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**deedy_resume-openfont.tex
-(./deedy_resume-openfont.tex
+**dhirendra_resume-openfont.tex
+(./dhirendra_resume-openfont.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
-(./deedy-resume-openfont.cls
-Document Class: deedy-resume-openfont 2014/04/30 CV class
+(./dhirendra-resume-openfont.cls
+Document Class: dhirendra-resume-openfont 2014/04/30 CV class
 (/opt/texlive/texdir/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
 (/opt/texlive/texdir/texmf-dist/tex/latex/base/size10.clo
@@ -382,8 +382,8 @@ Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 \f@nch@O@olf=\skip60
 \f@nch@O@orf=\skip61
 )
-No file deedy_resume-openfont.aux.
-\openout1 = `deedy_resume-openfont.aux'.
+No file dhirendra_resume-openfont.aux.
+\openout1 = `dhirendra_resume-openfont.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
 LaTeX Font Info:    ... okay on input line 54.
@@ -447,7 +447,7 @@ LaTeX Font Info:    ... okay on input line 54.
 
 Package hyperref Info: Link coloring OFF on input line 54.
 \@outlinefile=\write3
-\openout3 = `deedy_resume-openfont.out'.
+\openout3 = `dhirendra_resume-openfont.out'.
 
 
 Package hyperref Warning: Rerun to get /PageLabels entry.
@@ -599,7 +599,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 87--87
 
 [1
 
-] (output/deedy_resume-openfont.aux)
+] (output/dhirendra_resume-openfont.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
@@ -609,21 +609,22 @@ L3 programming layer <2024-03-14>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-Package rerunfilecheck Warning: File `deedy_resume-openfont.out' has changed.
+Package rerunfilecheck Warning: File `dhirendra_resume-openfont.out' has change
+d.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
-Package rerunfilecheck Info: Checksums for `deedy_resume-openfont.out':
+Package rerunfilecheck Info: Checksums for `dhirendra_resume-openfont.out':
 (rerunfilecheck)             Before: <no file>
 (rerunfilecheck)             After:  9B93B06D37AFF9CB557C8B4848A0AC57;1489.
  ) 
 Here is how much of TeX's memory you used:
  12454 strings out of 474761
- 247182 string characters out of 5759289
+ 247298 string characters out of 5759289
  1952145 words of memory out of 5000000
  34452 multiletter control sequences out of 15000+600000
  558837 words of font info for 88 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 94i,11n,137p,434b,551s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,11n,137p,438b,551s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on output/deedy_resume-openfont.pdf (1 page).
+Output written on output/dhirendra_resume-openfont.pdf (1 page).
