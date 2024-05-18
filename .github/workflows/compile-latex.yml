@@ -15,9 +15,11 @@ jobs:
 
       - name: Set up LaTeX
         uses: xu-cheng/latex-action@v2
+        with:
+          root_file: deedy_resume-openfont.tex
         
-      - name: Compile LaTeX document
-        run: latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" -output-directory=output deedy_resume-openfont.tex
+      # - name: Compile LaTeX document
+      #   run: latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" -output-directory=output deedy_resume-openfont.tex
 
       - name: Upload PDF to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
