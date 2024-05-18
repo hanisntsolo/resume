@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write  # Explicitly set the permission for the GITHUB_TOKEN
+
 jobs:
   build:
     runs-on: ubuntu-latest
