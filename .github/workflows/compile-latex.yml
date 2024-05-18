@@ -19,7 +19,7 @@ jobs:
       - name: Set up LaTeX
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: deedy_resume-openfont.tex
+          root_file: dhirendra_resume-openfont.tex
           compiler: xelatex
           args: -output-directory=output  # Specify output directory
         
@@ -28,4 +28,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./output  # Directory containing your compiled PDF
-          destination_dir: resume  # Directory where the site will be hosted
+          destination_dir: /  # Directory where the site will be hosted
