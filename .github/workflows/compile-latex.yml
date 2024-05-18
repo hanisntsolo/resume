@@ -20,9 +20,10 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: deedy_resume-openfont.tex
-          compiler: xelatex  # Specify XeLaTeX as the compiler
+          compiler: xelatex
+          args: -output-directory=output  # Specify output directory
         
-      - name: Upload PDF to GitHub Pages
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
