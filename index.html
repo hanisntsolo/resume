@@ -24,7 +24,7 @@
             font-family: Arial, sans-serif;
         }
 
-        /* YouTube video container */
+        /* Video container */
         .video-container {
             position: absolute;
             top: 0;
@@ -36,7 +36,7 @@
             align-items: center;
         }
 
-        .video-container iframe {
+        .video-container video {
             width: 100%;
             height: 100%;
         }
@@ -44,20 +44,22 @@
 </head>
 
 <body>
-    <div class="video-container">
-        <iframe id="video" src="https://www.youtube.com/embed/6ga4IICXyCE?autoplay=1&controls=0&showinfo=0&rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
-    <script>
-        // Function to redirect to the PDF after the video ends
-        var video = document.getElementById('video');
-        var duration = 13000; // Duration of the video in milliseconds (13 seconds)
+<div class="video-container">
+    <video id="video" autoplay>
+        <source src="video/Blender Hyperspace Jump.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+<script>
+    // Get the video element
+    var video = document.getElementById('video');
 
-        // Redirect after the video duration
-        setTimeout(function() {
-            window.location.href = "dhirendra_resume-openfont.pdf";
-        }, duration);
-    </script>
-    <p style="position: absolute; bottom: 10px; width: 100%; text-align: center;">Redirecting to <a href="dhirendra_resume-openfont.pdf">dhirendra_resume-openfont.pdf</a></p>
+    // Redirect after the video ends
+    video.onended = function() {
+        window.location.href = "dhirendra_resume-openfont.pdf";
+    };
+</script>
+<p style="position: absolute; bottom: 10px; width: 100%; text-align: center;">Redirecting to <a href="dhirendra_resume-openfont.pdf">dhirendra_resume-openfont.pdf</a></p>
 </body>
 
 </html>
