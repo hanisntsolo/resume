@@ -1,0 +1,256 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Deedy - One Page Two Column Resume
+% LaTeX Template
+% Version 1.2 (16/9/2014)
+%
+% Original author:
+% Debarghya Das (http://debarghyadas.com)
+%
+% Original repository:
+% https://github.com/deedydas/Deedy-Resume
+%
+% IMPORTANT: THIS TEMPLATE NEEDS TO BE COMPILED WITH XeLaTeX
+%
+% This template uses several fonts not included with Windows/Linux by
+% default. If you get compilation errors saying a font is missing, find the line
+% on which the font is used and either change it to a font included with your
+% operating system or comment the line out to use the default font.
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% TODO:
+% 1. Integrate biber/bibtex for article citation under publications.
+% 2. Figure out a smoother way for the document to flow onto the next page.
+% 3. Add styling information for a "Projects/Hacks" section.
+% 4. Add location/address information
+% 5. Merge OpenFont and MacFonts as a single sty with options.
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% CHANGELOG:
+% v1.1:
+% 1. Fixed several compilation bugs with \renewcommand
+% 2. Got Open-source fonts (Windows/Linux support)
+% 3. Added Last Updated
+% 4. Move Title styling into .sty
+% 5. Commented .sty file.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Known Issues:
+% 1. Overflows onto second page if any column's contents are more than the
+% vertical limit
+% 2. Hacky space on the first bullet point on the second column.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[]{deedy-resume-openfont}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+ 
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     LAST UPDATED DATE
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lastupdated
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     TITLE NAME
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\namesection{Dhirendra Pratap}{Singh}{ \urlstyle{same}\href{http://singhdhirendrafolio.blogspot.com}{singhdhirendrafolio.blogspot.com}| \href{https://www.linkedin.com/in/hanisntsolo}{linkedin.com/hanisntsolo}\\
+\href{mailto:ds.pratap1997@gmail.com}{ds.pratap1997@gmail.com} | 916.976.1452 | \href{mailto:ds.pratap1997@bbdnitm.ac.in}{ds.pratap1997@bbdnitm.ac.in}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     COLUMN ONE
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.33\textwidth} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     SKILLS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Skills}
+\subsection{Technical Skills/Programming}
+\location{Over 5000 lines:}
+JavaScript \textbullet{}   TACL \textbullet{} Python \textbullet{} Java \\
+Shell \textbullet{} ReactJS \textbullet{} Microsoft Flow \\ 
+\location{Over 1000 lines:}
+C \textbullet{} C++ \textbullet{} CSS  \textbullet{} HTML \\
+\location{Familiar:}
+PostgreSQL \textbullet{} GCP \textbullet{} OCI \textbullet{} MySQL
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     EDUCATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Education} 
+
+\subsection{Dr. APJ Abdul Kalam Technical University}
+\descript{BTech in Electronics \& Comm.}
+\location{Sep 2020 | Lucknow,India}
+\sectionsep
+
+% \subsection{Cornell University}
+% \descript{BS in Computer Science}
+\location{College of Engineering}
+Babu Banarsi Das National\\ Institute Of Technology \& Management\\
+\location{ Cum Laude. CGPA: 8.62 / 10.0}
+\sectionsep
+
+\subsection{Central Academy Schools}
+\location{Grad. May 2015|  Lucknow, India}
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     LINKS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Links} 
+Facebook:// \href{https://www.facebook.com/dhirendra1997/}{\bf singhDhirendra} \\
+Github:// \href{https://github.com/hanisntsolo}{\bf hanisntsolo} \\
+LinkedIn://  \href{https://www.linkedin.com/in/hanisntsolo/}{\bf hanisntsolo} \\
+YouTube://  \href{https://www.youtube.com/channel/UCudY5NQeinXTD9I6eVn1WeQ}{\bf tech | info | geek} \\
+Twitter://  \href{https://twitter.com/_dhirendra}{\bf @\_dhirendra} \\
+Pinterest://  \href{https://in.pinterest.com/hanisntoslo/boards/}{\bf haninstsolo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     COURSEWORK
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Coursework}
+\subsection{Graduate}
+Embedded Systems Design \\
+Object Oriented Programming \\
+Cloud Computing \\
+Machine Learning \\
+Open Source Software Engineering \\
+Advanced Interactive Graphics \\
+Assembler + Practicum \\
+Evolutionary Computation \\
+Smart India Hackathon \\
+{\footnotesize \textit{\textbf{(Research Asst. \& Teaching Asst 2x) }}} \\
+\sectionsep
+
+\subsection{Undergraduate}
+Information Retrieval \\
+Operating Systems \\
+Artificial Intelligence + Practicum \\
+Functional Programming \\
+Unix Tools and Scripting \\
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     COLUMN TWO
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{minipage} 
+\hfill
+\begin{minipage}[t]{0.66\textwidth} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     EXPERIENCE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Work Experience}
+\runsubsection{Citi}
+\descript{| Full Stack Developer (Assistant Manager) }
+\location{July 2022 – Present | Pune, Maharashtra India}
+\vspace{\topsep} % Fix for extra vertical space
+\begin{tightemize}
+\item Spearheaded integration efforts in Trade Commercial E-loans, driving \textbf{digital adoption by customers} and contributing to business growth.
+\item Orchestrated migration of classic VMs to cloud infrastructure, reducing up-time costs through automated scaling and load-based billing.
+\item Pioneered a customer-focused approach by developing a \textbf{Troubleshooting Automation Tool from scratch.} Leveraged React, Node, and Java as Micro-service to streamline customer issue resolution, significantly enhancing their experience.
+\item Managed the end-to-end life-cycle of the Troubleshooting Automation Tool, including creation, migration, and deployment. Independently utilized Light-speed and other CI/CD [Teamcity and UrbanCodeDeploy] tools to ensure seamless implementation.
+\item \textbf{Recognized for innovation and efficiency}, registered the Troubleshooting Automation Tool as an internal product, available for use by internal employees. This initiative further contributed to improving the overall internal processes.
+\end{tightemize}
+\sectionsep
+
+\runsubsection{Capgemini}
+\descript{| Senior Software Engineer }
+\location{Sep 2020 - Jun 2022 | Pune, Maharashtra, India}
+% \vspace{\topsep} % Fix for extra vertical space
+\begin{tightemize}
+\item \textbf{{\href{https://singhdhirendrafolio.blogspot.com/2022/05/pulse-ams-l15-success-story-in-d-life.html}{Developed Scalable Incident Processor for Discover Financial Services, auto-closing 98\% incidents, cutting dwell time to net zero.}}} 
+\item Enhanced data structures in non-native language TACL, boosting efficiency.
+\item Automated tasks via Microsoft Flow, streamlining monitoring processes.
+\item Full-stack developer: Code contributions in ReactJS, Java (Spring-Boot), and PostgreSQL.
+\item Employed CI/CD tools (Git, SonarQube, Jenkins) with TDD approach within Agile framework.Rigorously tested rest controller using JUnit5 framework.
+\end{tightemize}
+\sectionsep
+
+\runsubsection{\href{https://www.suvasaa.com/}{SUVASAA}}
+\descript{| Remote Software Engineering Intern }
+\location{May 2020 – Aug 2020 | Atlanta, GA, USA}
+\begin{tightemize}
+\item Full stack dev for suvasaa-an e-commerce store: ReactJS, Firestore \& Firebase.
+\item Segregated customer/admin login routes, added admin inventory interface.
+\item Integrated online payments via Stripe API.
+\end{tightemize}
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     RESEARCH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Research}
+\runsubsection{\href{https://drive.google.com/file/d/1ySGyZqVcvsJw7d4tcCqRhxM72iqBXmRh/view?usp=sharing}{Water Pollution Monitoring}}
+\descript{| Researcher}
+\location{Sep 2019 – Feb 2020 | Lucknow, Uttar Pradesh India}
+Worked with \textbf{\href{https://www.youtube.com/c/KalyanKrishnaAwasthi}{Prof KK Awasthi}} and \textbf{\href{https://www.linkedin.com/in/dr-shailendra-tahilyani-034bb27/}{Prof Shailendra Tahilyani}} to create \textbf{\href{https://www.youtube.com/watch?v=ZhUoPz8hMEY}{Poll-m-Boat}}, an embedded tool which  collects the extent of pollution in water bodies/ liquid environments.
+\sectionsep
+
+% \runsubsection{Cornell Phonetics Lab}
+% \descript{| Head Undergraduate Researcher}
+% \location{Mar 2012 – May 2013 | Ithaca, NY}
+% Led the development of \textbf{QuickTongue}, the first ever breakthrough tongue-controlled game with \textbf{\href{http://conf.ling.cornell.edu/~tilsen/}{Prof Sam Tilsen}} to aid in Linguistics research. 
+% \sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Facts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Fun facts}
+\runsubsection{Intrests}
+Entrepreneurship\textbullet{} Investing \textbullet{} Mentoring\\
+\vspace{\topsep}
+\runsubsection{Hobbies} 
+Lifting \textbullet{} Reading \textbullet{} Cycling \textbullet{} Running \textbullet{} Swimming\\
+\vspace{\topsep}
+\runsubsection{Volunteer Experience} 
+\vspace{\topsep}
+Old Age Home \textbullet{}\textbf{\href{https://www.helpageindia.org/}{ @Astha Foundation}}\\
+\runsubsection{WINGMAN} 
+(Academic Support Volunteer) \textbullet{}\textbf{\href{https://makeadiff.in//}{ @Make A Difference}}
+
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     PUBLICATIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \section{Publications} 
+% \renewcommand\refname{\vskip -1.5em} % Couldn't get this working from the .cls file
+% \bibliographystyle{abbrv}
+% \bibliography{publications}
+% \nocite{*}
+
+\end{minipage} 
+\end{document}  \documentclass[]{article}
