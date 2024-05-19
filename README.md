@@ -29,7 +29,7 @@ on:
       - master
 
 permissions:
-  contents: write
+  contents: write  # Explicitly set the permission for the GITHUB_TOKEN
 
 jobs:
   build:
@@ -42,16 +42,19 @@ jobs:
       - name: Set up LaTeX
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: deedy_resume-openfont.tex
+          root_file: dhirendra_resume-openfont.tex
           compiler: xelatex
-          args: -output-directory=output
-
+          args: -output-directory=output  # Specify output directory
+          
+      - name: Copy index.html to output
+        run: cp index.html output/index.html  # Copy index.html to output directory
+        
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./output
-          destination_dir: resume
+          publish_dir: ./output  # Directory containing your compiled PDF
+          destination_dir: ./  # Directory where the site will be hosted
 ```
 
 ### 3. Enable GitHub Pages
