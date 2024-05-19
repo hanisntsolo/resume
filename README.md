@@ -159,6 +159,7 @@ This template attempts to **look clean**, highlight **details**, be a **single p
  1. Added publications in place of societies.
  2. Collapsed a portion of education.
  3. Fixed a bug with alignment of overflowing long last updated dates on the top right. 
+ 4. Github Pages is being used for serving the generated pdf's.
 
 ### v1.1
  1. Fixed several compilation bugs with \renewcommand
@@ -179,7 +180,7 @@ This template attempts to **look clean**, highlight **details**, be a **single p
 1. Overflows onto second page if any column's contents are more than the vertical limit
 2. Hacky space on the first bullet point on the second column.
 3. Hacky redefinition of \refname to omit 'References' text for publications in the MacFonts version.
-4. Github Pages is being used for serving the generated pdf's.
+
 
 ## License
     Copyright 2014 Debarghya Das
