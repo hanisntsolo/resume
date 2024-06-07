@@ -19,7 +19,7 @@ jobs:
       - name: Set up LaTeX
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: dhirendra_resume-openfont.tex
+          root_file: dhirendra-pratap-singh-resume.tex
           compiler: xelatex
           args: -output-directory=output  # Specify output directory
           
