@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.6.5)  7 JUN 2024 19:38
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.6.5)  7 JUN 2024 19:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -7,12 +7,7 @@ entering extended mode
 LaTeX2e <2024-06-01>
 L3 programming layer <2024-05-08>
 (./dhirendra-pratap-singh-resume.cls
-
-LaTeX Warning: You have requested document class `dhirendra-pratap-singh-resume
-',
-               but the document class provides `dhirendra-resume-openfont'.
-
-Document Class: dhirendra-resume-openfont 2014/04/30 CV class
+Document Class: dhirendra-pratap-singh-resume 2014/04/30 CV class
 (/opt/texlive/texdir/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2024/02/08 v1.4n Standard LaTeX document class
 (/opt/texlive/texdir/texmf-dist/tex/latex/base/size10.clo
