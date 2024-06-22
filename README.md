@@ -1,5 +1,5 @@
 
-# Resume Project
+# The Resume Project
 
 This repository contains the LaTeX source files for my resume and is set up to automatically compile and deploy the resume to GitHub Pages using GitHub Actions.
 
