@@ -30,6 +30,8 @@ jobs:
           
       - name: Copy index.html to output
         run: cp index.html output/index.html  # Copy index.html to output directory
+      - name: Add CNAME file for Custom Domain
+        run: echo "resume.hanisntsolo.com" > output/CNAME
         
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
