@@ -1,4 +1,4 @@
-
+[![Compile LaTeX document](https://github.com/hanisntsolo/resume/actions/workflows/compile-latex.yml/badge.svg?branch=master)](https://github.com/hanisntsolo/resume/actions/workflows/compile-latex.yml) [![pages-build-deployment](https://github.com/hanisntsolo/resume/actions/workflows/pages/pages-build-deployment/badge.svg?branch=master)](https://github.com/hanisntsolo/resume/actions/workflows/pages/pages-build-deployment)
 # The Resume Project
 
 This repository contains the LaTeX source files for my resume and is set up to automatically compile and deploy the resume to GitHub Pages using GitHub Actions.
