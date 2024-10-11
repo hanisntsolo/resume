@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.1)  9 AUG 2024 18:52
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.1)  11 OCT 2024 12:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **dhirendra-pratap-singh-resume.tex
 (./dhirendra-pratap-singh-resume.tex
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-05-27>
+L3 programming layer <2024-09-10>
 (./dhirendra-pratap-singh-resume.cls
 Document Class: dhirendra-pratap-singh-resume 2014/04/30 CV class
 (/opt/texlive/texdir/texmf-dist/tex/latex/base/article.cls
@@ -220,7 +220,7 @@ File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 (/opt/texlive/texdir/texmf-dist/tex/latex/fontspec/fontspec.sty
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-05-27 L3 programming layer (loader) 
+Package: expl3 2024-09-10 L3 programming layer (loader) 
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
@@ -229,7 +229,7 @@ File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
 \g__pdf_backend_annotation_int=\count282
 \g__pdf_backend_link_int=\count283
 ))
-Package: xparse 2024-05-08 L3 Experimental document command parser
+Package: xparse 2024-08-16 L3 Experimental document command parser
 )
 Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
 
@@ -603,7 +603,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 87--87
 ] (output/dhirendra-pratap-singh-resume.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-05-27>
+L3 programming layer <2024-09-10>
  ***********
 
 
@@ -621,10 +621,10 @@ Package rerunfilecheck Info: Checksums for `dhirendra-pratap-singh-resume.out':
 (rerunfilecheck)             After:  9B93B06D37AFF9CB557C8B4848A0AC57;1489.
  ) 
 Here is how much of TeX's memory you used:
- 12394 strings out of 474240
- 245913 string characters out of 5744134
- 1952557 words of memory out of 5000000
- 34918 multiletter control sequences out of 15000+600000
+ 12394 strings out of 474235
+ 245913 string characters out of 5744033
+ 716745 words of memory out of 5000000
+ 34923 multiletter control sequences out of 15000+600000
  558837 words of font info for 88 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  94i,11n,139p,442b,551s stack positions out of 10000i,1000n,20000p,200000b,200000s
