@@ -12,7 +12,8 @@
         }
 
         /* Full-screen container */
-        body, html {
+        body,
+        html {
             height: 100%;
             width: 100%;
             display: flex;
@@ -45,7 +46,8 @@
             width: 2px;
             height: 2px;
             border-radius: 50%;
-            animation: starMove 2s linear infinite;
+            animation: starMove 1.5s linear infinite;
+            /* Reduced animation duration */
         }
 
         @keyframes starMove {
@@ -53,6 +55,7 @@
                 transform: translate3d(0, 0, 0);
                 opacity: 1;
             }
+
             to {
                 transform: translate3d(1000px, 0, 500px);
                 opacity: 0;
@@ -74,32 +77,45 @@
                 opacity: 1;
             }
         }
+
+        a {
+            color: #00ffcc;
+            /* Change link color for better visibility */
+            text-decoration: underline;
+            /* Add underline for emphasis */
+        }
     </style>
 </head>
 
 <body>
-<div class="container">
-    <div class="stars">
-        <!-- Generate stars dynamically using JavaScript -->
-        <script>
-            for (let i = 0; i < 150; i++) {
-                let star = document.createElement("div");
-                star.className = "star";
-                star.style.top = Math.random() * 100 + "%";
-                star.style.left = Math.random() * 100 + "%";
-                star.style.animationDuration = (Math.random() * 2 + 1) + "s";
-                document.querySelector(".stars").appendChild(star);
-            }
-        </script>
+    <div class="container">
+        <div class="stars">
+            <!-- Generate stars dynamically using JavaScript -->
+            <script>
+                for (let i = 0; i < 150; i++) {
+                    let star = document.createElement("div");
+                    star.className = "star";
+                    star.style.top = Math.random() * 100 + "%";
+                    star.style.left = Math.random() * 100 + "%";
+                    star.style.animationDuration = (Math.random() * 1 + 0.5) + "s"; // Random duration between 0.5s and 1.5s
+                    document.querySelector(".stars").appendChild(star);
+                }
+            </script>
+        </div>
+        <div class="message">Redirecting to <a href="dhirendra_resume-openfont.pdf"
+                id="resumeLink">dhirendra-pratap-singh-resume.pdf</a></div>
     </div>
-    <div class="message">Redirecting to <a href="dhirendra_resume-openfont.pdf">dhirendra-pratap-singh-resume.pdf</a></div>
-</div>
-<script>
-    // Redirect after the animation
-    setTimeout(function() {
-        window.location.href = "dhirendra-pratap-singh-resume.pdf";
-    }, 1000); // 5 seconds to match the animation duration
-</script>
+    <script>
+        // Redirect after the animation
+        var redirectTimeout = setTimeout(function () {
+            window.location.href = "dhirendra-pratap-singh-resume.pdf";
+        }, 3000); // Set to 3 seconds for the redirect to match the animation
+
+        // Prevent redirect if the link is clicked
+        document.getElementById("resumeLink").onclick = function () {
+            clearTimeout(redirectTimeout); // Clear the redirect timeout
+        };
+    </script>
 </body>
 
 </html>
