@@ -9,15 +9,12 @@
 % Original repository:
 % https://github.com/deedydas/Deedy-Resume
 %
-% IMPORTANT: THIS TEMPLATE NEEDS TO BE COMPILED WITH XeLaTeX
-%
-% This template uses several fonts not included with Windows/Linux by
-% default. If you get compilation errors saying a font is missing, find the line
-% on which the font is used and either change it to a font included with your
-% operating system or comment the line out to use the default font.
-% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
+%
+% THIS TEMPLATE NEEDS TO BE COMPILED WITH XeLaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % TODO:
 % 1. Integrate biber/bibtex for article citation under publications.
 % 2. Figure out a smoother way for the document to flow onto the next page.
@@ -36,21 +33,13 @@
 % 5. Commented .sty file.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Known Issues:
-% 1. Overflows onto second page if any column's contents are more than the
-% vertical limit
-% 2. Hacky space on the first bullet point on the second column.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \documentclass[]{dhirendra-pratap-singh-resume}
 \usepackage{fancyhdr}
- 
+
 \pagestyle{fancy}
 \fancyhf{}
- 
+
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -67,8 +56,8 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\namesection{Dhirendra Pratap}{Singh}{ \urlstyle{same}\href{http://hanisntsolo.github.io}{hanisntsolo.github.io}| \href{https://www.linkedin.com/in/hanisntsolo}{linkedin.com/hanisntsolo}\\
-\href{mailto:ds.pratap1997@gmail.com}{ds.pratap1997@gmail.com} | 916.976.1452 | \href{mailto:ds.pratap1997@bbdnitm.ac.in}{ds.pratap1997@bbdnitm.ac.in}
+\namesection{Dhirendra Pratap}{Singh}{ \urlstyle{same}\href{http://hanisntsolo.github.io}{hanisntsolo.com} | \href{https://www.linkedin.com/in/hanisntsolo}{linkedin} | \href{https://github.com/hanisntsolo}{github} \\
+\href{mailto:ds.pratap1997@gmail.com}{ds.pratap1997@gmail.com} | \href{tel:+919169761452} {916.976.1452} | \href{mailto:ds.pratap1997@bbdnitm.ac.in}{ds.pratap1997@bbdnitm.ac.in}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -77,43 +66,48 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{minipage}[t]{0.33\textwidth} 
+\begin{minipage}[t]{0.33\textwidth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     SKILLS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Skills}
-\subsection{Technical Skills/Programming}
-\location{Over 5000 lines:}
-JavaScript \textbullet{}   TACL \textbullet{} Python \textbullet{} Java \\
-Shell \textbullet{} ReactJS \textbullet{} Microsoft Flow \\ 
-\location{Over 1000 lines:}
-C \textbullet{} C++ \textbullet{} CSS  \textbullet{} HTML \\
-\location{Familiar:}
-PostgreSQL \textbullet{} GCP \textbullet{} OCI \textbullet{} MySQL
+{\subsection{Private Cloud}}
+\href{https://dozzle.hanisntsolo.com}{\location{With 32+ Services and Adv. Tooling}}
+Docker \textbullet{} Nginx \textbullet{} CI/CD
+\subsection{Languages}
+\location{Over 5000: lines}
+Java \textbullet{} Python \textbullet{} TypeScript \\
+JavaScript \textbullet{} C \textbullet{} C++ \textbullet{} HTML \textbullet{} CSS
+
+\subsection{Frameworks}
+\location{Over 2000: lines}
+ReactJS \textbullet{} Spring Boot \\
+Node.js \textbullet{} Shell Scripting
+
+\subsection{Tools/Platforms}
+GCP \textbullet{} OCI \textbullet{} Microsoft Flow \\
+PostgreSQL \textbullet{} MySQL \textbullet{} Git \textbullet{} Jenkins
+\
+
 \sectionsep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     EDUCATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Education} 
+\section{Education}
 
 \subsection{Dr. APJ Abdul Kalam Technical University}
-\descript{BTech in Electronics \& Comm.}
-\location{Sep 2020 | Lucknow,India}
+\descript{BTech in Electronics \& Communication}
+\location{Sep 2020 | Lucknow, India}
+Babu Banarsi Das National Institute of Technology \& Management\\
+\location{CGPA: 8.62 / 10.0}
 \sectionsep
 
-% \subsection{Cornell University}
-% \descript{BS in Computer Science}
-\location{College of Engineering}
-Babu Banarsi Das National\\ Institute Of Technology \& Management\\
-\location{ Cum Laude. CGPA: 8.62 / 10.0}
-\sectionsep
-
-\subsection{Central Academy Schools}
-\location{Grad. May 2015|  Lucknow, India}
+\subsection{Central Academy \\ Schools}
+\location{Grad. May 2015 | Lucknow, India}
 \sectionsep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -121,12 +115,12 @@ Babu Banarsi Das National\\ Institute Of Technology \& Management\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Links} 
-Facebook:// \href{https://www.facebook.com/dhirendra1997/}{\bf singhDhirendra} \\
 Github:// \href{https://github.com/hanisntsolo}{\bf hanisntsolo} \\
 LinkedIn://  \href{https://www.linkedin.com/in/hanisntsolo/}{\bf hanisntsolo} \\
 YouTube://  \href{https://www.youtube.com/channel/UCudY5NQeinXTD9I6eVn1WeQ}{\bf tech | info | geek} \\
 Twitter://  \href{https://twitter.com/_dhirendra}{\bf @\_dhirendra} \\
-Pinterest://  \href{https://in.pinterest.com/hanisntoslo/boards/}{\bf haninstsolo}
+Pinterest://  \href{https://in.pinterest.com/hanisntoslo/boards/}{\bf hanisntsolo}
+\sectionsep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     COURSEWORK
@@ -134,26 +128,19 @@ Pinterest://  \href{https://in.pinterest.com/hanisntoslo/boards/}{\bf haninstsol
 
 \section{Coursework}
 \subsection{Graduate}
-Embedded Systems Design \\
-Object Oriented Programming \\
 Cloud Computing \\
 Machine Learning \\
 Open Source Software Engineering \\
-Advanced Interactive Graphics \\
-Assembler + Practicum \\
-Evolutionary Computation \\
-Smart India Hackathon \\
-{\footnotesize \textit{\textbf{(Research Asst. \& Teaching Asst 2x) }}} \\
-\sectionsep
+Embedded Systems Design \\
+Object-Oriented Programming \\
+Evolutionary Computation
 
 \subsection{Undergraduate}
-Information Retrieval \\
 Operating Systems \\
 Artificial Intelligence + Practicum \\
-Functional Programming \\
 Unix Tools and Scripting \\
-
-
+Information Retrieval
+\sectionsep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -161,9 +148,9 @@ Unix Tools and Scripting \\
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\end{minipage} 
+\end{minipage}
 \hfill
-\begin{minipage}[t]{0.66\textwidth} 
+\begin{minipage}[t]{0.66\textwidth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     EXPERIENCE
@@ -172,85 +159,103 @@ Unix Tools and Scripting \\
 \section{Work Experience}
 \runsubsection{Citi}
 \descript{| Full Stack Developer (Assistant Manager) }
-\location{July 2022 – Present | Pune, Maharashtra India}
-\vspace{\topsep} % Fix for extra vertical space
+\location{July 2022 – Present | Pune, Maharashtra, India}
+\vspace{\topsep}
 \begin{tightemize}
-\item Spearheaded integration efforts in Trade Commercial E-loans, driving \textbf{digital adoption by customers} and contributing to business growth.
-\item Orchestrated migration of classic VMs to cloud infrastructure, reducing up-time costs through automated scaling and load-based billing.
-\item Pioneered a customer-focused approach by developing a \textbf{Troubleshooting Automation Tool from scratch.} Leveraged React, Node, and Java as Micro-service to streamline customer issue resolution, significantly enhancing their experience.
-\item Managed the end-to-end life-cycle of the Troubleshooting Automation Tool, including creation, migration, and deployment. Independently utilized Light-speed and other CI/CD [Teamcity and UrbanCodeDeploy] tools to ensure seamless implementation.
-\item \textbf{Recognized for innovation and efficiency}, registered the Troubleshooting Automation Tool as an internal product, available for use by internal employees. This initiative further contributed to improving the overall internal processes.
+\item Spearheaded integration efforts in Trade Commercial E-loans, driving \textbf{digital adoption by customers}, contributing to business growth.
+\item Migrated classic VMs to cloud infrastructure, reducing up-time costs through \textbf{automated scaling} and load-based billing.
+\item Developed a \textbf{Troubleshooting Automation Tool} from scratch using React, Node, and Java microservices, streamlining client issue resolution.
+\item Independently handled end-to-end lifecycle (creation, migration, deployment) of the tool, ensuring seamless implementation using CI/CD tools.
+\item Registered the tool as an internal product, enabling usage by internal employees and improving internal processes.
 \end{tightemize}
-\sectionsep
+% \sectionsep
 
 \runsubsection{Capgemini}
 \descript{| Senior Software Engineer }
-\location{Sep 2020 - Jun 2022 | Pune, Maharashtra, India}
-% \vspace{\topsep} % Fix for extra vertical space
+\location{Sep 2020 – Jun 2022 | Pune, Maharashtra, India}
+% \vspace{\topsep}
 \begin{tightemize}
-\item \textbf{{\href{https://singhdhirendrafolio.blogspot.com/2022/05/pulse-ams-l15-success-story-in-d-life.html}{Developed Scalable Incident Processor for Discover Financial Services, auto-closing 98\% incidents, cutting dwell time to net zero.}}} 
-\item Enhanced data structures in non-native language TACL, boosting efficiency.
-\item Automated tasks via Microsoft Flow, streamlining monitoring processes.
-\item Full-stack developer: Code contributions in ReactJS, Java (Spring-Boot), and PostgreSQL.
-\item Employed CI/CD tools (Git, SonarQube, Jenkins) with TDD approach within Agile framework.Rigorously tested rest controller using JUnit5 framework.
+\item Developed a scalable incident processor(800 lines TACL)for Discover Financial Services, \textbf{auto-closing 98\% of incidents}, cutting dwell time to net zero.
+% \item Enhanced data structures in TACL, improving processing efficiency.
+% \item Automated tasks using Microsoft Flow, streamlining monitoring.
+\item Full-stack contributions in ReactJS, Spring Boot, and PostgreSQL.
+% \item Employed CI/CD tools and TDD approach within Agile framework. Rigorously tested rest controller using JUnit5.
 \end{tightemize}
-\sectionsep
+% \sectionsep
 
-\runsubsection{\href{https://www.suvasaa.com/}{SUVASAA}}
+\runsubsection{SUVASAA}
 \descript{| Remote Software Engineering Intern }
 \location{May 2020 – Aug 2020 | Atlanta, GA, USA}
 \begin{tightemize}
-\item Full stack dev for suvasaa-an e-commerce store: ReactJS, Firestore \& Firebase.
-\item Segregated customer/admin login routes, added admin inventory interface.
-\item Integrated online payments via Stripe API.
+\item Full-stack development of an e-commerce platform using ReactJS and Firebase.
+\item Integrated online payments via Stripe API and managed segregated customer/admin routes.
 \end{tightemize}
-\sectionsep
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     RESEARCH
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Research}
-\runsubsection{\href{https://drive.google.com/file/d/1ySGyZqVcvsJw7d4tcCqRhxM72iqBXmRh/view?usp=sharing}{Water Pollution Monitoring}}
-\descript{| Researcher}
-\location{Sep 2019 – Feb 2020 | Lucknow, Uttar Pradesh India}
-Worked with \textbf{\href{https://www.youtube.com/c/KalyanKrishnaAwasthi}{Prof KK Awasthi}} and \textbf{\href{https://www.linkedin.com/in/dr-shailendra-tahilyani-034bb27/}{Prof Shailendra Tahilyani}} to create \textbf{\href{https://www.youtube.com/watch?v=ZhUoPz8hMEY}{Poll-m-Boat}}, an embedded tool which  collects the extent of pollution in water bodies/ liquid environments.
-\sectionsep
-
-% \runsubsection{Cornell Phonetics Lab}
-% \descript{| Head Undergraduate Researcher}
-% \location{Mar 2012 – May 2013 | Ithaca, NY}
-% Led the development of \textbf{QuickTongue}, the first ever breakthrough tongue-controlled game with \textbf{\href{http://conf.ling.cornell.edu/~tilsen/}{Prof Sam Tilsen}} to aid in Linguistics research. 
 % \sectionsep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     Facts
+%     PROJECTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Projects}
+\runsubsection{FAANG-CRACKER}
+\descript{| Coding Tool (In Progress) | \href{https://faangcracker.hanisntsolo.com/}{Check it out!} }
+\begin{tightemize}
+\item Developing a tool to automate FAANG interview prep, integrating Codeforces and LeetCode APIs. Built with Next.js, Node.js, and WebSocket support for code compilation in Java, Python, C++, and JavaScript.
+\end{tightemize}
+
+\runsubsection{GitHub Resume Project}
+\descript{| \href{https://github.com/hanisntsolo/resume}{View on GitHub} | \href{https://resume.hanisntsolo.com/}{View my Resume} }
+\begin{tightemize}
+\item Created a resume template in LaTeX with automated deployment via GitHub Workflows. Allows users to fork and deploy their resume publicly in just a few steps.
+\end{tightemize}
+
+\runsubsection{Codeforces Lamp}
+\descript{| \href{https://github.com/hanisntsolo/codeforces-lamp}{View on GitHub} }
+\begin{tightemize}
+\item Built an automated tool that changes colors based on Codeforces submissions using the Tuya API. Developed with Python and Flask, deployed via Docker, and customizable through environment variables for public use.
+\end{tightemize}
+
+\runsubsection{Auto-committer}
+\descript{| \href{https://github.com/hanisntsolo/auto-committer}{View on GitHub} }
+\begin{tightemize}
+\item Automated repository management tool that commits frequent file changes from private cloud environments or JupyterLab to ensure real-time backup via Docker and Python.
+\end{tightemize}
+
+
+% Very big section - 
+% \section{Projects}
+
+% \runsubsection{Codeforces Lamp}
+% \descript{| \href{https://github.com/hanisntsolo/codeforces-lamp}{View on GitHub} }
+% Developed an innovative automation tool that changes colors based on a user’s Codeforces submission status. Integrated with the Tuya API using Python and Flask, and deployed as a Dockerized service for public use. Users can easily customize the setup by configuring environment variables, allowing anyone to visualize their competitive programming progress in real time.
+
+% \runsubsection{Auto-committer}
+% \descript{| \href{https://github.com/hanisntsolo/auto-committer}{View on GitHub} }
+% Automated repository management solution designed for frequent file changes, particularly on private cloud platforms or JupyterLab environments. This tool tracks modifications and automatically commits them to the repository, preventing data loss and ensuring all files are consistently backed up in real time.
+
+% \runsubsection{GitHub Resume Project}
+% \descript{| \href{https://github.com/hanisntsolo/resume}{View on GitHub} | \href{https://resume.hanisntsolo.com/}{View my Resume} }
+% Created a streamlined, modern resume template using LaTeX, aimed at professionals who want to automate resume deployment. The project integrates with GitHub Workflows to automatically deploy the resume to a public endpoint. Users can fork the repository to build and maintain their own public resume in just a few steps.
+
+% \runsubsection{FAANG-CRACKER}
+% \descript{| Coding Tool (In Progress) | \href{https://faangcracker.hanisntsolo.com/}{Check it out!} }
+% Building a custom tool designed to help engineers prepare for FAANG interviews by automating problem-solving workflows. It integrates with Codeforces and LeetCode APIs to pull problems and track user performance. Built using Next.js and Node.js with WebSocket support for real-time code compilation. The tool currently supports Java, Python, C++, and JavaScript, offering a personalized and streamlined interview preparation experience.
+
+% \sectionsep
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     FUN FACTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Fun facts}
-\runsubsection{Intrests}
-Entrepreneurship\textbullet{} Investing \textbullet{} Mentoring\\
-\vspace{\topsep}
-\runsubsection{Hobbies} 
-Lifting \textbullet{} Reading \textbullet{} Cycling \textbullet{} Running \textbullet{} Swimming\\
-\vspace{\topsep}
-\runsubsection{Volunteer Experience} 
-\vspace{\topsep}
-Old Age Home \textbullet{}\textbf{\href{https://www.helpageindia.org/}{ @Astha Foundation}}\\
-\runsubsection{WINGMAN} 
-(Academic Support Volunteer) \textbullet{}\textbf{\href{https://makeadiff.in//}{ @Make A Difference}}
+\runsubsection{Interests}
+Entrepreneurship \textbullet{} Investing \textbullet{} Mentoring
 
-\sectionsep
+\runsubsection{Hobbies}
+Lifting \textbullet{} Reading \textbullet{} Cycling \textbullet{} Swimming
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     PUBLICATIONS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \section{Publications} 
-% \renewcommand\refname{\vskip -1.5em} % Couldn't get this working from the .cls file
-% \bibliographystyle{abbrv}
-% \bibliography{publications}
-% \nocite{*}
-
-\end{minipage} 
-\end{document}  \documentclass[]{article}
+\runsubsection{Volunteer Experience}
+Old Age Home \textbullet{} \href{https://www.helpageindia.org/}{@Astha Foundation} \\
+\runsubsection{WINGMAN} (Academic Support Volunteer) \textbullet{} \href{https://makeadiff.in}{@Make A Difference}
+% \sectionsep
+\end{minipage}
+\end{document}
