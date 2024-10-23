@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+  schedule:
+    - cron: '0 0 * * *'  # This will run the workflow daily at midnight UTC
 
 permissions:
   contents: write  # Explicitly set the permission for the GITHUB_TOKEN
@@ -30,6 +32,7 @@ jobs:
           
       - name: Copy index.html to output
         run: cp index.html output/index.html  # Copy index.html to output directory
+
       - name: Add CNAME file for Custom Domain
         run: echo "resume.hanisntsolo.com" > output/CNAME
         
