@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.12.1)  1 JAN 2025 00:22
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.1)  2 JAN 2025 00:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **dhirendra-pratap-singh-resume.tex
 (./dhirendra-pratap-singh-resume.tex
 LaTeX2e <2024-11-01> patch level 1
-L3 programming layer <2024-11-02>
+L3 programming layer <2024-12-09>
 (./dhirendra-pratap-singh-resume.cls
 Document Class: dhirendra-pratap-singh-resume 2014/04/30 CV class
 (/opt/texlive/texdir/texmf-dist/tex/latex/base/article.cls
@@ -36,7 +36,7 @@ Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 
 (/opt/texlive/texdir/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
+Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
 \Gm@cnth=\count266
 \Gm@cntv=\count267
@@ -220,7 +220,7 @@ File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 (/opt/texlive/texdir/texmf-dist/tex/latex/fontspec/fontspec.sty
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-11-02 L3 programming layer (loader) 
+Package: expl3 2024-12-09 L3 programming layer (loader) 
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
@@ -366,7 +366,7 @@ Package: titlesec 2023/10/27 v2.16 Sectioning titles
 \titlewidthfirst=\dimen168
 ))
 (/opt/texlive/texdir/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-Package: fancyhdr 2024/11/20 v4.4 Extensive control of page headers and footers
+Package: fancyhdr 2024/12/09 v4.5 Extensive control of page headers and footers
 
 \f@nch@headwidth=\skip54
 \f@nch@O@elh=\skip55
@@ -596,7 +596,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 ] (output/dhirendra-pratap-singh-resume.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 1
-L3 programming layer <2024-11-02>
+L3 programming layer <2024-12-09>
  ***********
 
 
@@ -614,10 +614,10 @@ Package rerunfilecheck Info: Checksums for `dhirendra-pratap-singh-resume.out':
 (rerunfilecheck)             After:  1312ECC3167C4DAA48F4EB6858344475;1766.
  ) 
 Here is how much of TeX's memory you used:
- 12364 strings out of 473965
- 244777 string characters out of 5734807
- 719800 words of memory out of 5000000
- 35149 multiletter control sequences out of 15000+600000
+ 12420 strings out of 473889
+ 246496 string characters out of 5733001
+ 720921 words of memory out of 5000000
+ 35281 multiletter control sequences out of 15000+600000
  558853 words of font info for 90 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  94i,11n,139p,474b,555s stack positions out of 10000i,1000n,20000p,200000b,200000s
