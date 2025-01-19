@@ -23,29 +23,25 @@ jobs:
         with:
           node-version: '20'  # Use Node.js 20 or latest
 
-      - name: Install Inkscape
-        run: sudo apt-get update && sudo apt-get install -y inkscape texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra tree
+      # - name: Install Inkscape
+      #   run: sudo apt-get update && sudo apt-get install -y inkscape texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra tree
 
-      - name: Check Inkscape installation
-        run: inkscape -V
+      # - name: Check Inkscape installation
+      #   run: inkscape -V
 
-      - name: Test Inkscape with an SVG
-        run: inkscape assets/citi-2.svg --export-filename=output/citi-2.pdf
+      # - name: Test Inkscape with an SVG
+      #   run: inkscape assets/citi-2.svg --export-filename=output/citi-2.pdf
 
       - name: Copy SVG assets
         run: |
           mkdir -p output/assets  # Ensure the target directory exists
           cp -r assets/* output/assets/  # Copy all SVG files to the output/assets directory
 
-      - name: List files in output directory
-        run: tree output
-
       - name: Set up LaTeX
         uses: xu-cheng/latex-action@v3
         with:
           root_file: dhirendra-pratap-singh-resume.tex
           extra_system_packages: "inkscape"
-          # latexmk_shell_escape: true  # Enable shell escape if required for certain LaTeX commands
           compiler: xelatex  # Use latexmk to compile the document
           args: -shell-escape -output-directory=output  # Specify output directory and add shell-escape flag
 
@@ -55,6 +51,9 @@ jobs:
       - name: Add CNAME file for Custom Domain
         run: echo "resume.hanisntsolo.com" > output/CNAME
         
+      - name: List files in output directory
+        run: tree output
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
