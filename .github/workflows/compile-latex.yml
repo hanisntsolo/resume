@@ -34,6 +34,9 @@ jobs:
           mkdir -p output/assets  # Ensure the target directory exists
           cp -r assets/* output/assets/  # Copy all SVG files to the output/assets directory
 
+      - name: List files in output directory
+        run: ls -R output
+
       - name: Set up LaTeX
         uses: xu-cheng/latex-action@v2
         with:
