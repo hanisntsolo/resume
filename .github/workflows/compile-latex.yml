@@ -17,6 +17,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      
+      - name: Install Inkscape
+        run: sudo apt-get update && sudo apt-get install -y inkscape
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -28,8 +31,8 @@ jobs:
         with:
           root_file: dhirendra-pratap-singh-resume.tex
           compiler: xelatex
-          args: -output-directory=output  # Specify output directory
-          
+          args: -shell-escape -output-directory=output  # Specify output directory and add shell-escape flag
+
       - name: Copy SVG assets
         run: |
           mkdir -p output/assets  # Ensure the target directory exists
