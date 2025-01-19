@@ -18,13 +18,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       
-      - name: Install Inkscape
-        run: sudo apt-get update && sudo apt-get install -y inkscape
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'  # Use Node.js 20 or latest
+
+      - name: Install Inkscape
+        run: sudo apt-get update && sudo apt-get install -y inkscape
+
+      - name: Copy SVG assets
+        run: |
+          mkdir -p output/assets  # Ensure the target directory exists
+          cp -r assets/* output/assets/  # Copy all SVG files to the output/assets directory
 
       - name: Set up LaTeX
         uses: xu-cheng/latex-action@v2
@@ -32,11 +37,6 @@ jobs:
           root_file: dhirendra-pratap-singh-resume.tex
           compiler: xelatex
           args: -shell-escape -output-directory=output  # Specify output directory and add shell-escape flag
-
-      - name: Copy SVG assets
-        run: |
-          mkdir -p output/assets  # Ensure the target directory exists
-          cp -r assets/* output/assets/  # Copy all SVG files to the output/assets directory
 
       - name: Copy index.html to output
         run: cp index.html output/index.html  # Copy index.html to output directory
