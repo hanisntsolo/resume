@@ -46,7 +46,7 @@ jobs:
           root_file: dhirendra-pratap-singh-resume.tex
           extra_system_packages: "inkscape"
           latexmk_shell_escape: true  # Enable shell escape if required for certain LaTeX commands
-          compiler: xelatex
+          compiler: latexmk  # Use latexmk to compile the document
           args: -shell-escape -output-directory=output  # Specify output directory and add shell-escape flag
 
       - name: Copy index.html to output
