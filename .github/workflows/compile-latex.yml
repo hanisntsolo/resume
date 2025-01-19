@@ -24,7 +24,7 @@ jobs:
           node-version: '20'  # Use Node.js 20 or latest
 
       - name: Install Inkscape
-        run: sudo apt-get update && sudo apt-get install -y inkscape
+        run: sudo apt-get update && sudo apt-get install -y inkscape texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
 
       - name: Test Inkscape with an SVG
         run: inkscape assets/citi-2.svg --export-filename=output/citi-2.pdf
