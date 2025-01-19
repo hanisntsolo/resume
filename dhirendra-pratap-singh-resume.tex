@@ -36,6 +36,7 @@
 
 \documentclass[]{dhirendra-pratap-singh-resume}
 \usepackage{fancyhdr}
+\usepackage{svg}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -56,7 +57,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\namesection{Dhirendra Pratap}{Singh}{ \urlstyle{same}\href{http://hanisntsolo.github.io}{Hanisntsolo.com} | \href{https://www.linkedin.com/in/hanisntsolo}{LinkedIn} | \href{https://github.com/hanisntsolo}{GitHub} \\
+\namesection{Dhirendra Pratap}{Singh}{ \urlstyle{same}\href{http://hanisntsolo.github.io}{hanisntsolo.com} | \href{https://www.linkedin.com/in/hanisntsolo}{linkedin} | \href{https://github.com/hanisntsolo}{github} \\
 \href{mailto:ds.pratap1997@gmail.com}{ds.pratap1997@gmail.com} | \href{tel:+919169761452} {916.976.1452} | \href{mailto:ds.pratap1997@bbdnitm.ac.in}{ds.pratap1997@bbdnitm.ac.in}
 }
 
@@ -75,16 +76,17 @@
 \section{Skills}
 {\subsection{Private Cloud}}
 \href{https://dozzle.hanisntsolo.com}{\location{With 32+ Services and Adv. Tooling}}
-Docker \textbullet{} Nginx \textbullet{} CI/CD
+\textbf{Docker} \textbullet{} Nginx \textbullet{} CI/CD
 \subsection{Languages}
 \location{Over 5000: lines}
-Java \textbullet{} Python \textbullet{} TypeScript \\
+\textbf{Java} \textbullet{} Python \textbullet{} \textbf{TypeScript} \\
 JavaScript \textbullet{} C \textbullet{} C++ \textbullet{} HTML \textbullet{} CSS
 
 \subsection{Frameworks}
 \location{Over 2000: lines}
-ReactJS \textbullet{} Spring Boot \\
-Node.js \textbullet{} Shell Scripting
+\textbf{Apache Kafka} \textbullet{} ReactJS \textbullet{} Spring Boot \\
+Shedlock \textbullet{} \textbf{NextJS} \textbullet{} Shell Scripting \\
+% Docusaurus
 
 \subsection{Tools/Platforms}
 GCP \textbullet{} OCI \textbullet{} Microsoft Flow \\
@@ -115,7 +117,7 @@ Babu Banarsi Das National Institute of Technology \& Management\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Links} 
-GitHub:// \href{https://github.com/hanisntsolo}{\bf hanisntsolo} \\
+Github:// \href{https://github.com/hanisntsolo}{\bf hanisntsolo} \\
 LinkedIn://  \href{https://www.linkedin.com/in/hanisntsolo/}{\bf hanisntsolo} \\
 YouTube://  \href{https://www.youtube.com/channel/UCudY5NQeinXTD9I6eVn1WeQ}{\bf tech | info | geek} \\
 Twitter://  \href{https://twitter.com/_dhirendra}{\bf @\_dhirendra} \\
@@ -162,11 +164,19 @@ Information Retrieval
 \location{July 2022 – Present | Pune, Maharashtra, India}
 \vspace{\topsep}
 \begin{tightemize}
+\item Contributing to one of the core-streams within \includesvg[width=0.05\textwidth]{assets/citi-2.svg}
+the \textbf{\textit{"Citi Commercial Banking - [CCB]"}} space by ensuring technology solves client problems and makes their experience more conducive.
+\item Improved API Response and Data Delivery by building Cache-layers utilizing \textbf{Hazlecast Caching Clusters} and reducing response time to few milliseconds on top of fail over mechanisms.
+\item Added Cirbuit-Breaking and Retry Mechanisms using \textbf{Resillience4j} to minimise application overloads and boost performance.
+\item Utilized Event Stream Processing Frameworks like \textbf{Apache Kafka} in extended capacity, syncing data across different backend systems.
+\item Used Distributed Scheduled Locking Frameworks like \textbf{ShedLock}, to capture distributed scheduled-computing events at scale.
 \item Spearheaded integration efforts in Trade Commercial E-loans, driving \textbf{digital adoption by customers}, contributing to business growth.
 \item Migrated classic VMs to cloud infrastructure, reducing up-time costs through \textbf{automated scaling} and load-based billing.
-\item Developed a \textbf{Troubleshooting Automation Tool} from scratch using React, Node, and Java microservices, streamlining client issue resolution.
+\item Developed a \textbf{Troubleshooting Automation Tool} from scratch using React, Node, and Java micro-services, streamlining client issue resolution.
 \item Independently handled end-to-end lifecycle (creation, migration, deployment) of the tool, ensuring seamless implementation using CI/CD tools.
 \item Registered the tool as an internal product, enabling usage by internal employees and improving internal processes.
+\item Used \textbf{Docusaurus} to document project architecture and process to enhance debugging and self-service experience across teams.
+\item Leveraged \textbf{Copilot/ChatGPT} prompts to drive optimizations in code architectures, with enhanced productivity.
 \end{tightemize}
 % \sectionsep
 
@@ -175,7 +185,7 @@ Information Retrieval
 \location{Sep 2020 – Jun 2022 | Pune, Maharashtra, India}
 % \vspace{\topsep}
 \begin{tightemize}
-\item Developed a scalable incident processor(800 lines TACL)for Discover Financial Services, \textbf{auto-closing 98\% of incidents}, cutting dwell time to net zero.
+\item Developed a scalable incident processor(\textbf{800 lines of TACL} \textit{Tandem Advanced Command Language} used in DebitCard/Credit Card Txns) for \includesvg[width=0.1\textwidth]{assets/discover-network.svg} Discover Financial Services, \textbf{auto-closing 98\% of incidents}, cutting dwell time to net zero.
 % \item Enhanced data structures in TACL, improving processing efficiency.
 % \item Automated tasks using Microsoft Flow, streamlining monitoring.
 \item Full-stack contributions in ReactJS, Spring Boot, and PostgreSQL.
@@ -196,30 +206,37 @@ Information Retrieval
 %     PROJECTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Projects}
-\href{https://faangcracker.hanisntsolo.com/}{\runsubsection{FAANG-CRACKER}}
-\descript{| \href{https://faangcracker.hanisntsolo.com/}{Coding Tool (In Progress)} | \href{https://faangcracker.hanisntsolo.com/}{Check it out!} }
-\begin{tightemize}
-\item Developing a tool to automate FAANG interview prep, integrating Codeforces and LeetCode APIs. Built with Next.js, Node.js, and WebSocket support for code compilation in Java, Python, C++, and JavaScript.
-\end{tightemize}
-
-\href{https://github.com/hanisntsolo/resume}{\runsubsection{GitHub Resume` Project}}
-\descript{| \href{https://github.com/hanisntsolo/resume}{View on GitHub} | \href{https://resume.hanisntsolo.com/}{View my Resume`}}
-\begin{tightemize}
-\item Created a resume template in LaTeX with automated deployment via GitHub Workflows. Allows users to fork and deploy their resume publicly in just a few steps.
-\end{tightemize}
-
-\href{https://github.com/hanisntsolo/codeforces-lamp}{\runsubsection{Codeforces Lamp}}
-\descript{| \href{https://github.com/hanisntsolo/codeforces-lamp}{View on GitHub} }
-\begin{tightemize}
-\item Built an automated tool that changes colors based on Codeforces submissions using the Tuya API. Developed with Python and Flask, deployed via Docker, and customizable through environment variables for public use.
-\end{tightemize}
-
+\section{Personal Projects}
+% \href{https://faangcracker.hanisntsolo.com/}{\runsubsection{FAANG-CRACKER}}
+\descript{
+\href{https://dozzle.hanisntsolo.com/}{\runsubsection{PRIVATE CLOUD 32+ Services}} |
+\href{https://faangcracker.hanisntsolo.com/}{\runsubsection{FAANG-CRACKER}} |
+\href{https://github.com/hanisntsolo/resume}{\runsubsection{GitHub Resume` Project}} |
+\href{https://github.com/hanisntsolo/codeforces-lamp}{\runsubsection{Codeforces Lamp}} |
 \href{https://github.com/hanisntsolo/auto-committer}{\runsubsection{Auto-committer}}
-\descript{| \href{https://github.com/hanisntsolo/auto-committer}{View on GitHub} }
-\begin{tightemize}
-\item Automated repository management tool that commits frequent file changes from private cloud environments or JupyterLab to ensure real-time backup via Docker and Python.
-\end{tightemize}
+}
+% \descript{| \href{https://faangcracker.hanisntsolo.com/}{Coding Tool (In Progress)} | \href{https://faangcracker.hanisntsolo.com/}{Check it out!} }
+% \begin{tightemize}
+% \item Developing a tool to automate FAANG interview prep, integrating Codeforces and LeetCode APIs. Built with Next.js, Node.js, and WebSocket support for code compilation in Java, Python, C++, and JavaScript.
+% \end{tightemize}
+
+% \href{https://github.com/hanisntsolo/resume}{\runsubsection{GitHub Resume` Project}}
+% \descript{| \href{https://github.com/hanisntsolo/resume}{View on GitHub} | \href{https://resume.hanisntsolo.com/}{View my Resume`}}
+% \begin{tightemize}
+% \item Created a resume template in LaTeX with automated deployment via GitHub Workflows. Allows users to fork and deploy their resume publicly in just a few steps.
+% \end{tightemize}
+
+% \href{https://github.com/hanisntsolo/codeforces-lamp}{\runsubsection{Codeforces Lamp}}
+% \descript{| \href{https://github.com/hanisntsolo/codeforces-lamp}{View on GitHub} }
+% \begin{tightemize}
+% \item Built an automated tool that changes colors based on Codeforces submissions using the Tuya API. Developed with Python and Flask, deployed via Docker, and customizable through environment variables for public use.
+% \end{tightemize}
+
+% \href{https://github.com/hanisntsolo/auto-committer}{\runsubsection{Auto-committer}}
+% \descript{| \href{https://github.com/hanisntsolo/auto-committer}{View on GitHub} }
+% \begin{tightemize}
+% \item Automated repository management tool that commits frequent file changes from private cloud environments or JupyterLab to ensure real-time backup via Docker and Python.
+% \end{tightemize}
 
 
 % Very big section - 
