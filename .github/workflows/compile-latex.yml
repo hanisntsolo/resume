@@ -41,9 +41,11 @@ jobs:
         run: ls -R output
 
       - name: Set up LaTeX
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: dhirendra-pratap-singh-resume.tex
+          extra_system_packages: "inkscape"
+          latexmk_shell_escape: true  # Enable shell escape if required for certain LaTeX commands
           compiler: xelatex
           args: -shell-escape -output-directory=output  # Specify output directory and add shell-escape flag
 
