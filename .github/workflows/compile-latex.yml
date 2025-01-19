@@ -30,6 +30,11 @@ jobs:
           compiler: xelatex
           args: -output-directory=output  # Specify output directory
           
+      - name: Copy SVG assets
+        run: |
+          mkdir -p output/assets  # Ensure the target directory exists
+          cp -r assets/* output/assets/  # Copy all SVG files to the output/assets directory
+
       - name: Copy index.html to output
         run: cp index.html output/index.html  # Copy index.html to output directory
 
