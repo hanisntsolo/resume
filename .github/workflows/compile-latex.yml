@@ -26,6 +26,12 @@ jobs:
       - name: Install Inkscape
         run: sudo apt-get update && sudo apt-get install -y inkscape
 
+      - name: Test Inkscape with an SVG
+        run: inkscape assets/citi-2.svg --export-filename=output/citi-2.pdf
+
+      - name: Print LaTeX log
+        run: cat output/output.log
+
       - name: Copy SVG assets
         run: |
           mkdir -p output/assets  # Ensure the target directory exists
