@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.1)  1 FEB 2025 00:21
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.1)  2 FEB 2025 00:20
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
 **dhirendra-pratap-singh-resume.tex
 (./dhirendra-pratap-singh-resume.tex
-LaTeX2e <2024-11-01> patch level 1
-L3 programming layer <2024-12-09>
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
 (./dhirendra-pratap-singh-resume.cls
 Document Class: dhirendra-pratap-singh-resume 2014/04/30 CV class
 (/opt/texlive/texdir/texmf-dist/tex/latex/base/article.cls
@@ -219,8 +219,8 @@ File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 )
 (/opt/texlive/texdir/texmf-dist/tex/latex/fontspec/fontspec.sty
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(/opt/texlive/texdir/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-12-09 L3 programming layer (loader) 
+(/opt/texlive/texdir/texmf-dist/tex/latex-dev/l3kernel/expl3.sty
+Package: expl3 2025-01-18 L3 programming layer (loader) 
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
@@ -354,7 +354,7 @@ Define commands for English date format
 \c@iso@@minus=\count304
 \c@iso@@dot=\count305
 ) (/opt/texlive/texdir/texmf-dist/tex/latex/titlesec/titlesec.sty
-Package: titlesec 2023/10/27 v2.16 Sectioning titles
+Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box56
 \beforetitleunit=\skip52
 \aftertitleunit=\skip53
@@ -366,17 +366,23 @@ Package: titlesec 2023/10/27 v2.16 Sectioning titles
 \titlewidthfirst=\dimen168
 ))
 (/opt/texlive/texdir/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-Package: fancyhdr 2024/12/09 v4.5 Extensive control of page headers and footers
-
+Package: fancyhdr 2025/01/07 v5.1.1 Extensive control of page headers and foote
+rs
 \f@nch@headwidth=\skip54
-\f@nch@O@elh=\skip55
-\f@nch@O@erh=\skip56
-\f@nch@O@olh=\skip57
-\f@nch@O@orh=\skip58
-\f@nch@O@elf=\skip59
-\f@nch@O@erf=\skip60
-\f@nch@O@olf=\skip61
-\f@nch@O@orf=\skip62
+\f@nch@offset@elh=\skip55
+\f@nch@offset@erh=\skip56
+\f@nch@offset@olh=\skip57
+\f@nch@offset@orh=\skip58
+\f@nch@offset@elf=\skip59
+\f@nch@offset@erf=\skip60
+\f@nch@offset@olf=\skip61
+\f@nch@offset@orf=\skip62
+\f@nch@height=\skip63
+\f@nch@footalignment=\skip64
+\f@nch@widthL=\skip65
+\f@nch@widthC=\skip66
+\f@nch@widthR=\skip67
+\@temptokenb=\toks21
 )
 (/opt/texlive/texdir/texmf-dist/tex/latex/svg/svg.sty
 Package: svg 2020/11/26 v2.02k (include SVG pictures)
@@ -461,7 +467,7 @@ PDF mode.
 )) (/opt/texlive/texdir/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/opt/texlive/texdir/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/opt/texlive/texdir/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks21
+\pgfutil@everybye=\toks22
 \pgfutil@tempdima=\dimen171
 \pgfutil@tempdimb=\dimen172
 )
@@ -476,12 +482,12 @@ Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 
 (/opt/texlive/texdir/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks22
-\pgfkeys@temptoks=\toks23
+\pgfkeys@pathtoks=\toks23
+\pgfkeys@temptoks=\toks24
 
 (/opt/texlive/texdir/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltere
 d.code.tex
-\pgfkeys@tmptoks=\toks24
+\pgfkeys@tmptoks=\toks25
 ))
 \pgf@x=\dimen173
 \pgf@y=\dimen174
@@ -499,9 +505,9 @@ d.code.tex
 \c@pgf@countb=\count309
 \c@pgf@countc=\count310
 \c@pgf@countd=\count311
-\t@pgf@toka=\toks25
-\t@pgf@tokb=\toks26
-\t@pgf@tokc=\toks27
+\t@pgf@toka=\toks26
+\t@pgf@tokb=\toks27
+\t@pgf@tokc=\toks28
 \pgf@sys@id@count=\count312
 
 (/opt/texlive/texdir/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
@@ -795,8 +801,8 @@ LaTeX Font Warning: Font shape `TU/Lato-Bol(0)/b/sc' undefined
 
 ] (output/dhirendra-pratap-singh-resume.aux)
  ***********
-LaTeX2e <2024-11-01> patch level 1
-L3 programming layer <2024-12-09>
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
  ***********
 
 
@@ -814,12 +820,12 @@ Package rerunfilecheck Info: Checksums for `dhirendra-pratap-singh-resume.out':
 (rerunfilecheck)             After:  E79DBC027DEF8E290F240BA1B2FCE05B;1814.
  ) 
 Here is how much of TeX's memory you used:
- 14934 strings out of 473889
- 303697 string characters out of 5733001
- 797664 words of memory out of 5000000
- 37672 multiletter control sequences out of 15000+600000
- 558869 words of font info for 92 fonts, out of 8000000 for 9000
+ 15018 strings out of 473840
+ 305289 string characters out of 5731541
+ 801552 words of memory out of 5000000
+ 37799 multiletter control sequences out of 15000+600000
+ 559637 words of font info for 92 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 94i,11n,139p,505b,680s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,11n,130p,505b,680s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on output/dhirendra-pratap-singh-resume.pdf (1 page).
