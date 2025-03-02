@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.1)  1 MAR 2025 00:22
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.1)  2 MAR 2025 00:21
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -95,7 +95,7 @@ Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 \c@section@level=\count269
 )
 (/opt/texlive/texdir/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count270
 )
 (/opt/texlive/texdir/texmf-dist/tex/generic/stringenc/stringenc.sty
@@ -219,7 +219,7 @@ File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 )
 (/opt/texlive/texdir/texmf-dist/tex/latex/fontspec/fontspec.sty
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(/opt/texlive/texdir/texmf-dist/tex/latex-dev/l3kernel/expl3.sty
+(/opt/texlive/texdir/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2025-01-18 L3 programming layer (loader) 
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
@@ -366,8 +366,8 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \titlewidthfirst=\dimen168
 ))
 (/opt/texlive/texdir/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-Package: fancyhdr 2025/01/07 v5.1.1 Extensive control of page headers and foote
-rs
+Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+
 \f@nch@headwidth=\skip54
 \f@nch@offset@elh=\skip55
 \f@nch@offset@erh=\skip56
@@ -820,10 +820,10 @@ Package rerunfilecheck Info: Checksums for `dhirendra-pratap-singh-resume.out':
 (rerunfilecheck)             After:  E79DBC027DEF8E290F240BA1B2FCE05B;1814.
  ) 
 Here is how much of TeX's memory you used:
- 15018 strings out of 473840
- 305289 string characters out of 5731541
- 801552 words of memory out of 5000000
- 37799 multiletter control sequences out of 15000+600000
+ 15049 strings out of 473840
+ 305811 string characters out of 5731561
+ 802078 words of memory out of 5000000
+ 37830 multiletter control sequences out of 15000+600000
  559637 words of font info for 92 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  94i,11n,130p,505b,680s stack positions out of 10000i,1000n,20000p,200000b,200000s
