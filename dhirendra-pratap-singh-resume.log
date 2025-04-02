@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.1)  1 APR 2025 00:24
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.1)  2 APR 2025 00:21
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -820,10 +820,10 @@ Package rerunfilecheck Info: Checksums for `dhirendra-pratap-singh-resume.out':
 (rerunfilecheck)             After:  E79DBC027DEF8E290F240BA1B2FCE05B;1814.
  ) 
 Here is how much of TeX's memory you used:
- 15049 strings out of 473840
- 305811 string characters out of 5731561
- 802078 words of memory out of 5000000
- 37830 multiletter control sequences out of 15000+600000
+ 15049 strings out of 473832
+ 305811 string characters out of 5731318
+ 802074 words of memory out of 5000000
+ 37831 multiletter control sequences out of 15000+600000
  559637 words of font info for 92 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  94i,11n,130p,505b,680s stack positions out of 10000i,1000n,20000p,200000b,200000s
