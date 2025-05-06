@@ -1,0 +1,34 @@
+name: First-Time Setup
+
+on:
+  workflow_dispatch:  # Allows manual trigger from GitHub UI
+  push:
+    branches:
+      - master  # or 'master' or your default branch
+
+jobs:
+  personalize:
+    if: github.repository_owner != 'hanisntsolo'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set GitHub handle env var
+        run: echo "GITHUB_HANDLE=${{ github.repository_owner }}" >> $GITHUB_ENV
+
+            - name: Replace handle placeholders in all files
+        run: |
+          echo "Replacing all occurrences of '__GITHUB_USERNAME__' with '${GITHUB_HANDLE}'"
+          grep -rl --exclude-dir=".git" --exclude="*.pdf" '__GITHUB_USERNAME__' . | while read -r file; do
+            sed -i "s/__GITHUB_USERNAME__/${GITHUB_HANDLE}/g" "$file"
+          done
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "chore: personalize repo with fork owner's handle"
+          git push

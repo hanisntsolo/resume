@@ -1,5 +1,5 @@
 % Intro Options
-\ProvidesClass{dhirendra-pratap-singh-resume}[2014/04/30 CV class]
+\ProvidesClass{__GITHUB_USERNAME__-resume}[2014/04/30 CV class]
 \NeedsTeXFormat{LaTeX2e}
 \DeclareOption{print}{\def\@cv@print{}}
 \DeclareOption*{%
