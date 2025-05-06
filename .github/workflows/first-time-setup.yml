@@ -1,22 +1,19 @@
 name: First-Time Setup
 
-with:
-  token: ${{ secrets.WORKFLOW_TOKEN }}
-  # This token is used to authenticate the action
-  # and allows it to push changes back to the repository.
-permissions: write-all
-  # contents: write
-  # workflows: write  # Allow workflow modification permissions for this action
+permissions:
+  contents: write
+  workflows: write
+  pull-requests: write  # Optional depending on your use case
 
 on:
-  workflow_dispatch:  # Allows manual trigger from GitHub UI
+  workflow_dispatch:
   push:
     branches:
-      - master  # Change to 'main' if your default branch is 'main'
+      - master  # Or 'main' if your repo uses that
 
 jobs:
   personalize:
-    if: github.repository_owner != 'hanisntsolo'  # Run only for forks, not the original repo
+    if: github.repository_owner != 'hanisntsolo'
     runs-on: ubuntu-latest
 
     steps:
@@ -34,9 +31,12 @@ jobs:
           done
 
       - name: Commit and push changes
+        env:
+          TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
+          git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}
           git add .
-          git commit -m "chore: personalize repo with fork owner's handle [skip ci]"
+          git commit -m "chore: personalize repo with fork owner's handle [skip ci]" || echo "No changes to commit"
           git push
