@@ -1,10 +1,12 @@
-name: First-Time Setup
+name: First-Time Setup Hanisntsolo
+# This workflow personalizes the template for the fork owner
+# and creates a pull request to merge the changes into the hanisntsolo branch.
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - master  # Change to 'main' if needed
+      - hanisntsolo  # Change to 'main' if needed
 
 permissions:
   contents: write
@@ -13,7 +15,7 @@ permissions:
 jobs:
   personalize:
     name: Personalize fork with user handle
-    if: github.repository_owner != 'hanisntsolo'
+    if: github.repository_owner == 'hanisntsolo'
     runs-on: ubuntu-22.04
 
     steps:
