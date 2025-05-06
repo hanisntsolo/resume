@@ -201,4 +201,4 @@ This template attempts to **look clean**, highlight **details**, be a **single p
 1. For new deployments clone and make sure dns configuration is upto date
   From homepage settings -> pages
 2. Repo Settings Pages and update domain
-3. Add a pointer to yourGithubUserName.github.io and create a repo in your profile with yourGithubUserName.github.io.
+3. Add a pointer to yourGithubUserName.github.io using txt record and CNAME and create a repo in your profile with yourGithubUserName.github.io.
