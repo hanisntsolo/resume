@@ -196,3 +196,9 @@ This template attempts to **look clean**, highlight **details**, be a **single p
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+// Notes
+1. For new deployments clone and make sure dns configuration is upto date
+  From homepage settings -> pages
+2. Repo Settings Pages and update domain
+3. Add a pointer to yourGithubUserName.github.io and create a repo in your profile with yourGithubUserName.github.io.
