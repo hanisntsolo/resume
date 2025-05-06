@@ -1,9 +1,6 @@
 name: First-Time Setup
 
-permissions:
-  contents: write
-  workflows: write
-  pull-requests: write  # Optional depending on your use case
+permissions: write-all
 
 on:
   workflow_dispatch:
