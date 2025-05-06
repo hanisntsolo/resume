@@ -42,7 +42,7 @@ jobs:
       - name: Set up LaTeX
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: dhirendra-pratap-singh-resume.tex
+          root_file: kajalsingh-resume.tex
           compiler: xelatex
           args: -output-directory=output  # Specify output directory
           
@@ -66,7 +66,7 @@ Go to the repository settings on GitHub and navigate to "Settings" > "Pages". En
 Ensure the compiled PDF is located at:
 
 ```
-https://hanisntsolo.github.io/resume/dhirendra-pratap-singh-resume.pdf
+https://hanisntsolo.github.io/resume/kajalsingh-resume.pdf
 ```
 
 ### 5. Create a Redirect `index.html`
@@ -84,11 +84,11 @@ cd resume
 echo '<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0; url=dhirendra-pratap-singh-resume.pdf">
+    <meta http-equiv="refresh" content="0; url=kajalsingh-resume.pdf">
     <title>Redirecting...</title>
 </head>
 <body>
-    <p>Redirecting to <a href="dhirendra-pratap-singh-resume.pdf">dhirendra-pratap-singh-resume.pdf</a></p>
+    <p>Redirecting to <a href="kajalsingh-resume.pdf">kajalsingh-resume.pdf</a></p>
 </body>
 </html>' > index.html
 
@@ -102,7 +102,7 @@ git push origin gh-pages
 
 ### Access the PDF
 
-- **Direct PDF URL:** `https://hanisntsolo.github.io/resume/dhirendra-pratap-singh-resume.pdf`
+- **Direct PDF URL:** `https://hanisntsolo.github.io/resume/kajalsingh-resume.pdf`
 - **Redirect URL:** `https://hanisntsolo.github.io/resume`
 
 ### Clearing Browser Cache
