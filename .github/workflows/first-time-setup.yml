@@ -1,5 +1,9 @@
 name: First-Time Setup
 
+with:
+    token: ${{ secrets.WORKFLOW_TOKEN }}
+  # This token is used to authenticate the action
+  # and allows it to push changes back to the repository.
 permissions: write-all
   # contents: write
   # workflows: write  # Allow workflow modification permissions for this action
