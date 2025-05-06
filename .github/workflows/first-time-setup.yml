@@ -4,16 +4,15 @@ permissions:
   contents: write
   workflows: write  # Allow workflow modification permissions for this action
 
-
 on:
   workflow_dispatch:  # Allows manual trigger from GitHub UI
   push:
     branches:
-      - master  # or 'master' or your default branch
+      - master  # Change to 'main' if your default branch is 'main'
 
 jobs:
   personalize:
-    if: github.repository_owner != 'hanisntsolo'
+    if: github.repository_owner != 'hanisntsolo'  # Run only for forks, not the original repo
     runs-on: ubuntu-latest
 
     steps:
@@ -35,5 +34,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add .
-          git commit -m "chore: personalize repo with fork owner's handle"
+          git commit -m "chore: personalize repo with fork owner's handle [skip ci]"
           git push
