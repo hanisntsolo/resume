@@ -18,7 +18,7 @@ jobs:
       - name: Set GitHub handle env var
         run: echo "GITHUB_HANDLE=${{ github.repository_owner }}" >> $GITHUB_ENV
 
-            - name: Replace handle placeholders in all files
+      - name: Replace handle placeholders in all files
         run: |
           echo "Replacing all occurrences of '__GITHUB_USERNAME__' with '${GITHUB_HANDLE}'"
           grep -rl --exclude-dir=".git" --exclude="*.pdf" '__GITHUB_USERNAME__' . | while read -r file; do
