@@ -26,7 +26,7 @@ jobs:
       - name: Set up LaTeX
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: __GITHUB_USERNAME__-resume.tex
+          root_file: hanisntsolo-resume.tex
           extra_system_packages: "inkscape"
           compiler: xelatex  # Use latexmk to compile the document
           args: -shell-escape -output-directory=output  # Specify output directory and add shell-escape flag
@@ -35,7 +35,7 @@ jobs:
         run: cp index.html output/index.html  # Copy index.html to output directory
 
       - name: Add CNAME file for Custom Domain
-        run: echo "resume.__GITHUB_USERNAME__.com" > output/CNAME
+        run: echo "resume.hanisntsolo.com" > output/CNAME
         
       - name: List files in output directory
         run: tree output
