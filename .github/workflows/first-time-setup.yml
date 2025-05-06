@@ -1,7 +1,7 @@
 name: First-Time Setup
 
-permissions:
-  contents: write
+permissions: write-all
+  # contents: write
   # workflows: write  # Allow workflow modification permissions for this action
 
 on:
