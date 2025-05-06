@@ -1,4 +1,6 @@
-name: First-Time Setup
+name: First-Time Setup Hanisntsolo
+# This workflow personalizes the template for the fork owner
+# and creates a pull request to merge the changes into the hanisntsolo branch.
 
 on:
   workflow_dispatch:
