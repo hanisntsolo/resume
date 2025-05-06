@@ -1,39 +1,50 @@
 name: First-Time Setup
 
-permissions: write-all
-
 on:
   workflow_dispatch:
   push:
     branches:
-      - master  # Or 'main' if your repo uses that
+      - master  # Change to 'main' if needed
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   personalize:
+    name: Personalize fork with user handle
     if: github.repository_owner != 'hanisntsolo'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Check out repository
+        uses: actions/checkout@v4.1.1
+        with:
+          token: ${{ secrets.WORKFLOW_TOKEN }}  # PAT with repo + workflow scopes
 
       - name: Set GitHub handle env var
         run: echo "GITHUB_HANDLE=${{ github.repository_owner }}" >> $GITHUB_ENV
 
-      - name: Replace handle placeholders in all files
+      - name: Replace handle placeholders
         run: |
-          echo "Replacing all occurrences of '__GITHUB_USERNAME__' with '${GITHUB_HANDLE}'"
+          echo "Replacing '__GITHUB_USERNAME__' with '${GITHUB_HANDLE}'"
           grep -rl --exclude-dir=".git" --exclude="*.pdf" '__GITHUB_USERNAME__' . | while read -r file; do
             sed -i "s/__GITHUB_USERNAME__/${GITHUB_HANDLE}/g" "$file"
           done
 
-      - name: Commit and push changes
+      - name: Commit and push changes to new branch
         env:
-          TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # default token for gh CLI
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}
+          git switch -c personalize-${GITHUB_HANDLE}
+
+          git config --global user.name "github-actions"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add .
-          git commit -m "chore: personalize repo with fork owner's handle [skip ci]" || echo "No changes to commit"
-          git push
+          git commit -m "chore: personalize repo for @${GITHUB_HANDLE}" || echo "No changes"
+          git push --set-upstream origin personalize-${GITHUB_HANDLE}
+
+          gh pr create \
+            --title "chore: personalize repo for @${GITHUB_HANDLE}" \
+            --body "This PR personalizes the template with the fork owner's GitHub handle."
