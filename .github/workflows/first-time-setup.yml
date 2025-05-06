@@ -1,5 +1,10 @@
 name: First-Time Setup
 
+permissions:
+  contents: write
+  workflows: write  # Allow workflow modification permissions for this action
+
+
 on:
   workflow_dispatch:  # Allows manual trigger from GitHub UI
   push:
