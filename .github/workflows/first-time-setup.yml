@@ -20,7 +20,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4.1.1
         with:
-          token: ${{ secrets.WORKFLOW_TOKEN }}  # PAT with repo + workflow scopes
+          token: ${{ secrets.GITHUB_TOKEN }}  # PAT with repo + workflow scopes
 
       - name: Set GitHub handle env var
         run: echo "GITHUB_HANDLE=${{ github.repository_owner }}" >> $GITHUB_ENV
