@@ -37,9 +37,14 @@ jobs:
           echo "Renaming all files and folders containing '__GITHUB_USERNAME__' to '${GITHUB_HANDLE}'"
           find . -depth -name "*__GITHUB_USERNAME__*" | while read -r path; do
             new_path=$(echo "$path" | sed "s/__GITHUB_USERNAME__/${GITHUB_HANDLE}/g")
-            echo "Renaming $path -> $new_path"
-            mv "$path" "$new_path"
+            if [ "$path" != "$new_path" ]; then
+              echo "Renaming $path -> $new_path"
+              mv "$path" "$new_path"
+            else
+              echo "Skipping rename for $path (no change)"
+            fi
           done
+
 
 
       - name: Commit and push changes to new branch
