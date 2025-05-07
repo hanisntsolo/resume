@@ -1,13 +1,13 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.5.1)  7 MAY 2025 07:57
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.5.1)  7 MAY 2025 07:59
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**__GITHUB_USERNAME__-resume.tex
-(./__GITHUB_USERNAME__-resume.tex
+**hanisntsolo-resume.tex
+(./hanisntsolo-resume.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-04-14>
-(./__GITHUB_USERNAME__-resume.cls
-Document Class: __GITHUB_USERNAME__-resume 2014/04/30 CV class
+(./hanisntsolo-resume.cls
+Document Class: hanisntsolo-resume 2014/04/30 CV class
 (/opt/texlive/texdir/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2024/06/29 v1.4n Standard LaTeX document class
 (/opt/texlive/texdir/texmf-dist/tex/latex/base/size10.clo
@@ -440,11 +440,11 @@ Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 (/opt/texlive/texdir/texmf-dist/tex/generic/iftex/ifluatex.sty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 )
-runsystem(uname -s > "__GITHUB_USERNAME__-resume.w18")...executed.
+runsystem(uname -s > "hanisntsolo-resume.w18")...executed.
 
 
-(./__GITHUB_USERNAME__-resume.w18)
-runsystem(rm -- "__GITHUB_USERNAME__-resume.w18")...executed.
+(./hanisntsolo-resume.w18)
+runsystem(rm -- "hanisntsolo-resume.w18")...executed.
 
 )
 \c@svg@param@lastpage=\count316
@@ -536,8 +536,8 @@ File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
 .tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))
-No file __GITHUB_USERNAME__-resume.aux.
-\openout1 = `__GITHUB_USERNAME__-resume.aux'.
+No file hanisntsolo-resume.aux.
+\openout1 = `hanisntsolo-resume.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
 LaTeX Font Info:    ... okay on input line 44.
@@ -595,7 +595,7 @@ LaTeX Font Info:    ... okay on input line 44.
 
 Package hyperref Info: Link coloring OFF on input line 44.
 \@outlinefile=\write4
-\openout4 = `__GITHUB_USERNAME__-resume.out'.
+\openout4 = `hanisntsolo-resume.out'.
 
 
 Package hyperref Warning: Rerun to get /PageLabels entry.
@@ -798,7 +798,7 @@ LaTeX Font Warning: Font shape `TU/Lato-Bol(0)/b/sc' undefined
 
 [1
 
-] (output/__GITHUB_USERNAME__-resume.aux)
+] (output/hanisntsolo-resume.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-04-14>
@@ -808,22 +808,21 @@ L3 programming layer <2025-04-14>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-Package rerunfilecheck Warning: File `__GITHUB_USERNAME__-resume.out' has chang
-ed.
+Package rerunfilecheck Warning: File `hanisntsolo-resume.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
-Package rerunfilecheck Info: Checksums for `__GITHUB_USERNAME__-resume.out':
+Package rerunfilecheck Info: Checksums for `hanisntsolo-resume.out':
 (rerunfilecheck)             Before: <no file>
 (rerunfilecheck)             After:  E79DBC027DEF8E290F240BA1B2FCE05B;1814.
  ) 
 Here is how much of TeX's memory you used:
  15040 strings out of 470249
- 305400 string characters out of 5486098
- 791767 words of memory out of 5000000
+ 305136 string characters out of 5486098
+ 791687 words of memory out of 5000000
  41404 multiletter control sequences out of 15000+600000
  627625 words of font info for 96 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 94i,11n,130p,502b,680s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,11n,130p,494b,680s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on output/__GITHUB_USERNAME__-resume.pdf (1 page).
+Output written on output/hanisntsolo-resume.pdf (1 page).
