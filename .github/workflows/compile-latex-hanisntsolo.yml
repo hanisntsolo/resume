@@ -3,9 +3,9 @@ name: Compile LaTeX document for Hanisntsolo
 on:
   repository_dispatch:
     types: [trigger-hanisntsolo]
-  # push:
-  #   branches:
-  #     - hanisntsolo # this is not required here in master branch
+  push:
+    branches:
+      - hanisntsolo
 
 permissions:
   contents: write  # Explicitly set the permission for the GITHUB_TOKEN
@@ -18,6 +18,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          ref: hanisntsolo  # Ensure we are on the correct branch
+          token: ${{ secrets.WORKFLOW_TOKEN }}  # PAT with repo + workflow scopes
       
       - name: Set up Node.js
         uses: actions/setup-node@v3
