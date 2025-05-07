@@ -4,7 +4,7 @@ name: Trigger Dev Branch Workflow
 on:
   schedule:
     - cron: '0/5 * * * *'  # Every 5 Minutes
-  # workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   trigger:
@@ -16,4 +16,4 @@ jobs:
           token: ${{ secrets.WORKFLOW_TOKEN }}  # PAT with repo + workflow scopes
           repository: ${{ github.repository }}
           event-type: trigger-hanisntsolo
-          client-payload: '{"branch": "hanisntsolo"}'
+          client-payload: '{"ref": "hanisntsolo"}'
