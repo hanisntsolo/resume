@@ -13,7 +13,7 @@ jobs:
       - name: Call dispatch on hanisntsolo branch
         uses: peter-evans/repository-dispatch@v3
         with:
-          token: ${{ secrets.WORFLOW_TOKEN }}  # PAT with repo + workflow scopes
+          token: ${{ secrets.WORKFLOW_TOKEN }}  # PAT with repo + workflow scopes
           repository: ${{ github.repository }}
           event-type: trigger-hanisntsolo
           client-payload: '{"ref": "hanisntsolo"}'
