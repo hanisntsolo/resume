@@ -16,4 +16,4 @@ jobs:
           token: ${{ secrets.WORKFLOW_TOKEN }}  # PAT with repo + workflow scopes
           repository: ${{ github.repository }}
           event-type: trigger-hanisntsolo
-          client-payload: '{"ref": "hanisntsolo"}'
+          client-payload: '{"branch": "hanisntsolo"}'
