@@ -3,7 +3,7 @@ name: trigger-hanisntsolo-flow
 
 on:
   schedule:
-    - cron: '0/1 * * * *'  # Every 5 Minutes
+    - cron: '0/5 * * * *'  # Every 5 Minutes
   # workflow_dispatch:
 
 jobs:
