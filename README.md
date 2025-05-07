@@ -183,6 +183,8 @@ This template attempts to **look clean**, highlight **details**, be a **single p
 2. Hacky space on the first bullet point on the second column.
 3. Hacky redefinition of \refname to omit 'References' text for publications in the MacFonts version.
 
+## Notes for me:
+1. Make master default when working on feature implementations.
 
 ## License
     Copyright 2014 Debarghya Das
