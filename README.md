@@ -1,3 +1,5 @@
+[![First-Time Setup Hanisntsolo](https://github.com/hanisntsolo/resume/actions/workflows/first-time-setup-hanisntsolo.yml/badge.svg?branch=hanisntsolo)](https://github.com/hanisntsolo/resume/actions/workflows/first-time-setup-hanisntsolo.yml)
+[![Compile LaTeX document for Hanisntsolo](https://github.com/hanisntsolo/resume/actions/workflows/compile-latex-hanisntsolo.yml/badge.svg?branch=hanisntsolo)](https://github.com/hanisntsolo/resume/actions/workflows/compile-latex-hanisntsolo.yml)
 [![Compile LaTeX document](https://github.com/hanisntsolo/resume/actions/workflows/compile-latex.yml/badge.svg?branch=master)](https://github.com/hanisntsolo/resume/actions/workflows/compile-latex.yml) [![pages-build-deployment](https://github.com/hanisntsolo/resume/actions/workflows/pages/pages-build-deployment/badge.svg?branch=master)](https://github.com/hanisntsolo/resume/actions/workflows/pages/pages-build-deployment)
 # The Resume Project
 
