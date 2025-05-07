@@ -18,6 +18,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          ref: hanisntsolo  # Ensure we are on the correct branch
+          token: ${{ secrets.WORKFLOW_TOKEN }}  # PAT with repo + workflow scopes
       
       - name: Set up Node.js
         uses: actions/setup-node@v3
