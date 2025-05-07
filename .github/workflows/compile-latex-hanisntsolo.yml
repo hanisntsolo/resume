@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - hanisntsolo
-  schedule:
-    # - cron: '0 0 * * *'  # This will run the workflow daily at midnight UTC
-    - cron: '0/5 * * * *'  # Runs the workflow every 5 minutes for Testing
 
 permissions:
   contents: write  # Explicitly set the permission for the GITHUB_TOKEN
