@@ -3,9 +3,9 @@ name: Compile LaTeX document for Hanisntsolo
 on:
   repository_dispatch:
     types: [trigger-hanisntsolo]
-  push:
-    branches:
-      - hanisntsolo
+  # push:
+  #   branches:
+  #     - hanisntsolo # this is not required here in master branch
 
 permissions:
   contents: write  # Explicitly set the permission for the GITHUB_TOKEN
