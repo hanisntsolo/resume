@@ -1,10 +1,10 @@
 # .github/workflows/trigger-hanisntsolo.yml
-name: Trigger Dev Branch Workflow
+name: trigger-hanisntsolo-flow
 
 on:
   schedule:
-    - cron: '0/5 * * * *'  # Every 5 Minutes
-  workflow_dispatch:
+    - cron: '0/1 * * * *'  # Every 5 Minutes
+  # workflow_dispatch:
 
 jobs:
   trigger:
