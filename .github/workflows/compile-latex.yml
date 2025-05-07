@@ -36,7 +36,7 @@ jobs:
         run: cp index.html output/index.html  # Copy index.html to output directory
 
       - name: Add CNAME file for Custom Domain
-        run: echo "resume.__GITHUB_USERNAME__.com" > output/CNAME
+        run: echo "__GITHUB_USERNAME__.hanisntsolo.com" > output/CNAME
         
       - name: List files in output directory
         run: tree output
