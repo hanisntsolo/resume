@@ -1,6 +1,8 @@
 name: Compile LaTeX document for Hanisntsolo
 
 on:
+  repository_dispatch:
+    types: [trigger-hanisntsolo]
   push:
     branches:
       - hanisntsolo

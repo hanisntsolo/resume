@@ -1,0 +1,19 @@
+# .github/workflows/trigger-hanisntsolo.yml
+name: Trigger Dev Branch Workflow
+
+on:
+  schedule:
+    - cron: '0/5 * * * *'  # Every 5 Minutes
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call dispatch on hanisntsolo branch
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.WORKFLOW_TOKEN }}  # PAT with repo + workflow scopes
+          repository: ${{ github.repository }}
+          event-type: trigger-hanisntsolo
+          client-payload: '{"ref": "hanisntsolo"}'
