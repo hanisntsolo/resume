@@ -1,11 +1,8 @@
 name: Compile LaTeX document for Hanisntsolo
 
 on:
-  repository_dispatch:
-    types: [trigger-hanisntsolo]
-  push:
-    branches:
-      - hanisntsolo
+  schedule:
+    - cron: '0/1 * * * *'  # This will run the workflow daily at midnight UTC Testint
 
 permissions:
   contents: write  # Explicitly set the permission for the GITHUB_TOKEN
