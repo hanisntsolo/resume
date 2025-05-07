@@ -27,16 +27,16 @@ jobs:
 
       - name: Replace handle placeholders in file contents
         run: |
-          echo "Replacing '__GITHUB_USERNAME__' with '${GITHUB_HANDLE}' in file contents"
-          grep -rl --exclude-dir=".git" --exclude="*.pdf" '__GITHUB_USERNAME__' . | while read -r file; do
-            sed -i "s/__GITHUB_USERNAME__/${GITHUB_HANDLE}/g" "$file"
+          echo "Replacing 'hanisntsolo' with '${GITHUB_HANDLE}' in file contents"
+          grep -rl --exclude-dir=".git" --exclude="*.pdf" 'hanisntsolo' . | while read -r file; do
+            sed -i "s/hanisntsolo/${GITHUB_HANDLE}/g" "$file"
           done
 
       - name: Rename files and folders with handle
         run: |
-          echo "Renaming all files and folders containing '__GITHUB_USERNAME__' to '${GITHUB_HANDLE}'"
-          find . -depth -name "*__GITHUB_USERNAME__*" | while read -r path; do
-            new_path=$(echo "$path" | sed "s/__GITHUB_USERNAME__/${GITHUB_HANDLE}/g")
+          echo "Renaming all files and folders containing 'hanisntsolo' to '${GITHUB_HANDLE}'"
+          find . -depth -name "*hanisntsolo*" | while read -r path; do
+            new_path=$(echo "$path" | sed "s/hanisntsolo/${GITHUB_HANDLE}/g")
             if [ "$path" != "$new_path" ]; then
               echo "Renaming $path -> $new_path"
               mv "$path" "$new_path"
