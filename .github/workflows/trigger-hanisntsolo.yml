@@ -3,7 +3,7 @@ name: trigger-hanisntsolo-flow
 
 on:
   schedule:
-    - cron: '0 0/12 * * *'  # Every 12 Hours
+    - cron: '0 0 * * *' # Midnight UTC  # '0 0/12 * * *'  # Every 12 Hours
   workflow_dispatch:
 
 jobs:
