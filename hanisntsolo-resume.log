@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.5.1)  1 JUN 2025 00:44
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.6.1)  2 JUN 2025 00:37
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
 **hanisntsolo-resume.tex
 (./hanisntsolo-resume.tex
 LaTeX2e <2024-11-01> patch level 2
-L3 programming layer <2025-04-14>
+L3 programming layer <2025-04-29>
 (./hanisntsolo-resume.cls
 Document Class: hanisntsolo-resume 2014/04/30 CV class
 (/opt/texlive/texdir/texmf-dist/tex/latex/base/article.cls
@@ -52,7 +52,7 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@dimlist=\toks18
 )
 (/opt/texlive/texdir/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
+Package: hyperref 2025-05-20 v7.01m Hypertext links for LaTeX
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
@@ -107,7 +107,7 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 \Hy@pagecounter=\count282
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2025-05-20 v7.01m Hyperref: PDFDocEncoding definition (HO)
 )
 (/opt/texlive/texdir/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
@@ -115,7 +115,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 \Hy@SavedSpaceFactor=\count283
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2025-05-20 v7.01m Hyperref: PDF Unicode definition (HO)
 )
 Package hyperref Info: Hyper figures OFF on input line 4157.
 Package hyperref Info: Link nesting OFF on input line 4162.
@@ -162,7 +162,7 @@ package with kernel methods
 Package hyperref Info: Driver (autodetected): hxetex.
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/hyperref/hxetex.def
-File: hxetex.def 2024-11-05 v7.01l Hyperref driver for XeTeX
+File: hxetex.def 2025-05-20 v7.01m Hyperref driver for XeTeX
 \pdfm@box=\box53
 \c@Hy@AnnotLevel=\count289
 \HyField@AnnotCount=\count290
@@ -220,7 +220,7 @@ File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 (/opt/texlive/texdir/texmf-dist/tex/latex/fontspec/fontspec.sty
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2025-04-14 L3 programming layer (loader) 
+Package: expl3 2025-04-29 L3 programming layer (loader) 
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2025-04-14 L3 backend support: XeTeX
@@ -801,7 +801,7 @@ LaTeX Font Warning: Font shape `TU/Lato-Bol(0)/b/sc' undefined
 ] (output/hanisntsolo-resume.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
-L3 programming layer <2025-04-14>
+L3 programming layer <2025-04-29>
  ***********
 
 
@@ -817,10 +817,10 @@ Package rerunfilecheck Info: Checksums for `hanisntsolo-resume.out':
 (rerunfilecheck)             After:  E79DBC027DEF8E290F240BA1B2FCE05B;1814.
  ) 
 Here is how much of TeX's memory you used:
- 15040 strings out of 470249
- 305136 string characters out of 5486098
- 791687 words of memory out of 5000000
- 41404 multiletter control sequences out of 15000+600000
+ 15040 strings out of 470231
+ 305148 string characters out of 5485838
+ 791826 words of memory out of 5000000
+ 41422 multiletter control sequences out of 15000+600000
  627625 words of font info for 96 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  94i,11n,130p,494b,680s stack positions out of 10000i,1000n,20000p,200000b,200000s
