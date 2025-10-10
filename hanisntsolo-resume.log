@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.7.1)  4 SEP 2025 01:52
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.10.2)  10 OCT 2025 01:55
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
 **hanisntsolo-resume.tex
 (./hanisntsolo-resume.tex
 LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-06-09>
+L3 programming layer <2025-09-02>
 (./hanisntsolo-resume.cls
 Document Class: hanisntsolo-resume 2014/04/30 CV class
 (/opt/texlive/texdir/texmf-dist/tex/latex/base/article.cls
@@ -52,7 +52,7 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@dimlist=\toks18
 )
 (/opt/texlive/texdir/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2025-06-21 v7.01n Hypertext links for LaTeX
+Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
@@ -107,7 +107,7 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 \Hy@pagecounter=\count285
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2025-06-21 v7.01n Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
 )
 (/opt/texlive/texdir/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
@@ -115,22 +115,22 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 \Hy@SavedSpaceFactor=\count286
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2025-06-21 v7.01n Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
 )
-Package hyperref Info: Hyper figures OFF on input line 4181.
-Package hyperref Info: Link nesting OFF on input line 4186.
-Package hyperref Info: Hyper index ON on input line 4189.
-Package hyperref Info: Plain pages OFF on input line 4196.
-Package hyperref Info: Backreferencing OFF on input line 4201.
+Package hyperref Info: Hyper figures OFF on input line 4195.
+Package hyperref Info: Link nesting OFF on input line 4200.
+Package hyperref Info: Hyper index ON on input line 4203.
+Package hyperref Info: Plain pages OFF on input line 4210.
+Package hyperref Info: Backreferencing OFF on input line 4215.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4448.
+Package hyperref Info: Bookmarks ON on input line 4462.
 \c@Hy@tempcnt=\count287
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4787.
+LaTeX Info: Redefining \url on input line 4801.
 \XeTeXLinkMargin=\dimen158
 
 (/opt/texlive/texdir/texmf-dist/tex/generic/bitset/bitset.sty
@@ -143,13 +143,13 @@ Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 \Fld@menulength=\count288
 \Field@Width=\dimen159
 \Fld@charsize=\dimen160
-Package hyperref Info: Hyper figures OFF on input line 6066.
-Package hyperref Info: Link nesting OFF on input line 6071.
-Package hyperref Info: Hyper index ON on input line 6074.
-Package hyperref Info: backreferencing OFF on input line 6081.
-Package hyperref Info: Link coloring OFF on input line 6086.
-Package hyperref Info: Link coloring with OCG OFF on input line 6091.
-Package hyperref Info: PDF/A mode OFF on input line 6096.
+Package hyperref Info: Hyper figures OFF on input line 6078.
+Package hyperref Info: Link nesting OFF on input line 6083.
+Package hyperref Info: Hyper index ON on input line 6086.
+Package hyperref Info: backreferencing OFF on input line 6093.
+Package hyperref Info: Link coloring OFF on input line 6098.
+Package hyperref Info: Link coloring with OCG OFF on input line 6103.
+Package hyperref Info: PDF/A mode OFF on input line 6108.
 \Hy@abspage=\count289
 \c@Item=\count290
 \c@Hfootnote=\count291
@@ -157,7 +157,7 @@ Package hyperref Info: PDF/A mode OFF on input line 6096.
 Package hyperref Info: Driver (autodetected): hxetex.
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/hyperref/hxetex.def
-File: hxetex.def 2025-06-21 v7.01n Hyperref driver for XeTeX
+File: hxetex.def 2025-07-12 v7.01o Hyperref driver for XeTeX
 \pdfm@box=\box53
 \c@Hy@AnnotLevel=\count292
 \HyField@AnnotCount=\count293
@@ -192,7 +192,7 @@ put line 265.
 
 Package xcolor Info: Driver file: xetex.def on input line 274.
 (/opt/texlive/texdir/texmf-dist/tex/latex/graphics-def/xetex.def
-File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
+File: xetex.def 2025/09/29 v5.0o Graphics/color driver for xetex
 )
 (/opt/texlive/texdir/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
@@ -210,7 +210,7 @@ File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 (/opt/texlive/texdir/texmf-dist/tex/latex/fontspec/fontspec.sty
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2025-06-09 L3 programming layer (loader) 
+Package: expl3 2025-09-02 L3 programming layer (loader) 
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2025-06-09 L3 backend support: XeTeX
@@ -220,10 +220,10 @@ File: l3backend-xetex.def 2025-06-09 L3 backend support: XeTeX
 ))
 Package: xparse 2024-08-16 L3 Experimental document command parser
 )
-Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
+Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
-Package: fontspec-xetex 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTe
+Package: fontspec-xetex 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTe
 X
 \l__fontspec_script_int=\count299
 \l__fontspec_language_int=\count300
@@ -377,18 +377,18 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 Package: svg 2020/11/26 v2.02k (include SVG pictures)
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/koma-script/scrbase.sty
-Package: scrbase 2025/06/04 v3.45 KOMA-Script package (KOMA-Script-independent 
+Package: scrbase 2025/09/09 v3.48 KOMA-Script package (KOMA-Script-independent 
 basics and keyval usage)
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/koma-script/scrlfile.sty
-Package: scrlfile 2025/06/04 v3.45 KOMA-Script package (file load hooks)
+Package: scrlfile 2025/09/09 v3.48 KOMA-Script package (file load hooks)
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
-Package: scrlfile-hook 2025/06/04 v3.45 KOMA-Script package (using LaTeX hooks)
+Package: scrlfile-hook 2025/09/09 v3.48 KOMA-Script package (using LaTeX hooks)
 
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/koma-script/scrlogo.sty
-Package: scrlogo 2025/06/04 v3.45 KOMA-Script package (logo)
+Package: scrlogo 2025/09/09 v3.48 KOMA-Script package (logo)
 )))
 Applying: [2021/05/01] Usage of raw or classic option list on input line 254.
 Already applied: [0000/00/00] Usage of raw or classic option list on input line
@@ -465,10 +465,10 @@ PDF mode.
 )
 (/opt/texlive/texdir/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 (/opt/texlive/texdir/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
 ))
 (/opt/texlive/texdir/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 
 (/opt/texlive/texdir/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks23
@@ -500,31 +500,31 @@ d.code.tex
 \pgf@sys@id@count=\count325
 
 (/opt/texlive/texdir/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
-File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
 )
 Driver file for pgf: pgfsys-xetex.def
 
 (/opt/texlive/texdir/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
-File: pgfsys-xetex.def 2023-01-15 v3.1.10 (3.1.10)
+File: pgfsys-xetex.def 2025-08-29 v3.1.11a (3.1.11a)
 
 (/opt/texlive/texdir/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
-File: pgfsys-dvipdfmx.def 2023-01-15 v3.1.10 (3.1.10)
+File: pgfsys-dvipdfmx.def 2025-08-29 v3.1.11a (3.1.11a)
 
 (/opt/texlive/texdir/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.d
 ef
-File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
 )
 \pgfsys@objnum=\count326
 )))
 (/opt/texlive/texdir/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code
 .tex
-File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfsyssoftpath@smallbuffer@items=\count327
 \pgfsyssoftpath@bigbuffer@items=\count328
 )
 (/opt/texlive/texdir/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code
 .tex
-File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))
 No file hanisntsolo-resume.aux.
 \openout1 = `hanisntsolo-resume.aux'.
@@ -755,7 +755,7 @@ Package svg Info: Last page of `./svg-inkscape/citi-2_svg-tex.pdf' is 1 on inpu
 t line 167.
 (./svg-inkscape/citi-2_svg-tex.pdf_tex
 File: ./svg-inkscape/citi-2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/citi-2_svg-tex.pdf, page 1>
+<./svg-inkscape/citi-2_svg-tex.pdf>
 )
 Package svg Info: Calling Inkscape on input line 188.
 runsystem(inkscape "assets/discover-network.svg" -D --export-latex --export-fil
@@ -774,7 +774,7 @@ Package svg Info: Last page of `./svg-inkscape/discover-network_svg-tex.pdf' is
 
 (./svg-inkscape/discover-network_svg-tex.pdf_tex
 File: ./svg-inkscape/discover-network_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/discover-network_svg-tex.pdf, page 1>
+<./svg-inkscape/discover-network_svg-tex.pdf>
 )
 
 LaTeX Font Warning: Font shape `TU/Lato-Bol(0)/m/sc' undefined
@@ -791,7 +791,7 @@ LaTeX Font Warning: Font shape `TU/Lato-Bol(0)/b/sc' undefined
 ] (output/hanisntsolo-resume.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-06-09>
+L3 programming layer <2025-09-02>
  ***********
 
 
@@ -807,12 +807,12 @@ Package rerunfilecheck Info: Checksums for `hanisntsolo-resume.out':
 (rerunfilecheck)             After:  E79DBC027DEF8E290F240BA1B2FCE05B;1814.
  ) 
 Here is how much of TeX's memory you used:
- 14992 strings out of 468529
- 303777 string characters out of 5449559
- 808295 words of memory out of 5000000
- 43082 multiletter control sequences out of 15000+600000
- 627625 words of font info for 96 fonts, out of 8000000 for 9000
+ 14999 strings out of 468389
+ 304153 string characters out of 5442456
+ 812503 words of memory out of 5000000
+ 43229 multiletter control sequences out of 15000+600000
+ 628521 words of font info for 96 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 94i,11n,130p,494b,677s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,11n,130p,494b,663s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on output/hanisntsolo-resume.pdf (1 page).
