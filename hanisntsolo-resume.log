@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.1.1)  18 FEB 2026 09:23
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.1.1)  18 FEB 2026 09:35
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -799,6 +799,10 @@ File: ./svg-inkscape/discover-network_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/discover-network_svg-tex.pdf, page 1>
 )
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\faExternalLink' on input line 240.
+
+
 LaTeX Font Warning: Font shape `TU/Lato-Bol(0)/m/sc' undefined
 (Font)              using `TU/Lato-Bol(0)/m/n' instead on input line 248.
 
@@ -824,14 +828,14 @@ Package rerunfilecheck Warning: File `hanisntsolo-resume.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `hanisntsolo-resume.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  CB82B20482B47EEAB84CACBE41018FF9;1911.
+(rerunfilecheck)             After:  C9A0054FC9659590891C20137EBBA7F0;1924.
  ) 
 Here is how much of TeX's memory you used:
- 16630 strings out of 468179
- 325684 string characters out of 5435044
+ 16632 strings out of 468179
+ 325756 string characters out of 5435044
  840790 words of memory out of 5000000
- 45043 multiletter control sequences out of 15000+600000
- 628569 words of font info for 102 fonts, out of 8000000 for 9000
+ 45044 multiletter control sequences out of 15000+600000
+ 628577 words of font info for 103 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  94i,11n,130p,628b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
