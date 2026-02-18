@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.1.1)  18 FEB 2026 00:47
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.1.1)  18 FEB 2026 08:48
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -711,15 +711,6 @@ ge=dflt;"
 ge=dflt;+smcp;"
 
 
-
-LaTeX Font Warning: Font shape `TU/Lato-Lig(0)/m/sc' undefined
-(Font)              using `TU/Lato-Lig(0)/m/n' instead on input line 76.
-
-
-LaTeX Font Warning: Font shape `TU/Lato-Lig(1)/m/sc' undefined
-(Font)              using `TU/Lato-Lig(1)/m/n' instead on input line 76.
-
-
 Package fontspec Info: 
 (fontspec)             Font family 'Lato-Bol(0)' created for font 'Lato-Bol'
 (fontspec)             with options [Path = fonts/lato/].
@@ -732,14 +723,23 @@ Package fontspec Info:
 
 
 
+
 LaTeX Font Warning: Font shape `TU/Lato-Bol(0)/b/n' undefined
-(Font)              using `TU/Lato-Bol(0)/m/n' instead on input line 77.
+(Font)              using `TU/Lato-Bol(0)/m/n' instead on input line 76.
+
+
+LaTeX Font Warning: Font shape `TU/Lato-Lig(0)/m/sc' undefined
+(Font)              using `TU/Lato-Lig(0)/m/n' instead on input line 84.
+
+
+LaTeX Font Warning: Font shape `TU/Lato-Lig(1)/m/sc' undefined
+(Font)              using `TU/Lato-Lig(1)/m/n' instead on input line 84.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 111.
+(hyperref)                removing `\\' on input line 119.
 
-Package svg Info: Calling Inkscape on input line 167.
+Package svg Info: Calling Inkscape on input line 192.
 runsystem(inkscape "assets/citi-2.svg" -D --export-latex --export-filename="cit
 i-2_svg-tex.pdf")...executed.
 
@@ -752,12 +752,12 @@ runsystem(mv "citi-2_svg-tex.pdf_tex" "./svg-inkscape/citi-2_svg-tex.pdf_tex").
 ..executed.
 
 Package svg Info: Last page of `./svg-inkscape/citi-2_svg-tex.pdf' is 1 on inpu
-t line 167.
+t line 192.
 (./svg-inkscape/citi-2_svg-tex.pdf_tex
 File: ./svg-inkscape/citi-2_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/citi-2_svg-tex.pdf, page 1>
 )
-Package svg Info: Calling Inkscape on input line 188.
+Package svg Info: Calling Inkscape on input line 217.
 runsystem(inkscape "assets/discover-network.svg" -D --export-latex --export-fil
 ename="discover-network_svg-tex.pdf")...executed.
 
@@ -770,7 +770,7 @@ runsystem(mv "discover-network_svg-tex.pdf_tex" "./svg-inkscape/discover-networ
 k_svg-tex.pdf_tex")...executed.
 
 Package svg Info: Last page of `./svg-inkscape/discover-network_svg-tex.pdf' is
- 1 on input line 188.
+ 1 on input line 217.
 
 (./svg-inkscape/discover-network_svg-tex.pdf_tex
 File: ./svg-inkscape/discover-network_svg-tex.pdf Graphic file (type pdf)
@@ -778,11 +778,11 @@ File: ./svg-inkscape/discover-network_svg-tex.pdf Graphic file (type pdf)
 )
 
 LaTeX Font Warning: Font shape `TU/Lato-Bol(0)/m/sc' undefined
-(Font)              using `TU/Lato-Bol(0)/m/n' instead on input line 217.
+(Font)              using `TU/Lato-Bol(0)/m/n' instead on input line 246.
 
 
 LaTeX Font Warning: Font shape `TU/Lato-Bol(0)/b/sc' undefined
-(Font)              using `TU/Lato-Bol(0)/b/n' instead on input line 217.
+(Font)              using `TU/Lato-Bol(0)/b/n' instead on input line 246.
 
 [1
 
@@ -802,7 +802,7 @@ Package rerunfilecheck Warning: File `hanisntsolo-resume.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `hanisntsolo-resume.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  E79DBC027DEF8E290F240BA1B2FCE05B;1814.
+(rerunfilecheck)             After:  E144FB1A84D6DD13CDC7B4E624A9EC07;1898.
  ) 
 Here is how much of TeX's memory you used:
  15005 strings out of 468179
@@ -811,6 +811,6 @@ Here is how much of TeX's memory you used:
  43445 multiletter control sequences out of 15000+600000
  628521 words of font info for 96 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 94i,11n,130p,494b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,11n,130p,504b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on output/hanisntsolo-resume.pdf (1 page).
