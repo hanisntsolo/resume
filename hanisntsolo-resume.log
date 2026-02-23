@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.1.1)  23 FEB 2026 00:48
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.1.1)  23 FEB 2026 21:01
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -759,9 +759,9 @@ LaTeX Font Warning: Font shape `TU/Lato-Lig(1)/m/sc' undefined
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 121.
+(hyperref)                removing `\\' on input line 120.
 
-Package svg Info: Calling Inkscape on input line 194.
+Package svg Info: Calling Inkscape on input line 193.
 runsystem(inkscape "assets/citi-2.svg" -D --export-latex --export-filename="cit
 i-2_svg-tex.pdf")...executed.
 
@@ -774,12 +774,12 @@ runsystem(mv "citi-2_svg-tex.pdf_tex" "./svg-inkscape/citi-2_svg-tex.pdf_tex").
 ..executed.
 
 Package svg Info: Last page of `./svg-inkscape/citi-2_svg-tex.pdf' is 1 on inpu
-t line 194.
+t line 193.
 (./svg-inkscape/citi-2_svg-tex.pdf_tex
 File: ./svg-inkscape/citi-2_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/citi-2_svg-tex.pdf, page 1>
 )
-Package svg Info: Calling Inkscape on input line 219.
+Package svg Info: Calling Inkscape on input line 218.
 runsystem(inkscape "assets/discover-network.svg" -D --export-latex --export-fil
 ename="discover-network_svg-tex.pdf")...executed.
 
@@ -792,7 +792,7 @@ runsystem(mv "discover-network_svg-tex.pdf_tex" "./svg-inkscape/discover-networ
 k_svg-tex.pdf_tex")...executed.
 
 Package svg Info: Last page of `./svg-inkscape/discover-network_svg-tex.pdf' is
- 1 on input line 219.
+ 1 on input line 218.
 
 (./svg-inkscape/discover-network_svg-tex.pdf_tex
 File: ./svg-inkscape/discover-network_svg-tex.pdf Graphic file (type pdf)
@@ -800,19 +800,15 @@ File: ./svg-inkscape/discover-network_svg-tex.pdf Graphic file (type pdf)
 )
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\faExternalLink' on input line 240.
-
-
-LaTeX Font Warning: Font shape `TU/Lato-Bol(0)/m/sc' undefined
-(Font)              using `TU/Lato-Bol(0)/m/n' instead on input line 248.
-
-
-LaTeX Font Warning: Font shape `TU/Lato-Bol(0)/b/sc' undefined
-(Font)              using `TU/Lato-Bol(0)/b/n' instead on input line 248.
+(hyperref)                removing `\faExternalLink' on input line 239.
 
 [1
 
-] (output/hanisntsolo-resume.aux)
+]
+Overfull \vbox (52.3369pt too high) has occurred while \output is active []
+
+
+[2] [3] (output/hanisntsolo-resume.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-29>
@@ -828,15 +824,15 @@ Package rerunfilecheck Warning: File `hanisntsolo-resume.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `hanisntsolo-resume.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  C9A0054FC9659590891C20137EBBA7F0;1924.
+(rerunfilecheck)             After:  1A078862B4C491839DDD59A90965132D;1609.
  ) 
 Here is how much of TeX's memory you used:
- 16632 strings out of 468179
- 325756 string characters out of 5435044
- 840790 words of memory out of 5000000
- 45044 multiletter control sequences out of 15000+600000
+ 16627 strings out of 468179
+ 325652 string characters out of 5435044
+ 828790 words of memory out of 5000000
+ 45039 multiletter control sequences out of 15000+600000
  628577 words of font info for 103 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  94i,11n,130p,628b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on output/hanisntsolo-resume.pdf (1 page).
+Output written on output/hanisntsolo-resume.pdf (3 pages).
