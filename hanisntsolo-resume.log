@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.1.1)  16 MAR 2026 00:53
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.1.1)  16 MAR 2026 08:34
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -743,25 +743,40 @@ Package fontspec Info:
 
 
 LaTeX Font Warning: Font shape `TU/Lato-Bol(0)/b/n' undefined
-(Font)              using `TU/Lato-Bol(0)/m/n' instead on input line 77.
+(Font)              using `TU/Lato-Bol(0)/m/n' instead on input line 80.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\faExternalLink' on input line 77.
+(hyperref)                removing `\faExternalLink' on input line 80.
 
 
 LaTeX Font Warning: Font shape `TU/Lato-Lig(0)/m/sc' undefined
-(Font)              using `TU/Lato-Lig(0)/m/n' instead on input line 86.
+(Font)              using `TU/Lato-Lig(0)/m/n' instead on input line 89.
 
 
 LaTeX Font Warning: Font shape `TU/Lato-Lig(1)/m/sc' undefined
-(Font)              using `TU/Lato-Lig(1)/m/n' instead on input line 86.
+(Font)              using `TU/Lato-Lig(1)/m/n' instead on input line 89.
+
+
+LaTeX Font Warning: Font shape `TU/Raleway-Medium(0)/m/scit' undefined
+(Font)              using `TU/Raleway-Medium(0)/m/it' instead on input line 117
+.
+
+
+LaTeX Font Warning: Font shape `TU/Raleway-Medium(0)/m/it' undefined
+(Font)              using `TU/Raleway-Medium(0)/m/n' instead on input line 117.
+
+
+
+LaTeX Font Warning: Font shape `TU/Raleway-Medium(0)/b/sc' undefined
+(Font)              using `TU/Raleway-Medium(0)/m/n' instead on input line 118.
+
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 121.
+(hyperref)                removing `\\' on input line 125.
 
-Package svg Info: Calling Inkscape on input line 194.
+Package svg Info: Calling Inkscape on input line 198.
 runsystem(inkscape "assets/citi-2.svg" -D --export-latex --export-filename="cit
 i-2_svg-tex.pdf")...executed.
 
@@ -774,12 +789,12 @@ runsystem(mv "citi-2_svg-tex.pdf_tex" "./svg-inkscape/citi-2_svg-tex.pdf_tex").
 ..executed.
 
 Package svg Info: Last page of `./svg-inkscape/citi-2_svg-tex.pdf' is 1 on inpu
-t line 194.
+t line 198.
 (./svg-inkscape/citi-2_svg-tex.pdf_tex
 File: ./svg-inkscape/citi-2_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/citi-2_svg-tex.pdf, page 1>
 )
-Package svg Info: Calling Inkscape on input line 219.
+Package svg Info: Calling Inkscape on input line 227.
 runsystem(inkscape "assets/discover-network.svg" -D --export-latex --export-fil
 ename="discover-network_svg-tex.pdf")...executed.
 
@@ -792,7 +807,7 @@ runsystem(mv "discover-network_svg-tex.pdf_tex" "./svg-inkscape/discover-networ
 k_svg-tex.pdf_tex")...executed.
 
 Package svg Info: Last page of `./svg-inkscape/discover-network_svg-tex.pdf' is
- 1 on input line 219.
+ 1 on input line 227.
 
 (./svg-inkscape/discover-network_svg-tex.pdf_tex
 File: ./svg-inkscape/discover-network_svg-tex.pdf Graphic file (type pdf)
@@ -800,15 +815,15 @@ File: ./svg-inkscape/discover-network_svg-tex.pdf Graphic file (type pdf)
 )
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\faExternalLink' on input line 240.
+(hyperref)                removing `\faExternalLink' on input line 248.
 
 
 LaTeX Font Warning: Font shape `TU/Lato-Bol(0)/m/sc' undefined
-(Font)              using `TU/Lato-Bol(0)/m/n' instead on input line 248.
+(Font)              using `TU/Lato-Bol(0)/m/n' instead on input line 256.
 
 
 LaTeX Font Warning: Font shape `TU/Lato-Bol(0)/b/sc' undefined
-(Font)              using `TU/Lato-Bol(0)/b/n' instead on input line 248.
+(Font)              using `TU/Lato-Bol(0)/b/n' instead on input line 256.
 
 [1
 
@@ -828,14 +843,14 @@ Package rerunfilecheck Warning: File `hanisntsolo-resume.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `hanisntsolo-resume.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  C9A0054FC9659590891C20137EBBA7F0;1924.
+(rerunfilecheck)             After:  EB0CE66CFAA4CF1E480DBA5FE7B97746;1832.
  ) 
 Here is how much of TeX's memory you used:
- 16632 strings out of 468179
- 325756 string characters out of 5435044
- 840790 words of memory out of 5000000
- 45044 multiletter control sequences out of 15000+600000
- 628577 words of font info for 103 fonts, out of 8000000 for 9000
+ 16631 strings out of 468179
+ 325717 string characters out of 5435044
+ 841790 words of memory out of 5000000
+ 45048 multiletter control sequences out of 15000+600000
+ 628537 words of font info for 98 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  94i,11n,130p,628b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
