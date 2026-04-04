@@ -63,9 +63,11 @@ export default function Home() {
   const getPdfUrl = () => {
     const basePath = import.meta.env.BASE_URL
     const isLocalPreview = basePath === '/dev/' && !import.meta.env.PROD
-    return isLocalPreview 
+    const baseUrl = isLocalPreview 
       ? 'https://resume.hanisntsolo.com/dev/hanisntsolo-resume.pdf'
       : 'hanisntsolo-resume.pdf'
+    // Add #view=FitH to fit page to viewport height (100% fit)
+    return baseUrl + '#view=FitH'
   }
 
   const formatDate = (dateStr) => {
