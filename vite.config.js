@@ -26,7 +26,7 @@ export default defineConfig({
   base: getBasePath(),
   publicDir: 'public',
   build: {
-    outDir: deployEnv === 'preview' ? 'dist/dev-timeline' : 'dist/timeline',
+    outDir: 'dist/timeline', // Both prod and preview build here
     emptyOutDir: true,
     rollupOptions: {
       input: path.resolve(__dirname, 'public/index.html'),

@@ -37,13 +37,14 @@ jobs:
         run: npm run build:preview
 
       - name: Copy timeline build to output
-        run: cp -r dist/dev-timeline output/dev-timeline
+        run: cp -r dist/timeline output/timeline
 
-      - name: Copy timeline data to output
-        run: cp timeline-data.json output/timeline-data.json
-
-      - name: Copy index.html to output
-        run: cp index.html output/index.html
+      - name: Copy timeline data and assets to output
+        run: |
+          cp timeline-data.json output/timeline-data.json
+          cp index.html output/index.html
+          cp -r fonts output/fonts 2>/dev/null || true
+          cp hanisntsolo-resume.pdf output/hanisntsolo-resume.pdf 2>/dev/null || true
 
       - name: Add CNAME file for Custom Domain
         run: echo "resume.hanisntsolo.com" > output/CNAME
