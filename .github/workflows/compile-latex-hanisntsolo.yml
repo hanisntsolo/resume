@@ -43,6 +43,14 @@ jobs:
           compiler: xelatex
           args: -shell-escape -output-directory=output
 
+      - name: Compile ATS-Optimized Cover Letter
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: hanisntsolo-cover-letter-ats.tex
+          extra_system_packages: "inkscape"
+          compiler: xelatex
+          args: -shell-escape -output-directory=output
+
       - name: Install Node dependencies
         run: npm install
 
