@@ -59,6 +59,7 @@ body {
   padding: 28px;
   box-shadow: 0 16px 36px rgba(0,0,0,0.3);
   margin-top: 20px;
+  margin-bottom: 48px;
   animation: fadeInUp 1s ease-out;
   animation-delay: 0.2s;
 }
@@ -151,6 +152,22 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.total-experience {
+  font-size: 1rem;
+  color: var(--muted);
+  background: none;
+  -webkit-text-fill-color: unset;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  margin-top: +2px;
 }
 
 .experience-subtitle {
@@ -192,10 +209,22 @@ body {
   box-shadow: 0 12px 32px rgba(96, 165, 250, 0.15);
 }
 
+.experience-header-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
 .experience-header-info h3 {
-  margin: 0 0 4px;
+  margin: 0;
   font-size: 1.2rem;
   color: var(--accent);
+}
+
+.experience-header-info .badge-current {
+  margin: 0;
 }
 
 .company-name {
@@ -203,12 +232,21 @@ body {
   color: var(--accent-2);
   font-weight: 600;
   font-size: 0.95rem;
+  flex-basis: 100%;
 }
 
 .experience-date {
-  margin: 12px 0 12px;
+  margin: 12px 0 4px;
   color: var(--muted);
   font-size: 0.85rem;
+}
+
+.experience-duration {
+  margin: 0 0 12px;
+  color: var(--accent-2);
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0.9;
 }
 
 .experience-description {
@@ -294,7 +332,7 @@ body {
 /* Large Desktop / Laptop (1025px+) */
 @media (min-width: 1025px) {
   .pdf-viewer {
-    height: 1150px;
+    height: 1600px;
   }
 }
 
@@ -345,91 +383,222 @@ body {
 }
 
 /* Phone Landscape (481px - 600px) */
-@media (min-width: 481px) and (max-width: 600px) {
+@media (min-width: 481px) and (max-width: 1000px) {
   .home-page {
-    padding: 14px;
+    padding: 12px;
   }
 
   .professional-experience-section,
   .resume-pdf-section {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
   .experience-cards {
-    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .pdf-viewer {
-    height: 420px;
+    height: 1200px;
+  }
+
+  .pdf-container {
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .experience-header {
+    margin-bottom: 20px;
   }
 
   .experience-header h2 {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+    gap: 8px;
+  }
+
+  .total-experience {
+    font-size: 0.75rem;
+  }
+
+  .experience-subtitle {
+    font-size: 0.95rem;
   }
 
   .experience-card {
-    padding: 16px;
+    padding: 14px;
+  }
+
+  .experience-card h3 {
+    font-size: 1rem;
   }
 
   .card {
-    padding: 16px;
+    padding: 14px;
+    margin-top: 12px;
+  }
+
+  .card h1 {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+  }
+
+  .card .subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+
+  .buttons {
+    gap: 10px;
+    margin-bottom: 12px;
   }
 
   .pdf-actions {
     flex-direction: row;
-    padding: 12px;
+    padding: 10px 12px;
     gap: 8px;
+    justify-content: center;
   }
 
   .pdf-actions .btn {
     flex: 1;
-    font-size: 0.85rem;
-    padding: 8px 10px;
+    font-size: 0.8rem;
+    padding: 7px 8px;
   }
 }
 
 /* Phone Portrait (max 480px) */
 @media (max-width: 480px) {
   .home-page {
-    padding: 12px;
+    padding: 10px;
     width: 100%;
   }
 
   .professional-experience-section,
   .resume-pdf-section {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     width: 100%;
     padding: 0;
   }
 
+  .experience-header {
+    margin-bottom: 18px;
+  }
+
   .experience-header h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+    gap: 6px;
+  }
+
+  .total-experience {
+    font-size: 0.7rem;
+  }
+
+  .experience-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .experience-cards {
+    gap: 12px;
   }
 
   .experience-card {
-    padding: 14px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .experience-card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+  }
+
+  .company-name {
+    font-size: 0.9rem;
+  }
+
+  .experience-date {
+    font-size: 0.8rem;
+    margin: 8px 0 4px;
+  }
+
+  .experience-duration {
+    font-size: 0.75rem;
+    margin-bottom: 10px;
+  }
+
+  .experience-description {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .tech-badge {
+    font-size: 0.7rem;
+    padding: 3px 8px;
   }
 
   .pdf-viewer {
-    height: 340px;
+    height: 750px;
+  }
+
+  .pdf-container {
+    border-radius: 12px;
+    /* max-width: 90%;
+    margin-left: auto;
+    margin-right: auto; */
   }
 
   .card {
-    padding: 16px;
+    padding: 14px;
+    margin-top: 10px;
+    border-radius: 12px;
+  }
+
+  .card h1 {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+  }
+
+  .card .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .buttons {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .btn {
+    padding: 9px 12px;
+    font-size: 0.85rem;
+  }
+
+  .links {
+    gap: 10px;
+    font-size: 0.85rem;
+  }
+
+  .footnote {
+    font-size: 0.8rem;
+    margin-top: 10px;
+    padding-top: 10px;
   }
 
   .pdf-actions {
     flex-direction: column;
-    padding: 10px;
-    gap: 8px;
+    padding: 8px 10px;
+    gap: 7px;
     flex-wrap: nowrap;
   }
 
   .pdf-actions .btn {
     width: 100%;
     justify-content: center;
-    font-size: 0.85rem;
-    padding: 8px 10px;
+    font-size: 0.8rem;
+    padding: 7px 8px;
   }
 }
 

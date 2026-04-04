@@ -68,12 +68,127 @@ export default function Home() {
     }
   }
 
+  const calculateDuration = (startDate, endDate) => {
+    try {
+      const start = parseISO(startDate)
+      const end = endDate ? parseISO(endDate) : new Date()
+      
+      let years = end.getFullYear() - start.getFullYear()
+      let months = end.getMonth() - start.getMonth()
+      
+      if (months < 0) {
+        years--
+        months += 12
+      }
+      
+      if (years === 0 && months === 0) {
+        return '< 1 month'
+      }
+      
+      const parts = []
+      if (years > 0) parts.push(`${years} year${years > 1 ? 's' : ''}`)
+      if (months > 0) parts.push(`${months} month${months > 1 ? 's' : ''}`)
+      
+      return parts.join(' ')
+    } catch {
+      return ''
+    }
+  }
+
+  const calculateTotalExperience = (jobs) => {
+    try {
+      if (!jobs || jobs.length === 0) return ''
+      
+      let totalYears = 0
+      let totalMonths = 0
+      
+      jobs.forEach(job => {
+        const start = parseISO(job.date)
+        const end = job.endDate ? parseISO(job.endDate) : new Date()
+        
+        let years = end.getFullYear() - start.getFullYear()
+        let months = end.getMonth() - start.getMonth()
+        
+        if (months < 0) {
+          years--
+          months += 12
+        }
+        
+        totalYears += years
+        totalMonths += months
+      })
+      
+      // Convert excess months to years
+      if (totalMonths >= 12) {
+        totalYears += Math.floor(totalMonths / 12)
+        totalMonths = totalMonths % 12
+      }
+      
+      const parts = []
+      if (totalYears > 0) parts.push(`${totalYears} year${totalYears > 1 ? 's' : ''}`)
+      if (totalMonths > 0) parts.push(`${totalMonths} month${totalMonths > 1 ? 's' : ''}`)
+      
+      return parts.join(' ')
+    } catch {
+      return ''
+    }
+  }
+
   return (
     <div className="home-page">
+      {/* Main Card with Additional Info */}
+      <main className="card">
+        <h1>Dhirendra Pratap Singh</h1>
+        <p className="subtitle">
+          Full Stack Java Developer focused on distributed systems, cloud-native architecture, and product-minded engineering.
+        </p>
+
+        <div className="buttons">
+          <button
+            className="btn"
+            onClick={() => navigate('/timeline/')}
+            id="timelineLink"
+            style={{ border: 'none', background: 'transparent', cursor: 'pointer' }}
+          >
+            📅 View Full Timeline
+          </button>
+        </div>
+
+        <div className="links">
+          <span>
+            <a href="https://hanisntsolo.com" target="_blank" rel="noopener noreferrer">
+              Portfolio
+            </a>
+          </span>
+          <span>
+            <a href="https://github.com/hanisntsolo" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+          </span>
+          <span>
+            <a href="https://www.linkedin.com/in/hanisntsolo" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+          </span>
+          <span>
+            <a href="mailto:ds.pratap1997@gmail.com">Email</a>
+          </span>
+        </div>
+
+        <p className="footnote">
+          Resume downloads tracked with GoatCounter. Total download clicks:{' '}
+          <strong id="downloadCount">{downloadCount}</strong>
+        </p>
+      </main>
       {/* Professional Experience Section */}
       <section className="professional-experience-section">
         <div className="experience-header">
-          <h2>💼 Professional Experience</h2>
+          <h2>
+            💼 Professional Experience
+            {experiences.length > 0 && (
+              <span className="total-experience">• {calculateTotalExperience(experiences)}</span>
+            )}
+          </h2>
           <p className="experience-subtitle">What I bring to the table</p>
         </div>
 
@@ -84,9 +199,13 @@ export default function Home() {
                 <div className="experience-header-info">
                   <h3>{exp.title}</h3>
                   <p className="company-name">{exp.company}</p>
+                  {exp.tags && exp.tags.includes('current') && <span className="badge-current">Current</span>}
                 </div>
                 <p className="experience-date">
                   {formatDate(exp.date)} — {exp.endDate ? formatDate(exp.endDate) : 'Present'}
+                </p>
+                <p className="experience-duration">
+                  {calculateDuration(exp.date, exp.endDate)}
                 </p>
                 <p className="experience-description">{exp.description}</p>
                 <div className="tech-stack">
@@ -137,50 +256,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Main Card with Additional Info */}
-      <main className="card">
-        <h1>Dhirendra Pratap Singh</h1>
-        <p className="subtitle">
-          Full Stack Java Developer focused on distributed systems, cloud-native architecture, and product-minded engineering.
-        </p>
 
-        <div className="buttons">
-          <button
-            className="btn"
-            onClick={() => navigate('/timeline/')}
-            id="timelineLink"
-            style={{ border: 'none', background: 'transparent', cursor: 'pointer' }}
-          >
-            📅 View Full Timeline
-          </button>
-        </div>
-
-        <div className="links">
-          <span>
-            <a href="https://hanisntsolo.com" target="_blank" rel="noopener noreferrer">
-              Portfolio
-            </a>
-          </span>
-          <span>
-            <a href="https://github.com/hanisntsolo" target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a>
-          </span>
-          <span>
-            <a href="https://www.linkedin.com/in/hanisntsolo" target="_blank" rel="noopener noreferrer">
-              LinkedIn
-            </a>
-          </span>
-          <span>
-            <a href="mailto:ds.pratap1997@gmail.com">Email</a>
-          </span>
-        </div>
-
-        <p className="footnote">
-          Resume downloads tracked with GoatCounter. Total download clicks:{' '}
-          <strong id="downloadCount">{downloadCount}</strong>
-        </p>
-      </main>
     </div>
   )
 }
