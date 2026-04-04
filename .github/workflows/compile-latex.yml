@@ -41,14 +41,8 @@ jobs:
       - name: Build React Timeline (Production)
         run: npm run build:prod
 
-      - name: Copy timeline build to output
-        run: cp -r dist/timeline output/timeline
-
-      - name: Copy timeline data to output
-        run: cp timeline-data.json output/timeline-data.json
-
-      - name: Copy index.html to output
-        run: cp index.html output/index.html  # Copy index.html to output directory
+      - name: Copy React app build to output
+        run: cp -r dist/* output/
 
       - name: Add CNAME file for Custom Domain
         run: echo "hanisntsolo.hanisntsolo.com" > output/CNAME

@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-// Determine base path based on environment
+// Determine base path based on deployment environment
 // VITE_DEPLOY_ENV can be 'production' or 'preview' (set by GitHub Actions)
 const deployEnv = process.env.VITE_DEPLOY_ENV || (process.env.NODE_ENV === 'production' ? 'production' : 'development')
 const getBasePath = () => {
@@ -13,12 +13,8 @@ const getBasePath = () => {
   if (process.env.NODE_ENV !== 'production') {
     return '/'
   }
-  // Production build: check which deployment
-  if (deployEnv === 'preview') {
-    return '/dev/timeline/'
-  }
-  // Default (main production): /timeline/
-  return '/timeline/'
+  // Production/Preview: both deploy to root (destination_dir handles the path)
+  return '/'
 }
 
 export default defineConfig({
@@ -26,7 +22,7 @@ export default defineConfig({
   base: getBasePath(),
   publicDir: 'public',
   build: {
-    outDir: 'dist/timeline', // Both prod and preview build here
+    outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
       input: path.resolve(__dirname, 'public/index.html'),

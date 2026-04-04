@@ -8,7 +8,7 @@
     "build": "npm run build:prod",
     "build:prod": "VITE_DEPLOY_ENV=production vite build && npm run build:post",
     "build:preview": "VITE_DEPLOY_ENV=preview vite build && npm run build:post",
-    "build:post": "mv dist/timeline/public/index.html dist/timeline/index.html 2>/dev/null || true && rmdir dist/timeline/public 2>/dev/null || true",
+    "build:post": "mv dist/public/index.html dist/index.html 2>/dev/null || true && rmdir dist/public 2>/dev/null || true",
     "preview": "vite preview",
     "clean": "rm -rf dist node_modules"
   },

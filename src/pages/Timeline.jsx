@@ -39,7 +39,6 @@ export default function Timeline() {
     <div className="timeline-page">
       <header className="timeline-header">
         <div className="header-content">
-          <a href="/" className="back-link">← Back to Resume</a>
           <h1>Experience Timeline</h1>
           <p className="header-subtitle">
             A comprehensive timeline of my work experience, projects, and professional milestones

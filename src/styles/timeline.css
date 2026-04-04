@@ -40,6 +40,137 @@ body {
   min-height: 100vh;
 }
 
+/* ==================== HOME PAGE ==================== */
+
+.home-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.card {
+  width: min(760px, 100%);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  backdrop-filter: blur(4px);
+  padding: 28px;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.3);
+}
+
+.card h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+}
+
+.card .subtitle {
+  margin: 0 0 20px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.btn {
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+  padding: 11px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: transform .12s ease, border-color .12s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent-2);
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, #0ea5a2, #3b82f6);
+  border: none;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.links a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.footnote {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-top: 1px dashed var(--border);
+  padding-top: 12px;
+}
+
+/* ==================== NAVIGATION ==================== */
+
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 24px;
+  background: rgba(11, 18, 32, 0.8);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid var(--border);
+  animation: slideDown 0.3s ease-out;
+}
+
+.nav-back {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--accent);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-back:hover {
+  background: rgba(94, 234, 212, 0.1);
+  transform: translateX(-4px);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== TIMELINE PAGE ==================== */
+
 .app {
   min-height: 100vh;
   display: flex;
@@ -52,6 +183,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   padding: var(--spacing-xl);
+  padding-top: calc(60px + var(--spacing-xl)); /* Account for fixed nav */
 }
 
 .timeline-header {
@@ -63,22 +195,6 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   width: 100%;
-}
-
-.back-link {
-  display: inline-block;
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-  margin-bottom: var(--spacing-lg);
-  transition: all 0.2s ease;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: 6px;
-}
-
-.back-link:hover {
-  background: rgba(94, 234, 212, 0.1);
-  transform: translateX(-4px);
 }
 
 .timeline-header h1 {
