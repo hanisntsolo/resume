@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:host": "vite --host",
+    "dev:preview": "VITE_BASE_PATH=/dev/ vite --host",
     "build": "npm run build:prod",
     "build:prod": "VITE_DEPLOY_ENV=production vite build && npm run build:post",
     "build:preview": "VITE_DEPLOY_ENV=preview vite build && npm run build:post",
