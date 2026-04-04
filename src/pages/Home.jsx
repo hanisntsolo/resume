@@ -37,15 +37,9 @@ export default function Home() {
 
   async function fetchProfessionalExperience() {
     try {
-      // In local preview mode (VITE_BASE_PATH=/dev/), fetch from live server
-      // Otherwise use relative path (works for both / and /dev/ in production)
-      const basePath = import.meta.env.BASE_URL
-      const isLocalPreview = basePath === '/dev/' && !import.meta.env.PROD
-      const dataUrl = isLocalPreview 
-        ? 'https://resume.hanisntsolo.com/dev/timeline-data.json'
-        : 'timeline-data.json'
-      
-      const resp = await fetch(dataUrl)
+      // Always use relative path - works for both production and dev server
+      // Vite handles base path correctly with relative paths
+      const resp = await fetch('timeline-data.json')
       const data = await resp.json()
       const jobs = data.events
         .filter(e => e.type === 'job')
@@ -61,13 +55,9 @@ export default function Home() {
   }
 
   const getPdfUrl = () => {
-    const basePath = import.meta.env.BASE_URL
-    const isLocalPreview = basePath === '/dev/' && !import.meta.env.PROD
-    const baseUrl = isLocalPreview 
-      ? 'https://resume.hanisntsolo.com/dev/hanisntsolo-resume.pdf'
-      : 'hanisntsolo-resume.pdf'
-    // Add #view=FitH to fit page to viewport height (100% fit)
-    return baseUrl;// + '#view=FitH' // Roling off view=FitH for now as it causes issues in some browsers and PDF viewers. Can revisit later if needed.
+    // Always use relative path - works for both production and dev server
+    // Vite handles base path correctly with relative paths
+    return 'hanisntsolo-resume.pdf#view=FitH'
   }
 
   const formatDate = (dateStr) => {
