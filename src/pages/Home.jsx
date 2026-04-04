@@ -37,7 +37,15 @@ export default function Home() {
 
   async function fetchProfessionalExperience() {
     try {
-      const resp = await fetch('timeline-data.json')
+      // In local preview mode (VITE_BASE_PATH=/dev/), fetch from live server
+      // Otherwise use relative path (works for both / and /dev/ in production)
+      const basePath = import.meta.env.BASE_URL
+      const isLocalPreview = basePath === '/dev/' && !import.meta.env.PROD
+      const dataUrl = isLocalPreview 
+        ? 'https://resume.hanisntsolo.com/dev/timeline-data.json'
+        : 'timeline-data.json'
+      
+      const resp = await fetch(dataUrl)
       const data = await resp.json()
       const jobs = data.events
         .filter(e => e.type === 'job')
@@ -50,6 +58,14 @@ export default function Home() {
 
   const handleDownload = () => {
     trackResumeDownload()
+  }
+
+  const getPdfUrl = () => {
+    const basePath = import.meta.env.BASE_URL
+    const isLocalPreview = basePath === '/dev/' && !import.meta.env.PROD
+    return isLocalPreview 
+      ? 'https://resume.hanisntsolo.com/dev/hanisntsolo-resume.pdf'
+      : 'hanisntsolo-resume.pdf'
   }
 
   const formatDate = (dateStr) => {
@@ -99,7 +115,7 @@ export default function Home() {
         <div className="pdf-container">
           <div className="pdf-viewer">
             <iframe
-              src="hanisntsolo-resume.pdf"
+              src={getPdfUrl()}
               type="application/pdf"
               title="Dhirendra Pratap Singh Resume"
               frameBorder="0"
@@ -109,7 +125,7 @@ export default function Home() {
           <div className="pdf-actions">
             <a
               className="btn primary"
-              href="hanisntsolo-resume.pdf"
+              href={getPdfUrl()}
               id="downloadResume"
               download
               onClick={handleDownload}
@@ -118,7 +134,7 @@ export default function Home() {
             </a>
             <a
               className="btn"
-              href="hanisntsolo-resume.pdf"
+              href={getPdfUrl()}
               target="_blank"
               rel="noopener noreferrer"
               id="previewResume"
