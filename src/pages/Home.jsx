@@ -67,7 +67,7 @@ export default function Home() {
       ? 'https://resume.hanisntsolo.com/dev/hanisntsolo-resume.pdf'
       : 'hanisntsolo-resume.pdf'
     // Add #view=FitH to fit page to viewport height (100% fit)
-    return baseUrl + '#view=FitH'
+    return baseUrl;// + '#view=FitH' // Roling off view=FitH for now as it causes issues in some browsers and PDF viewers. Can revisit later if needed.
   }
 
   const formatDate = (dateStr) => {
