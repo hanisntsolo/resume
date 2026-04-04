@@ -6,6 +6,7 @@ export default function Home() {
   const navigate = useNavigate()
   const [downloadCount, setDownloadCount] = useState('loading...')
   const [experiences, setExperiences] = useState([])
+  const [selectedDocument, setSelectedDocument] = useState('resume')
 
   useEffect(() => {
     loadDownloadCount()
@@ -57,7 +58,8 @@ export default function Home() {
   const getPdfUrl = () => {
     // Always use relative path - works for both production and dev server
     // Vite handles base path correctly with relative paths
-    return 'hanisntsolo-resume.pdf#view=FitH'
+    const filename = selectedDocument === 'resume' ? 'hanisntsolo-resume.pdf' : 'hanisntsolo-cover-letter-ats.pdf'
+    return `${filename}#view=FitH`
   }
 
   const formatDate = (dateStr) => {
@@ -244,9 +246,10 @@ export default function Home() {
         <div className="pdf-container">
           <div className="pdf-viewer">
             <iframe
+              key={selectedDocument}
               src={getPdfUrl()}
               type="application/pdf"
-              title="Dhirendra Pratap Singh Resume"
+              title={selectedDocument === 'resume' ? 'Dhirendra Pratap Singh Resume' : 'Dhirendra Pratap Singh Cover Letter'}
               frameBorder="0"
               allowFullScreen
             ></iframe>
@@ -270,6 +273,20 @@ export default function Home() {
             >
               👀 Full Screen
             </a>
+          </div>
+          <div className="document-toggle">
+            <button
+              className={`toggle-btn ${selectedDocument === 'resume' ? 'active' : ''}`}
+              onClick={() => setSelectedDocument('resume')}
+            >
+              📄 Resume
+            </button>
+            <button
+              className={`toggle-btn ${selectedDocument === 'cover-letter' ? 'active' : ''}`}
+              onClick={() => setSelectedDocument('cover-letter')}
+            >
+              ✉️ Cover Letter
+            </button>
           </div>
         </div>
       </section>

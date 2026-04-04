@@ -327,6 +327,40 @@ body {
   margin: 0;
 }
 
+.document-toggle {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px;
+  background: rgba(11, 18, 32, 0.8);
+  border-top: 1px solid var(--border);
+  justify-content: flex-end;
+  border-radius: 0 0 14px 14px;
+}
+
+.toggle-btn {
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.toggle-btn:hover {
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+  transform: translateY(-2px);
+}
+
+.toggle-btn.active {
+  background: linear-gradient(90deg, #0ea5a2, #3b82f6);
+  border: none;
+  color: white;
+}
+
 /* ==================== RESPONSIVE DESIGN ==================== */
 
 /* Large Desktop / Laptop (1025px+) */
@@ -547,6 +581,19 @@ body {
     /* max-width: 90%;
     margin-left: auto;
     margin-right: auto; */
+  }
+
+  .document-toggle {
+    padding: 12px 16px;
+    gap: 8px;
+    flex-direction: column;
+  }
+
+  .toggle-btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    width: 100%;
+    text-align: center;
   }
 
   .card {
