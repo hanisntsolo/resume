@@ -1,0 +1,107 @@
+{
+  "events": [
+    {
+      "id": "citi-current",
+      "date": "2022-07",
+      "endDate": "2026-04",
+      "type": "job",
+      "title": "Full Stack Java Developer / Assistant Manager / Apps Dev Intermediate Programmer",
+      "company": "Citi",
+      "description": "Led full-stack development of distributed systems and cloud-native microservices at scale. Designed and implemented high-throughput architectures handling millions of transactions daily.",
+      "tags": ["job", "current"],
+      "technologies": ["Java", "Spring Boot", "Kafka", "GCP", "Microservices", "BigQuery", "Cloud SQL"]
+    },
+    {
+      "id": "capgemini",
+      "date": "2020-09",
+      "endDate": "2022-07",
+      "type": "job",
+      "title": "Senior Software Engineer",
+      "company": "Capgemini",
+      "description": "Developed enterprise applications and RESTful APIs. Worked with cloud platforms and contributed to distributed systems architecture.",
+      "tags": ["job"],
+      "technologies": ["Java", "Spring", "REST APIs", "Cloud Services"]
+    },
+    {
+      "id": "rippler",
+      "date": "2023-01",
+      "endDate": "2024-06",
+      "type": "project",
+      "title": "Rippler - Fintech Social Platform",
+      "description": "Full-stack social platform for financial discussions and community building. Implemented real-time messaging, user authentication, and community features.",
+      "tags": ["project", "fullstack"],
+      "technologies": ["React", "Node.js", "MongoDB", "WebSockets", "Firebase"],
+      "url": "https://github.com/hanisntsolo/rippler"
+    },
+    {
+      "id": "faang-cracker",
+      "date": "2021-06",
+      "endDate": "ongoing",
+      "type": "project",
+      "title": "FAANG-CRACKER - Interview Prep Resource",
+      "description": "Curated collection of interview questions, system design problems, and solutions for tech interviews. Comprehensive guide covering LeetCode problems, behavioral interviews, and architectural patterns.",
+      "tags": ["project", "open-source"],
+      "technologies": ["JavaScript", "GitHub Pages", "System Design"],
+      "url": "https://github.com/hanisntsolo/FAANG-CRACKER"
+    },
+    {
+      "id": "private-cloud",
+      "date": "2023-06",
+      "endDate": "2026-04",
+      "type": "project",
+      "title": "Personal Private Cloud Infrastructure",
+      "description": "Self-hosted cloud infrastructure with 32+ microservices running on Kubernetes. Includes CI/CD pipelines, monitoring, logging, and disaster recovery.",
+      "tags": ["project", "infrastructure", "devops"],
+      "technologies": ["Kubernetes", "Docker", "GCP", "Terraform", "Prometheus", "ELK Stack", "ArgoCD"]
+    },
+    {
+      "id": "distributed-systems",
+      "date": "2022-01",
+      "endDate": "ongoing",
+      "type": "milestone",
+      "title": "Deep Dive: Distributed Systems & System Design",
+      "description": "In-depth study and practical implementation of distributed systems concepts. Mastered consensus algorithms, message queues, load balancing, and scalability patterns.",
+      "tags": ["milestone", "learning"],
+      "technologies": ["System Design", "Kafka", "Redis", "Consistency Models", "Load Balancing"]
+    },
+    {
+      "id": "gcp-professional",
+      "date": "2023-06",
+      "type": "milestone",
+      "title": "Google Cloud Professional Certifications",
+      "description": "Achieved professional-level certifications in Google Cloud Platform, validating expertise in cloud architecture and infrastructure.",
+      "tags": ["milestone", "certification"],
+      "technologies": ["GCP", "Cloud Architecture"]
+    },
+    {
+      "id": "kubernetes-expert",
+      "date": "2023-01",
+      "endDate": "ongoing",
+      "type": "milestone",
+      "title": "Kubernetes & Container Orchestration Mastery",
+      "description": "Extensive hands-on experience with Kubernetes, container orchestration, and deployment automation. Implemented production-grade clusters.",
+      "tags": ["milestone", "learning"],
+      "technologies": ["Kubernetes", "Docker", "Helm", "Operators"]
+    },
+    {
+      "id": "fintech-domain",
+      "date": "2022-07",
+      "endDate": "2026-04",
+      "type": "milestone",
+      "title": "Fintech & Banking Domain Expertise",
+      "description": "Deep domain knowledge in financial services, payment systems, compliance, and regulatory requirements. Shipped mission-critical financial applications.",
+      "tags": ["milestone", "domain"],
+      "technologies": ["Banking Systems", "Payment Processing", "Compliance", "PCI-DSS"]
+    },
+    {
+      "id": "react-fullstack",
+      "date": "2021-06",
+      "endDate": "ongoing",
+      "type": "milestone",
+      "title": "Full Stack JavaScript/React Development",
+      "description": "Proficiency in end-to-end React applications, from component design to backend integration. Built multiple production applications.",
+      "tags": ["milestone", "frontend"],
+      "technologies": ["React", "Node.js", "Express", "GraphQL", "REST APIs"]
+    }
+  ]
+}
