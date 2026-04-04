@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dhirendra Pratap Singh | Resume</title>
+  <meta name="description" content="Resume of Dhirendra Pratap Singh - Full Stack Java Developer focused on distributed systems and cloud-native engineering." />
+  <meta property="og:title" content="Dhirendra Pratap Singh | Resume" />
+  <meta property="og:description" content="Download resume and explore engineering profiles and links." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://resume.hanisntsolo.com/" />
+  <script data-goatcounter="https://hanisntsolo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #121a2b;
+      --text: #e8edf7;
+      --muted: #9fb0cf;
+      --accent: #5eead4;
+      --accent-2: #60a5fa;
+      --border: #26324b;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 20% 10%, #1a2440 0%, var(--bg) 55%);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: min(760px, 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      backdrop-filter: blur(4px);
+      padding: 28px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.3);
+    }
+
+    h1 { margin: 0 0 8px; font-size: clamp(1.6rem, 3vw, 2rem); }
+    .subtitle { margin: 0 0 20px; color: var(--muted); line-height: 1.5; }
+
+    .buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+
+    .btn {
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      padding: 11px 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: transform .12s ease, border-color .12s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover { transform: translateY(-1px); border-color: var(--accent-2); }
+    .btn.primary { background: linear-gradient(90deg, #0ea5a2, #3b82f6); border: none; }
+
+    .links { display: flex; flex-wrap: wrap; gap: 14px; color: var(--muted); font-size: 0.95rem; }
+    .links a { color: var(--accent); text-decoration: none; }
+
+    .footnote {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px dashed var(--border);
+      padding-top: 12px;
+    }
+
+    code { color: var(--accent); }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <h1>Dhirendra Pratap Singh</h1>
+    <p class="subtitle">
+      Full Stack Java Developer focused on distributed systems, cloud-native architecture, and product-minded engineering.
+    </p>
+
+    <div class="buttons">
+      <a class="btn primary" href="hanisntsolo-resume.pdf" id="downloadResume" download>
+        ⬇ Download Resume (PDF)
+      </a>
+      <a class="btn" href="hanisntsolo-resume.pdf" target="_blank" rel="noopener noreferrer" id="previewResume">
+        👀 Open in Browser
+      </a>
+      <a class="btn" href="/timeline/" rel="noopener noreferrer" id="timelineLink">
+        📅 View Timeline
+      </a>
+    </div>
+
+    <div class="links">
+      <span><a href="https://hanisntsolo.com" target="_blank" rel="noopener noreferrer">Portfolio</a></span>
+      <span><a href="https://github.com/hanisntsolo" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+      <span><a href="https://www.linkedin.com/in/hanisntsolo" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
+      <span><a href="mailto:ds.pratap1997@gmail.com">Email</a></span>
+    </div>
+
+    <p class="footnote">
+      Resume downloads tracked with GoatCounter. Total download clicks: <strong id="downloadCount">loading...</strong>
+    </p>
+  </main>
+
+  <script>
+    const DOWNLOAD_EVENT_PATH = '/resume-download';
+
+    function trackResumeDownload() {
+      if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+        window.goatcounter.count({
+          path: DOWNLOAD_EVENT_PATH,
+          title: 'resume-download',
+          event: true
+        });
+      }
+    }
+
+    async function loadDownloadCount() {
+      const countEl = document.getElementById('downloadCount');
+
+      // GoatCounter public hit-counter endpoint for a path.
+      // If your site has public counters disabled, this can fail; then we show a fallback message.
+      const endpoint = 'https://hanisntsolo.goatcounter.com/counter/' + encodeURIComponent(DOWNLOAD_EVENT_PATH) + '.json';
+
+      try {
+        const resp = await fetch(endpoint, { mode: 'cors' });
+        if (!resp.ok) throw new Error('counter unavailable');
+        const data = await resp.json();
+        const count = data && typeof data.count === 'number' ? data.count : null;
+        countEl.textContent = count === null ? 'n/a' : count.toLocaleString();
+      } catch (err) {
+        countEl.textContent = 'available in GoatCounter dashboard';
+      }
+    }
+
+    document.getElementById('downloadResume').addEventListener('click', () => {
+      trackResumeDownload();
+    });
+
+    loadDownloadCount();
+  </script>
+</body>
+
+</html>
