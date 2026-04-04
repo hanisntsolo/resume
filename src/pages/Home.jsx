@@ -152,6 +152,24 @@ export default function Home() {
           >
             📅 View Full Timeline
           </button>
+          <a
+            className="btn primary"
+            href={getPdfUrl()}
+            id="downloadResume"
+            download
+            onClick={handleDownload}
+          >
+            ⬇ Download Resume
+          </a>
+          <a
+            className="btn"
+            href={getPdfUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            id="previewResume"
+          >
+            👀 Full Screen
+          </a>
         </div>
 
         <div className="links">
@@ -232,26 +250,6 @@ export default function Home() {
               frameBorder="0"
               allowFullScreen
             ></iframe>
-          </div>
-          <div className="pdf-actions">
-            <a
-              className="btn primary"
-              href={getPdfUrl()}
-              id="downloadResume"
-              download
-              onClick={handleDownload}
-            >
-              ⬇ Download PDF
-            </a>
-            <a
-              className="btn"
-              href={getPdfUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              id="previewResume"
-            >
-              👀 Full Screen
-            </a>
           </div>
         </div>
       </section>

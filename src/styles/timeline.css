@@ -51,12 +51,12 @@ body {
 }
 
 .card {
-  width: min(760px, 100%);
+  width: min(900px, 90%);
   border: 1px solid var(--border);
   border-radius: 16px;
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   backdrop-filter: blur(4px);
-  padding: 28px;
+  padding: 36px;
   box-shadow: 0 16px 36px rgba(0,0,0,0.3);
   margin-top: 20px;
   margin-bottom: 48px;
