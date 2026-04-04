@@ -284,7 +284,38 @@ body {
 
 /* ==================== RESPONSIVE DESIGN ==================== */
 
-@media (max-width: 768px) {
+/* Large Desktop / Laptop (1025px+) */
+@media (min-width: 1025px) {
+  .pdf-viewer {
+    height: 1150px;
+  }
+}
+
+/* Tablet Landscape (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .home-page {
+    padding: 16px;
+  }
+
+  .experience-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .pdf-viewer {
+    height: 850px;
+  }
+
+  .experience-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
+
+/* Tablet Portrait / Large Phone (601px - 768px) */
+@media (min-width: 601px) and (max-width: 768px) {
   .home-page {
     padding: 16px;
   }
@@ -298,22 +329,31 @@ body {
   }
 
   .experience-header h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .card {
-    padding: 20px;
+    padding: 18px;
   }
 }
 
-@media (max-width: 480px) {
+/* Phone Landscape (481px - 600px) */
+@media (min-width: 481px) and (max-width: 600px) {
   .home-page {
-    padding: 12px;
+    padding: 14px;
   }
 
   .professional-experience-section,
   .resume-pdf-section {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+  }
+
+  .experience-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .pdf-viewer {
+    height: 500px;
   }
 
   .experience-header h2 {
@@ -324,18 +364,59 @@ body {
     padding: 16px;
   }
 
+  .card {
+    padding: 16px;
+  }
+
+  .pdf-actions {
+    flex-direction: row;
+    padding: 14px;
+    gap: 8px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}
+
+/* Phone Portrait (max 480px) */
+@media (max-width: 480px) {
+  .home-page {
+    padding: 12px;
+  }
+
+  .professional-experience-section,
+  .resume-pdf-section {
+    margin-bottom: 20px;
+  }
+
+  .experience-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .experience-card {
+    padding: 14px;
+  }
+
   .pdf-viewer {
-    height: 350px;
+    height: 400px;
+  }
+
+  .card {
+    padding: 16px;
   }
 
   .pdf-actions {
     flex-direction: column;
-    padding: 16px;
+    padding: 12px;
+    gap: 8px;
   }
 
   .btn {
     width: 100%;
     justify-content: center;
+    font-size: 0.9rem;
   }
 }
 
