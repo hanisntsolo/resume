@@ -58,7 +58,7 @@ export default function Home() {
   const getPdfUrl = () => {
     // Always use relative path - works for both production and dev server
     // Vite handles base path correctly with relative paths
-    const filename = selectedDocument === 'resume' ? 'hanisntsolo-resume.pdf' : 'hanisntsolo-cover-letter-ats.pdf'
+    const filename = selectedDocument === 'resume' ? 'hanisntsolo-resume.pdf' : 'hanisntsolo-cover-letter.pdf'
     return `${filename}#view=FitH`
   }
 
