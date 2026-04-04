@@ -1,0 +1,27 @@
+{
+  "name": "resume-timeline",
+  "version": "1.0.0",
+  "description": "Interactive timeline of work experience, projects, and milestones",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && npm run build:post",
+    "build:post": "npm run build:post:prod",
+    "build:prod": "VITE_DEPLOY_ENV=production vite build && npm run build:post:prod",
+    "build:post:prod": "mv dist/timeline/public/index.html dist/timeline/index.html 2>/dev/null || true && rmdir dist/timeline/public 2>/dev/null || true",
+    "build:preview": "VITE_DEPLOY_ENV=preview vite build && npm run build:post:preview",
+    "build:post:preview": "mv dist/dev-timeline/public/index.html dist/dev-timeline/index.html 2>/dev/null || true && rmdir dist/dev-timeline/public 2>/dev/null || true",
+    "preview": "vite preview",
+    "clean": "rm -rf dist node_modules"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "date-fns": "^2.30.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.8"
+  }
+}

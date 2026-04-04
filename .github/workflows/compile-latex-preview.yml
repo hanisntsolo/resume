@@ -1,19 +1,17 @@
-name: Compile LaTeX document for Hanisntsolo
+name: Compile LaTeX + Build Timeline (Preview/Feature Branches)
 
 on:
-  repository_dispatch:
-    types: [trigger-hanisntsolo]
   push:
-    branches:
+    branches-ignore:
       - hanisntsolo
+      - master
 
 permissions:
-  contents: write  # Explicitly set the permission for the GITHUB_TOKEN
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'hanisntsolo'
 
     steps:
       - name: Checkout repository
@@ -22,40 +20,41 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Use Node.js 20 or latest
+          node-version: '20'
 
       - name: Set up LaTeX
         uses: xu-cheng/latex-action@v3
         with:
           root_file: hanisntsolo-resume.tex
           extra_system_packages: "inkscape"
-          compiler: xelatex  # Use latexmk to compile the document
-          args: -shell-escape -output-directory=output  # Specify output directory and add shell-escape flag
+          compiler: xelatex
+          args: -shell-escape -output-directory=output
 
       - name: Install Node dependencies
         run: npm install
 
-      - name: Build React Timeline (Production)
-        run: npm run build:prod
+      - name: Build React Timeline (Preview)
+        run: npm run build:preview
 
       - name: Copy timeline build to output
-        run: cp -r dist/timeline output/timeline
+        run: cp -r dist/dev-timeline output/dev-timeline
 
       - name: Copy timeline data to output
         run: cp timeline-data.json output/timeline-data.json
 
       - name: Copy index.html to output
-        run: cp index.html output/index.html  # Copy index.html to output directory
+        run: cp index.html output/index.html
 
       - name: Add CNAME file for Custom Domain
         run: echo "resume.hanisntsolo.com" > output/CNAME
         
       - name: List files in output directory
-        run: tree output
+        run: find output -type f | head -20
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages (Preview)
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./output  # Directory containing your compiled PDF
-          destination_dir: ./  # Directory where the site will be hosted
+          publish_dir: ./output
+          destination_dir: ./dev
+          cname: resume.hanisntsolo.com
