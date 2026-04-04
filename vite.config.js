@@ -13,7 +13,11 @@ const getBasePath = () => {
   if (process.env.NODE_ENV !== 'production') {
     return '/'
   }
-  // Production/Preview: both deploy to root (destination_dir handles the path)
+  // Preview deployments go to /dev/ on GitHub Pages
+  if (deployEnv === 'preview') {
+    return '/dev/'
+  }
+  // Production: deploy to root /
   return '/'
 }
 
