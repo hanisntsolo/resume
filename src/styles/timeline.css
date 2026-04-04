@@ -253,14 +253,18 @@ body {
   border: 2px solid var(--accent-2);
   border-radius: 16px;
   background: linear-gradient(135deg, rgba(94, 234, 212, 0.08) 0%, rgba(96, 165, 250, 0.05) 100%);
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 12px 48px rgba(96, 165, 250, 0.2);
+  display: flex;
+  flex-direction: column;
 }
 
 .pdf-viewer {
   width: 100%;
   height: 1150px;
   position: relative;
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
 }
 
 .pdf-viewer iframe {
@@ -325,7 +329,7 @@ body {
   }
 
   .pdf-viewer {
-    height: 700px;
+    height: 750px;
   }
 
   .experience-header h2 {
@@ -353,7 +357,7 @@ body {
   }
 
   .pdf-viewer {
-    height: 500px;
+    height: 420px;
   }
 
   .experience-header h2 {
@@ -370,13 +374,14 @@ body {
 
   .pdf-actions {
     flex-direction: row;
-    padding: 14px;
+    padding: 12px;
     gap: 8px;
   }
 
-  .btn {
-    font-size: 0.9rem;
-    padding: 8px 12px;
+  .pdf-actions .btn {
+    flex: 1;
+    font-size: 0.85rem;
+    padding: 8px 10px;
   }
 }
 
@@ -400,7 +405,7 @@ body {
   }
 
   .pdf-viewer {
-    height: 400px;
+    height: 340px;
   }
 
   .card {
@@ -409,14 +414,16 @@ body {
 
   .pdf-actions {
     flex-direction: column;
-    padding: 12px;
+    padding: 10px;
     gap: 8px;
+    flex-wrap: nowrap;
   }
 
-  .btn {
+  .pdf-actions .btn {
     width: 100%;
     justify-content: center;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    padding: 8px 10px;
   }
 }
 
