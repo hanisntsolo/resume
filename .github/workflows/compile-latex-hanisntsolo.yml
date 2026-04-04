@@ -27,13 +27,21 @@ jobs:
       - name: Create output directory
         run: mkdir -p output
 
-      - name: Set up LaTeX
+      - name: Compile Original Resume (Visual)
         uses: xu-cheng/latex-action@v3
         with:
           root_file: hanisntsolo-resume.tex
           extra_system_packages: "inkscape"
-          compiler: xelatex  # Use latexmk to compile the document
-          args: -shell-escape -output-directory=output  # Specify output directory and add shell-escape flag
+          compiler: xelatex
+          args: -shell-escape -output-directory=output
+
+      - name: Compile ATS-Optimized Resume
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: hanisntsolo-resume-ats.tex
+          extra_system_packages: "inkscape"
+          compiler: xelatex
+          args: -shell-escape -output-directory=output
 
       - name: Install Node dependencies
         run: npm install

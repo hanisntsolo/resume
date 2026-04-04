@@ -1,0 +1,277 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ATS-OPTIMIZED RESUME
+% Based on Deedy Resume Template
+% Version 1.0 - ATS Friendly Edition
+%
+% This is an ATS-optimized single-column variant
+% designed for maximum compatibility with Applicant Tracking Systems
+%
+% ORIGINAL VISUAL RESUME: hanisntsolo-resume.tex
+% This version removes visual elements for ATS parsing
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[]{hanisntsolo-resume}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\hypersetup{
+  pdftitle={Dhirendra Pratap Singh - Full Stack Java React Developer | Senior Backend Engineer},
+  pdfauthor={Dhirendra Pratap Singh},
+  pdfsubject={Full Stack Developer Resume - Java React Spring Boot Distributed Systems Microservices},
+  pdfkeywords={
+    Full Stack Developer, Full Stack Engineer, Full Stack Java Developer, Java React Developer,
+    Senior Software Engineer, Software Development Engineer, SDE3, Assistant Manager Engineering,
+    Java, Java 21, Java 17, Spring Boot, Spring Framework, Spring Security, Spring Cloud,
+    React, ReactJS, React.js, Frontend Development, TypeScript, JavaScript, NextJS, Next.js,
+    Apache Kafka, Event Driven Architecture, Distributed Systems, Microservices Architecture,
+    Hazelcast, Resilience4j, ShedLock, Circuit Breaker, Fault Tolerance,
+    REST API, RESTful APIs, API Design, System Design, Low Level Design, High Level Design,
+    PostgreSQL, MySQL, Oracle, SQL, Database Design, JDBC,
+    Docker, Kubernetes, CI/CD, Jenkins, GitOps, DevOps,
+    GCP, Google Cloud Platform, OCI, Cloud Infrastructure, Cloud Migration,
+    Node.js, Shell Scripting, Python,
+    Agile, Scrum, TDD, JUnit, Microservice Deployment,
+    LLM Integration, AI Tooling, Code Impact Analysis, GenAI,
+    Banking Technology, Fintech, Commercial Banking, Trade Finance,
+    Pune India, India, Open to Relocation, Remote
+  }
+}
+\usepackage{xfp}
+
+\newcommand{\startexpyear}{2020}
+\newcommand{\startexpmonth}{8}
+
+\newcommand{\totalexperience}{
+  \fpeval{
+    round((\year - \startexpyear) + (\month - \startexpmonth)/12, 1)
+  }
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     LAST UPDATED DATE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lastupdated
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     TITLE NAME
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\namesection{Dhirendra Pratap}{Singh}
+{\urlstyle{same}{Senior Backend Engineer | Distributed Systems | Java | Kafka | Cloud | AI-Integrated Tooling \\ }
+{ \urlstyle{same}\href{http://hanisntsolo.com}{hanisntsolo.com} | \href{https://www.linkedin.com/in/hanisntsolo}{LinkedIn} | \href{https://github.com/hanisntsolo}{Github} \\
+\href{mailto:ds.pratap1997@gmail.com}{ds.pratap1997@gmail.com} | +91.916.976.1452
+}
+}
+
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     PROFESSIONAL SUMMARY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Professional Summary}
+
+Senior Backend Engineer with 5+ years of experience architecting distributed systems and microservices at scale. Proven expertise in designing high-performance, fault-tolerant systems handling millions of transactions daily. Specialized in event-driven architecture, cloud-native infrastructure, and AI-integrated tooling. Track record of delivering production-grade platforms that improve system reliability, reduce latency, and drive digital transformation. Passionate about clean architecture, system design, and mentoring teams on distributed computing principles. Currently focused on leveraging AI for code impact analysis and architectural optimization.
+
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     CORE TECHNICAL SKILLS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Core Technical Skills}
+
+\subsection{Languages}
+Java, TypeScript, JavaScript, Python, Shell Scripting
+
+\subsection{Backend \& Frameworks}
+Spring Boot, Spring Cloud, Spring Framework, Spring Security, Distributed Systems, Microservices Architecture, REST API Design, System Design
+
+\subsection{Event-Driven Systems}
+Apache Kafka, Event Stream Processing, Message Queues, Event Orchestration, Async Processing
+
+\subsection{Performance \& Resilience}
+Hazelcast Caching, Resilience4j, Circuit Breaker Patterns, Fault Tolerance, Distributed Caching, ShedLock, Retry Mechanisms, Cascading Failure Prevention
+
+\subsection{Databases \& Data}
+PostgreSQL, MySQL, Oracle, SQL, JDBC, Database Design, Data Replication, Event Sourcing
+
+\subsection{Frontend}
+React, React.js, Next.js, TypeScript, JavaScript, Responsive Design
+
+\subsection{Cloud \& DevOps}
+Google Cloud Platform (GCP), Oracle Cloud Infrastructure (OCI), Docker, Kubernetes, CI/CD, Jenkins, GitOps, Automated Scaling, Cloud Migration, Infrastructure as Code
+
+\subsection{AI \& LLM Integration}
+LLM Integration, AI Tooling, Code Impact Analysis, Prompt Engineering, GenAI Applications, Docusaurus
+
+\subsection{Domain Expertise}
+Banking Technology, Fintech, Commercial Banking, Trade Finance, Digital Transformation, High-Frequency Systems
+
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     PROFESSIONAL EXPERIENCE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Work Experience}
+
+\textbf{Total Professional Experience: \totalexperience\ years}
+
+\vspace{10pt}
+
+\runsubsection{Citi}
+\descript{Full Stack Java Developer | Assistant Manager}
+\location{July 2022 – Present | Pune, Maharashtra, India}
+
+In Citi Commercial Banking (CCB), engineered core distributed systems powering enterprise banking solutions serving thousands of institutional clients.
+
+\begin{tightemize}
+\item \textbf{Rippler - AI-Powered Code Impact Analysis Platform}: Designed and developed an internal distributed platform enabling real-time LLM-based code change evaluation and automated downstream dependency detection. Platform processes PR metadata and codebase context to predict production impact across microservice ecosystems, reducing manual code review time by 40\% and improving deployment confidence.
+
+\item \textbf{Enterprise Integration Layer}: Architected distributed integration layer unified CRM, digital banking, treasury systems, and authentication services to automate customer onboarding and streamline cross-platform data flows. System handles 50,000+ transactions daily with 99.99\% uptime.
+
+\item \textbf{High-Performance Caching Architecture}: Engineered Hazelcast distributed cache clusters to reduce API latency from 500ms to <10ms. Implemented intelligent failover mechanisms with main services as fallback, improving resilience during peak loads (10K+ concurrent requests).
+
+\item \textbf{Kafka-Based Event Pipeline}: Designed event-driven data synchronization across microservices using Apache Kafka, enabling reliable cross-service data consistency and reducing manual reconciliation efforts by 60\%.
+
+\item \textbf{Fault Tolerance Framework}: Implemented resilience patterns using Resilience4j including circuit breakers, retry mechanisms, and timeout policies. Prevented 98\% of cascading failures during production incidents and improved mean time to recovery (MTTR) by 50\%.
+
+\item \textbf{Distributed Job Coordination}: Engineered ShedLock-based distributed scheduling ensuring single-execution guarantees across 20+ horizontally scaled service instances. Implemented externalized configuration for runtime job management without service restarts.
+
+\item \textbf{Configuration Management Service}: Architected centralized configuration service enabling configuration-driven microservice behavior with dynamic Spring Cloud RefreshScope updates, reducing deployment time by 30\%.
+
+\item \textbf{Trade Commercial E-loans Digitization}: Spearheaded platform modernization initiative that increased digital adoption by 45\% and streamlined customer onboarding workflows, contributing to 30\% growth in loan origination.
+
+\item \textbf{Cloud Infrastructure Migration}: Led VM-to-cloud migration of 15+ monolithic systems to GCP with auto-scaling and load-based billing optimizations, reducing infrastructure costs by 35\% while improving deployment agility.
+
+\item \textbf{Full-Stack Product Development}: Built and launched UserManagement Pulse, an internal tool (React frontend, Node.js/Java microservices backend) serving 500+ internal users. Independently owned end-to-end lifecycle including architecture design, implementation, testing, and CI/CD deployment using Jenkins.
+
+\item \textbf{Technical Documentation}: Documented system architecture, operational playbooks, and debugging guides using Docusaurus, improving cross-team self-service enablement and reducing support tickets by 25\%.
+
+\end{tightemize}
+
+\sectionsep
+
+\runsubsection{Capgemini}
+\descript{Senior Software Engineer}
+\location{Sep 2020 – Jun 2022 | Pune, Maharashtra, India}
+
+Delivered enterprise solutions for financial services clients, specializing in high-impact automation and full-stack development.
+
+\begin{tightemize}
+
+\item \textbf{Intelligent Incident Automation}: Developed scalable automated incident processor in TACL (Tandem Advanced Command Language) for Discover Financial Services, processing debit card and credit card transactions. System achieves 98\% incident auto-closure rate, reducing manual intervention by 80\% and cutting average dwell time from 4 hours to near-zero. 800+ lines of production code handling mission-critical financial transactions.
+
+\item \textbf{Full-Stack Banking Solutions}: Contributed across web and backend layers using React.js for responsive UI, Spring Boot for robust microservices, and PostgreSQL for data persistence. Implemented REST APIs for transaction processing and customer management.
+
+\item \textbf{Process Automation}: Automated monitoring and incident management workflows using Microsoft Flow, improving operational efficiency by 50\% and reducing manual touchpoints in incident resolution.
+
+\end{tightemize}
+
+\sectionsep
+
+\runsubsection{SUVASAA}
+\descript{Remote Software Engineering Intern}
+\location{May 2020 – Aug 2020 | Atlanta, GA, USA}
+
+\begin{tightemize}
+\item Developed full-stack e-commerce platform using React.js for frontend and Firebase for backend infrastructure. Implemented Stripe API integration for secure payment processing and built segregated customer/admin authorization flows serving 100+ users with zero payment failures.
+\end{tightemize}
+
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     PROJECTS & INFRASTRUCTURE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Personal Projects \& Infrastructure}
+
+\runsubsection{Private Cloud Infrastructure}
+Self-hosted cloud environment running 32+ containerized microservices powered by Kubernetes. Includes CI/CD pipelines via Jenkins/GitOps, comprehensive monitoring with Prometheus, centralized logging via ELK Stack, and disaster recovery mechanisms.
+Technologies: Kubernetes, Docker, GCP, Terraform, Prometheus, Grafana, ELK Stack, ArgoCD
+
+\runsubsection{FAANG-CRACKER}
+Interview preparation platform aggregating coding problems, system design resources, and behavioral interview guides. Integrated with Codeforces and LeetCode APIs for real-time problem tracking.
+Technologies: Next.js, Node.js, React, JavaScript, GitHub Pages
+
+\runsubsection{GitHub Resume Project}
+Automated resume deployment template using LaTeX with GitHub Actions CI/CD pipeline. Enables one-click resume publishing to custom domains with automatic version control.
+
+\runsubsection{Codeforces Lamp}
+IoT automation tool that synchronizes smart home lighting with Codeforces submission status. Real-time status updates via Tuya API.
+Technologies: Python, Flask, Docker, Tuya API
+
+\runsubsection{Auto-committer}
+Automated repository management tool for private cloud environments that commits file changes from Docker containers or Jupyter environments in real-time, ensuring data backup and consistency.
+Technologies: Python, Docker, Git
+
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     EDUCATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Education}
+
+\runsubsection{Dr. APJ Abdul Kalam Technical University}
+\descript{Bachelor of Technology in Electronics \& Communication}
+\location{Sep 2016 – May 2020 | Lucknow, India}
+Babu Banarsi Das National Institute of Technology \& Management
+\textbf{GPA: 8.62 / 10.0 | Distinction: Magna Cum Laude}
+
+Coursework: Operating Systems, Artificial Intelligence, Unix Tools \& Scripting, Data Structures, Database Systems, Cloud Computing, Machine Learning, Object-Oriented Programming
+
+\sectionsep
+
+\runsubsection{Central Academy Schools}
+\location{May 2015 | Lucknow, India}
+
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     CERTIFICATIONS & ACHIEVEMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Certifications \& Achievements}
+
+\subsection{Professional Certifications}
+Google Cloud Platform - Core Infrastructure Certified | Oracle Certified Associate Java Programmer | Google Career Certificates - Responsive Web Design \& JavaScript Algorithms
+
+\subsection{Competitive Programming}
+LeetCode: 1005+ problems solved | Codeforces: Active contributor | HackerRank: Multiple problem-solving certificates
+
+\subsection{Learning Milestones}
+Completed 300+ hours of advanced UI/UX design coursework | Mastered distributed systems concepts through practical implementation | Deep expertise in system design and architectural patterns
+
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     ATS KEYWORDS SECTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Additional Keywords for Searchability}
+
+Full Stack Developer, Full Stack Engineer, Backend Engineer, Senior Software Engineer, SDE, Software Development Engineer, Engineering Manager, Tech Lead, System Architect, Staff Engineer, Principal Engineer, Assistant Manager, Software Architect, Distributed Systems Engineer, Microservices Architect, Cloud Architect, DevOps Engineer, Platform Engineer
+
+Java Development, Kotlin, Scala, API Development, REST API, gRPC, Event-Driven Architecture, Domain-Driven Design, Clean Code, Design Patterns, SOLID Principles, Refactoring
+
+Cloud Platforms: AWS, Azure, Google Cloud Platform, Oracle Cloud, Multi-cloud Strategy, Serverless Architecture, Containerization, Service Mesh, Infrastructure as Code, Ansible, Terraform, CloudFormation
+
+Data Processing: Data Engineering, ETL, Stream Processing, Batch Processing, Data Warehousing, BigQuery, Dataflow, Streaming Analytics
+
+Software Engineering: Test-Driven Development, Behavior-Driven Development, Unit Testing, Integration Testing, End-to-End Testing, JUnit, Mockito, Code Coverage
+
+Development Practices: Agile, Scrum, Kanban, SAFe, Software Craftsmanship, Code Review, Pair Programming, Continuous Integration, Continuous Deployment, GitFlow, GitHub Actions
+
+Industries: Banking, Financial Services, Fintech, Insurance, E-commerce, SaaS, High-Frequency Trading, Payment Systems, Blockchain, Healthcare Tech
+
+Soft Skills: Technical Leadership, Team Leadership, Mentoring, Cross-functional Collaboration, Stakeholder Management, Problem-solving, Innovation, Strategic Thinking
+
+\end{document}
