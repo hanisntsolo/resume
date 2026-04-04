@@ -247,6 +247,7 @@ body {
   margin-bottom: 40px;
   animation: fadeInUp 0.9s ease-out;
   animation-delay: 0.1s;
+  max-width: 100%;
 }
 
 .pdf-container {
@@ -257,6 +258,8 @@ body {
   box-shadow: 0 12px 48px rgba(96, 165, 250, 0.2);
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100%;
 }
 
 .pdf-viewer {
@@ -389,11 +392,14 @@ body {
 @media (max-width: 480px) {
   .home-page {
     padding: 12px;
+    width: 100%;
   }
 
   .professional-experience-section,
   .resume-pdf-section {
     margin-bottom: 20px;
+    width: 100%;
+    padding: 0;
   }
 
   .experience-header h2 {
@@ -405,7 +411,7 @@ body {
   }
 
   .pdf-viewer {
-    height: 200px;
+    height: 340px;
   }
 
   .card {
