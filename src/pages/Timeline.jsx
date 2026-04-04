@@ -9,7 +9,7 @@ export default function Timeline() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/timeline-data.json')
+    fetch('../timeline-data.json')
       .then(res => res.json())
       .then(data => {
         const sorted = data.events.sort((a, b) => {
