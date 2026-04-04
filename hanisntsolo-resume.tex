@@ -38,6 +38,16 @@
 \usepackage{fancyhdr}
 \usepackage{svg}
 \usepackage{fontawesome5}
+% Experience Calculation . . . . . . .  
+\usepackage{xfp} % for floating point calculations
+
+\newcommand{\startexpyear}{2020}
+\newcommand{\startexpmonth}{9}
+\newcommand{\totalexperience}{
+  \fpeval{
+    round((\year - \startexpyear) + (\month - \startexpmonth)/12, 1)
+  }
+}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -172,6 +182,8 @@ Information Retrieval
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Work Experience}
+\vspace{-15pt}
+\noindent\hfill \textbf{Total Experience: \totalexperience\ years} \\
 \runsubsection{Citi}
 \descript{| Full Stack Java Developer (Assistant Manager)}
 \location{July 2022 – Present | Pune, Maharashtra, India}
