@@ -62,6 +62,11 @@ export default function Home() {
     return `${filename}#view=FitH`
   }
 
+  const getPdfUrlForDownload = () => {
+    // Return URL without anchor for proper download functionality
+    return selectedDocument === 'resume' ? 'hanisntsolo-resume.pdf' : 'hanisntsolo-cover-letter.pdf'
+  }
+
   const formatDate = (dateStr) => {
     try {
       return format(parseISO(dateStr), 'MMM yyyy')
@@ -257,7 +262,7 @@ export default function Home() {
           <div className="pdf-actions">
             <a
               className="btn primary"
-              href={getPdfUrl()}
+              href={getPdfUrlForDownload()}
               id="downloadResume"
               download
               onClick={handleDownload}
