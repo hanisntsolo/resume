@@ -1,0 +1,263 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import {
+  latestJobs,
+  timelineEvents,
+  formatDateRange,
+  calculateDuration,
+  calculateTotalExperience,
+  isCurrentEvent
+} from '../lib/timeline'
+
+const totalExperience = calculateTotalExperience(timelineEvents)
+const currentRole = latestJobs.find((job) => isCurrentEvent(job)) || latestJobs[0]
+const pageTitle = 'Dhirendra Pratap Singh | Full Stack Java Developer Resume and Timeline'
+const pageDescription = 'Astro portfolio-resume site for Dhirendra Pratap Singh, featuring cloud-native engineering highlights, timeline, and downloadable resume assets.'
+const pageKeywords = 'Dhirendra Pratap Singh, Full Stack Java Developer, cloud-native engineering, distributed systems, resume, experience timeline'
+
+const profileSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://resume.hanisntsolo.com/#person',
+      name: 'Dhirendra Pratap Singh',
+      jobTitle: 'Full Stack Java Developer',
+      url: 'https://resume.hanisntsolo.com/',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Citi'
+      },
+      sameAs: [
+        'https://hanisntsolo.com',
+        'https://github.com/hanisntsolo',
+        'https://www.linkedin.com/in/hanisntsolo'
+      ]
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': 'https://resume.hanisntsolo.com/#profile',
+      name: 'Dhirendra Pratap Singh Resume',
+      url: 'https://resume.hanisntsolo.com/',
+      mainEntity: {
+        '@id': 'https://resume.hanisntsolo.com/#person'
+      }
+    }
+  ]
+}
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  canonicalPath={Astro.url.pathname}
+  ogType="profile"
+  schema={profileSchema}
+>
+  <main class="shell home-shell">
+    <section class="hero-card glass reveal">
+      <p class="eyebrow">Focused on distributed systems and product velocity</p>
+      <h1>Dhirendra Pratap Singh</h1>
+      <p class="lead">
+        Full Stack Java Developer building resilient fintech platforms, cloud-native services,
+        and delivery pipelines that scale under production pressure.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="timeline/">Explore full timeline</a>
+        <a class="btn btn-soft" href="hanisntsolo-resume.pdf" data-track-resume-download download>
+          Download resume
+        </a>
+        <a class="btn btn-soft" href="hanisntsolo-resume.pdf#view=FitH" target="_blank" rel="noopener noreferrer">
+          Open resume
+        </a>
+      </div>
+
+      <ul class="social-strip" aria-label="Professional profiles">
+        <li><a href="https://hanisntsolo.com" target="_blank" rel="noopener noreferrer">Portfolio</a></li>
+        <li><a href="https://github.com/hanisntsolo" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/hanisntsolo" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="mailto:ds.pratap1997@gmail.com">Email</a></li>
+      </ul>
+    </section>
+
+    <section class="stats-grid reveal delay-1" aria-label="Profile metrics">
+      <article class="metric-card">
+        <p class="metric-label">Total Experience</p>
+        <p class="metric-value">{totalExperience}</p>
+        <p class="metric-note">Across engineering, platform, and product delivery</p>
+      </article>
+      <article class="metric-card">
+        <p class="metric-label">Current Focus</p>
+        <p class="metric-value">{currentRole?.company || 'Engineering Leadership'}</p>
+        <p class="metric-note">{currentRole?.title || 'Full stack and cloud-native delivery'}</p>
+      </article>
+      <article class="metric-card">
+        <p class="metric-label">Resume Downloads</p>
+        <p class="metric-value" id="downloadCount">Loading...</p>
+        <p class="metric-note">Tracked via GoatCounter events</p>
+      </article>
+    </section>
+
+    <section class="experience-panel glass reveal delay-2" aria-label="Recent professional experience">
+      <header class="section-header">
+        <h2>Professional highlights</h2>
+        <p>Recent roles and impact snapshots</p>
+      </header>
+
+      <div class="experience-grid">
+        {latestJobs.map((job, index) => (
+          <article class="experience-item" style={`--delay:${120 + (index * 80)}ms`}>
+            <h3>{job.title}</h3>
+            <div class="company-row">
+              <strong>{job.company}</strong>
+              {isCurrentEvent(job) && <span class="current-pill">Current</span>}
+            </div>
+            <p class="meta">
+              {formatDateRange(job)}
+              {' '}
+              ({calculateDuration(job.date, job.endDate)})
+            </p>
+            <p class="summary">{job.description}</p>
+            <div class="stack">
+              {(job.technologies || []).slice(0, 6).map((tech) => (
+                <span>{tech}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="document-studio glass reveal delay-3" aria-label="Document preview studio">
+      <header class="section-header">
+        <h2>Document studio</h2>
+        <p>Preview and share resume assets directly</p>
+      </header>
+
+      <div class="doc-controls">
+        <div class="doc-switch" role="tablist" aria-label="Switch document preview">
+          <button type="button" class="active" data-doc="resume" aria-selected="true">Resume</button>
+          <button type="button" data-doc="cover-letter" aria-selected="false">Cover Letter</button>
+        </div>
+
+        <div class="doc-actions">
+          <a id="docDownloadButton" class="btn btn-primary" href="hanisntsolo-resume.pdf" data-track-resume-download download>
+            Download current PDF
+          </a>
+          <a id="docOpenButton" class="btn btn-soft" href="hanisntsolo-resume.pdf#view=FitH" target="_blank" rel="noopener noreferrer">
+            Open full screen
+          </a>
+        </div>
+      </div>
+
+      <div class="doc-frame-wrap">
+        <iframe
+          id="documentFrame"
+          src="hanisntsolo-resume.pdf#view=FitH"
+          title="Resume and cover letter preview"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </section>
+  </main>
+
+  <script is:inline>
+    (() => {
+      const DOWNLOAD_EVENT_PATH = '/resume-download'
+      const countNode = document.getElementById('downloadCount')
+      const frame = document.getElementById('documentFrame')
+      const openButton = document.getElementById('docOpenButton')
+      const downloadButton = document.getElementById('docDownloadButton')
+      const switchButtons = Array.from(document.querySelectorAll('[data-doc]'))
+
+      const docs = {
+        resume: 'hanisntsolo-resume.pdf',
+        'cover-letter': 'hanisntsolo-cover-letter.pdf'
+      }
+
+      const alternateDocs = {
+        resume: ['hanisntsolo-resume.pdf'],
+        'cover-letter': ['hanisntsolo-cover-letter.pdf', 'hanisntsolo-cover-letter.pdf.1']
+      }
+
+      const checkAsset = async (path) => {
+        try {
+          const response = await fetch(path, { method: 'HEAD' })
+          return response.ok
+        } catch {
+          return false
+        }
+      }
+
+      const resolvePath = async (key) => {
+        const candidates = alternateDocs[key] || [docs[key]]
+        for (const candidate of candidates) {
+          if (await checkAsset(candidate)) {
+            return candidate
+          }
+        }
+
+        return docs[key]
+      }
+
+      const trackResumeDownload = () => {
+        if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+          window.goatcounter.count({
+            path: DOWNLOAD_EVENT_PATH,
+            title: 'resume-download',
+            event: true
+          })
+        }
+      }
+
+      const updateDocument = async (key) => {
+        const path = await resolvePath(key)
+        frame.src = `${path}#view=FitH`
+        openButton.href = `${path}#view=FitH`
+        downloadButton.href = path
+      }
+
+      const setActiveButton = (activeKey) => {
+        switchButtons.forEach((button) => {
+          const isActive = button.dataset.doc === activeKey
+          button.classList.toggle('active', isActive)
+          button.setAttribute('aria-selected', isActive ? 'true' : 'false')
+        })
+      }
+
+      switchButtons.forEach((button) => {
+        button.addEventListener('click', async () => {
+          const docKey = button.dataset.doc
+          setActiveButton(docKey)
+          await updateDocument(docKey)
+        })
+      })
+
+      document.querySelectorAll('[data-track-resume-download]').forEach((link) => {
+        link.addEventListener('click', trackResumeDownload)
+      })
+
+      const loadDownloadCount = async () => {
+        const endpoint = 'https://hanisntsolo.goatcounter.com/counter/' + encodeURIComponent(DOWNLOAD_EVENT_PATH) + '.json'
+
+        try {
+          const response = await fetch(endpoint, { mode: 'cors' })
+          if (!response.ok) {
+            throw new Error('Counter endpoint unavailable')
+          }
+
+          const payload = await response.json()
+          const count = typeof payload.count === 'number' ? payload.count : null
+          countNode.textContent = count === null ? 'n/a' : count.toLocaleString()
+        } catch {
+          countNode.textContent = 'Available in GoatCounter dashboard'
+        }
+      }
+
+      void updateDocument('resume')
+      void loadDownloadCount()
+    })()
+  </script>
+</BaseLayout>

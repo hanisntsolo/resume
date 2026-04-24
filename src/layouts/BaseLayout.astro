@@ -1,0 +1,56 @@
+---
+import '../styles/site.css'
+
+const {
+  title,
+  description,
+  keywords,
+  canonicalPath = Astro.url.pathname,
+  ogType = 'website',
+  schema = null,
+  bodyClass = ''
+} = Astro.props
+
+const siteUrl = (Astro.site?.toString() || 'https://resume.hanisntsolo.com').replace(/\/$/, '')
+const canonical = new URL(canonicalPath.replace(/^\//, ''), `${siteUrl}/`).toString()
+const siteName = 'Dhirendra Pratap Singh Resume'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="author" content="Dhirendra Pratap Singh" />
+    <meta name="theme-color" content="#0f1828" />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+
+    {schema && (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+    )}
+
+    <script data-goatcounter="https://hanisntsolo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </head>
+  <body class={bodyClass}>
+    <slot />
+  </body>
+</html>
