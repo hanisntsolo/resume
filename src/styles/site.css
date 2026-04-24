@@ -39,6 +39,14 @@ body {
     linear-gradient(165deg, #070d19 0%, #0a1424 45%, #0c1729 100%);
   line-height: 1.5;
   overflow-x: hidden;
+  background-size: 400% 400%;
+  animation: bg-flow 18s ease infinite;
+}
+
+@keyframes bg-flow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 body::before {
@@ -54,6 +62,42 @@ body::before {
   z-index: -1;
 }
 
+@keyframes glow-pulse {
+  0%, 100% {
+    filter: blur(0px) brightness(1);
+  }
+  50% {
+    filter: blur(6px) brightness(1.15);
+  }
+}
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+background:
+  radial-gradient(500px at 10% 20%, rgba(61,224,200,0.14), transparent 70%),
+  radial-gradient(650px at 80% 10%, rgba(92,200,255,0.14), transparent 75%),
+  radial-gradient(800px at 30% 90%, rgba(255,189,89,0.12), transparent 70%);
+
+  animation:
+    float-orbs 25s linear infinite,
+    glow-pulse 8s ease-in-out infinite;
+}
+
+@keyframes float-orbs {
+  0% {
+    background-position: 10% 20%, 80% 10%, 30% 90%;
+  }
+  50% {
+    background-position: 15% 25%, 75% 15%, 35% 85%;
+  }
+  100% {
+    background-position: 10% 20%, 80% 10%, 30% 90%;
+  }
+}
 h1,
 h2,
 h3,
