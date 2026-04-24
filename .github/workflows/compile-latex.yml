@@ -43,7 +43,11 @@ jobs:
         run: npm run build
 
       - name: Copy site build to output
-        run: cp -r dist/* output/
+        run: |
+          find dist -mindepth 1 -maxdepth 1 \
+            ! -name 'hanisntsolo-resume.pdf' \
+            ! -name 'hanisntsolo-cover-letter.pdf' \
+            -exec cp -r {} output/ \;
 
       - name: Add CNAME file for Custom Domain
         run: echo "hanisntsolo.hanisntsolo.com" > output/CNAME
