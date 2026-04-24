@@ -1,5 +1,7 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import { execFile } from 'node:child_process'
+import { promisify } from 'node:util'
 
 const DIST_DIR = path.resolve(process.cwd(), 'dist')
 const deployEnv = process.env.VITE_DEPLOY_ENV
@@ -9,6 +11,7 @@ const basePath = normalizeBasePath(process.env.VITE_BASE_PATH || defaultBasePath
 const siteBaseUrl = new URL(basePath, `${siteOrigin}/`).toString().replace(/\/+$/, '')
 const buildTimestamp = new Date().toISOString()
 const personName = 'Dhirendra Pratap Singh'
+const execFileAsync = promisify(execFile)
 
 function normalizeBasePath(rawValue) {
   if (!rawValue || rawValue === '/') {
@@ -45,6 +48,51 @@ async function firstExistingRelativePath(candidates) {
   return null
 }
 
+async function getGitLastModifiedIso(workspaceRelativePath) {
+  try {
+    const { stdout } = await execFileAsync('git', ['log', '-1', '--format=%cI', '--', workspaceRelativePath], {
+      cwd: process.cwd()
+    })
+
+    const value = stdout.trim()
+    if (!value) {
+      return null
+    }
+
+    const parsed = Date.parse(value)
+    if (Number.isNaN(parsed)) {
+      return null
+    }
+
+    return new Date(parsed).toISOString()
+  } catch {
+    return null
+  }
+}
+
+async function resolveLastModifiedFromSources(sourcePaths) {
+  const resolvedSources = Array.isArray(sourcePaths) ? sourcePaths : []
+  let newestTimestamp = Number.NEGATIVE_INFINITY
+
+  for (const sourcePath of resolvedSources) {
+    const iso = await getGitLastModifiedIso(sourcePath)
+    if (!iso) {
+      continue
+    }
+
+    const timestamp = Date.parse(iso)
+    if (!Number.isNaN(timestamp) && timestamp > newestTimestamp) {
+      newestTimestamp = timestamp
+    }
+  }
+
+  if (newestTimestamp === Number.NEGATIVE_INFINITY) {
+    return buildTimestamp
+  }
+
+  return new Date(newestTimestamp).toISOString()
+}
+
 async function ensureCanonicalCoverLetterPdf() {
   const canonicalPath = path.join(DIST_DIR, 'hanisntsolo-cover-letter.pdf')
   const legacyPath = path.join(DIST_DIR, 'hanisntsolo-cover-letter.pdf.1')
@@ -60,38 +108,79 @@ async function ensureCanonicalCoverLetterPdf() {
 
 async function generateSitemap() {
   const urls = [
-    { path: '', changefreq: 'weekly', priority: '1.0' },
-    { path: 'timeline/', changefreq: 'weekly', priority: '0.9' },
-    { path: 'timeline-data.json', changefreq: 'monthly', priority: '0.4' }
+    {
+      path: '',
+      changefreq: 'weekly',
+      priority: '1.0',
+      sources: [
+        'src/pages/index.astro',
+        'src/layouts/BaseLayout.astro',
+        'src/styles/site.css',
+        'src/lib/timeline.js',
+        'timeline-data.json'
+      ]
+    },
+    {
+      path: 'timeline/',
+      changefreq: 'weekly',
+      priority: '0.9',
+      sources: [
+        'src/pages/timeline/index.astro',
+        'src/layouts/BaseLayout.astro',
+        'src/styles/site.css',
+        'src/lib/timeline.js',
+        'timeline-data.json'
+      ]
+    },
+    {
+      path: 'timeline-data.json',
+      changefreq: 'monthly',
+      priority: '0.4',
+      sources: ['timeline-data.json', 'public/timeline-data.json']
+    }
   ]
 
   if (await fileExists(path.join(DIST_DIR, 'hanisntsolo-resume.pdf'))) {
-    urls.push({ path: 'hanisntsolo-resume.pdf', changefreq: 'monthly', priority: '0.8' })
+    urls.push({
+      path: 'hanisntsolo-resume.pdf',
+      changefreq: 'monthly',
+      priority: '0.8',
+      sources: ['public/hanisntsolo-resume.pdf', 'hanisntsolo-resume.tex', 'hanisntsolo-resume-ats.tex']
+    })
   }
 
   const coverLetterPath = await firstExistingRelativePath(['hanisntsolo-cover-letter.pdf'])
 
   if (coverLetterPath) {
-    urls.push({ path: coverLetterPath, changefreq: 'monthly', priority: '0.6' })
+    urls.push({
+      path: coverLetterPath,
+      changefreq: 'monthly',
+      priority: '0.6',
+      sources: ['public/hanisntsolo-cover-letter.pdf', 'public/hanisntsolo-cover-letter.pdf.1', 'hanisntsolo-cover-letter.tex']
+    })
   }
 
-  const urlEntries = urls
-    .map(({ path: routePath, changefreq, priority }) => {
-      return [
+  const urlEntries = []
+  for (const { path: routePath, changefreq, priority, sources } of urls) {
+    const lastmod = await resolveLastModifiedFromSources(sources)
+    urlEntries.push(
+      [
         '  <url>',
         `    <loc>${buildUrl(routePath)}</loc>`,
-        `    <lastmod>${buildTimestamp}</lastmod>`,
+        `    <lastmod>${lastmod}</lastmod>`,
         `    <changefreq>${changefreq}</changefreq>`,
         `    <priority>${priority}</priority>`,
         '  </url>'
       ].join('\n')
-    })
-    .join('\n')
+    )
+  }
+
+  const sitemapEntries = urlEntries.join('\n')
 
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    urlEntries,
+    sitemapEntries,
     '</urlset>'
   ].join('\n')
 

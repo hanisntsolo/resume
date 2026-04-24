@@ -15,7 +15,9 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -36,10 +38,10 @@ jobs:
       - name: Install Node dependencies
         run: npm install
 
-      - name: Build React Timeline (Preview)
+      - name: Build Astro site (Preview)
         run: npm run build:preview
 
-      - name: Copy React app build to output
+      - name: Copy site build to output
         run: cp -r dist/* output/
 
       - name: Add CNAME file for Custom Domain
