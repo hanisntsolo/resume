@@ -1,27 +1,21 @@
 {
   "name": "resume-timeline",
   "version": "1.0.0",
-  "description": "Interactive timeline of work experience, projects, and milestones",
+  "description": "Astro-powered resume and interactive experience timeline",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "dev:host": "vite --host",
-    "dev:preview": "VITE_BASE_PATH=/dev/ vite --host",
-    "build": "npm run build:prod",
-    "build:prod": "VITE_DEPLOY_ENV=production vite build && npm run build:post",
-    "build:preview": "VITE_DEPLOY_ENV=preview vite build && npm run build:post",
-    "build:post": "mv dist/public/index.html dist/index.html 2>/dev/null || true && rmdir dist/public 2>/dev/null || true",
-    "preview": "vite preview",
+    "dev": "astro dev",
+    "dev:host": "astro dev --host",
+    "dev:preview": "VITE_DEPLOY_ENV=preview astro dev --host",
+    "build": "VITE_DEPLOY_ENV=production astro build && npm run build:post",
+    "build:preview": "VITE_DEPLOY_ENV=preview astro build && npm run build:post",
+    "build:post": "npm run seo:generate",
+    "seo:generate": "node scripts/generate-seo-files.mjs",
+    "preview": "astro preview",
     "clean": "rm -rf dist node_modules"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.0",
-    "date-fns": "^2.30.0"
+    "astro": "^4.16.18"
   },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.2.1",
-    "vite": "^5.0.8"
-  }
+  "devDependencies": {}
 }

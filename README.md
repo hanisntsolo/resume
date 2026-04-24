@@ -1,70 +1,61 @@
-# Resume (LaTeX + GitHub Pages)
+# Resume Timeline (Astro)
 
-Personal resume source built with XeLaTeX and published to GitHub Pages.
+This repository now runs as an Astro static site for resume presentation, timeline browsing, SEO indexing, and AI crawler discoverability.
 
-## Repository Structure
+## What Is Included
 
-- `hanisntsolo-resume.tex` — main resume source.
-- `hanisntsolo-resume.cls` — custom style class.
-- `index.html` — landing page with resume download and analytics hooks.
-- `output/` — generated artifacts (PDF output target).
-- `assets/` — logo/assets used in resume.
+- Astro pages for the home/resume view and timeline view.
+- Built-in route metadata for SEO and social cards.
+- Post-build SEO generation for:
+  - sitemap.xml
+  - robots.txt
+  - llms.txt
+- GoatCounter tracking for resume download events.
 
-## Local Build
-
-### Option 1: latexmk (recommended)
-
-```bash
-latexmk -xelatex -output-directory=output hanisntsolo-resume.tex
-```
-
-### Option 2: xelatex directly
+## Development
 
 ```bash
-xelatex -output-directory=output hanisntsolo-resume.tex
+npm install
+npm run dev
 ```
 
-Generated PDF:
+Hosted dev server:
 
-- `output/hanisntsolo-resume.pdf`
+```bash
+npm run dev:host
+```
 
-## Deploy to GitHub Pages
+## Build Commands
 
-In your workflow, compile the `.tex` file and publish `output/`.
+Production build:
 
-Example key settings:
+```bash
+npm run build
+```
 
-- `root_file: hanisntsolo-resume.tex`
-- `compiler: xelatex`
-- `args: -output-directory=output`
-- copy `index.html` into `output/`
+Preview path build (`/dev` base path):
 
-## Analytics for Resume Downloads
+```bash
+npm run build:preview
+```
 
-You asked a great question: **yes, analytics needs a central counter/data sink**.
+## Static Assets
 
-You have 3 practical options:
+Important public assets are in `public/`:
 
-1. **Hosted analytics (fastest): GoatCounter (already wired)**
-   - `index.html` now includes your GoatCounter script snippet.
-   - Download button logs a dedicated event path: `/resume-download`.
-   - The landing page also attempts to fetch and show total download clicks from GoatCounter's counter endpoint.
+- `hanisntsolo-resume.pdf`
+- `hanisntsolo-cover-letter.pdf.1` (copied to canonical PDF name during post-build)
+- `timeline-data.json`
 
-2. **Custom endpoint (most control)**
-   - If you want full ownership, replace the `loadDownloadCount()` fetch URL and event writer with your own API endpoint.
-   - Store counts in Redis/PostgreSQL (or serverless DB) and expose your own dashboard.
+## SEO + AI Discoverability
 
-3. **Cloudflare Analytics / edge logs (low effort, coarse-grained)**
-   - Useful for total traffic trends.
-   - Not as explicit as click-level events unless custom event collection is added.
+The post-build script `scripts/generate-seo-files.mjs` ensures:
 
-### Recommended setup for your use case
+- Canonical cover-letter filename in dist output.
+- Sitemap generation with key pages and documents.
+- Robots policy that explicitly allows major search and AI crawlers.
+- `llms.txt` with canonical profile summary and links.
 
-- GoatCounter is now the default tracking implementation in this repo.
-- If public counter endpoint is restricted, you will still see exact numbers in GoatCounter dashboard.
-- For guaranteed public count display on the page, either enable GoatCounter public counter endpoint or add a tiny proxy endpoint.
+## Resume Source (LaTeX)
 
-## Notes
-
-- Resume content is tuned for one-page density; avoid adding long paragraphs.
-- Prefer impact-oriented bullets (action + tech + measurable outcome).
+LaTeX resume files are still available in this repository (`*.tex`, `*.cls`, `publications.bib`) and can be built separately when needed.

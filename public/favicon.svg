@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="DS logo">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2dc4ff"/>
+      <stop offset="100%" stop-color="#2fd3b0"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="#07101d"/>
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="url(#bg)" opacity="0.2"/>
+  <circle cx="64" cy="64" r="48" fill="#0c1829" stroke="url(#bg)" stroke-width="6"/>
+  <text x="64" y="77" text-anchor="middle" fill="#dff8ff" font-size="44" font-family="Sora, Manrope, Segoe UI, sans-serif" font-weight="700">DS</text>
+</svg>

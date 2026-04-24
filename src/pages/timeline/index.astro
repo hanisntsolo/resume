@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { timelineEvents, formatDateRange } from '../../lib/timeline'
+
+const pageTitle = 'Experience Timeline | Dhirendra Pratap Singh'
+const pageDescription = 'Interactive timeline of roles, projects, and engineering milestones across fintech, cloud-native architecture, and distributed systems.'
+const pageKeywords = 'experience timeline, engineering milestones, Dhirendra Pratap Singh, Java developer projects, cloud-native resume'
+const pageSocialImage = 'https://github.com/hanisntsolo.png?size=1200'
+
+const timelineSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': 'https://resume.hanisntsolo.com/timeline/#page',
+      url: 'https://resume.hanisntsolo.com/timeline/',
+      name: 'Experience Timeline | Dhirendra Pratap Singh',
+      description: pageDescription,
+      inLanguage: 'en-US',
+      isPartOf: {
+        '@id': 'https://resume.hanisntsolo.com/#website'
+      },
+      about: {
+        '@id': 'https://resume.hanisntsolo.com/#person'
+      }
+    },
+    {
+      '@type': 'Dataset',
+      '@id': 'https://resume.hanisntsolo.com/timeline-data.json#dataset',
+      name: 'Dhirendra Pratap Singh professional timeline data',
+      description: 'Structured source data for the timeline page.',
+      url: 'https://resume.hanisntsolo.com/timeline-data.json',
+      creator: {
+        '@id': 'https://resume.hanisntsolo.com/#person'
+      }
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://resume.hanisntsolo.com/timeline/#breadcrumb',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Resume',
+          item: 'https://resume.hanisntsolo.com/'
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Timeline',
+          item: 'https://resume.hanisntsolo.com/timeline/'
+        }
+      ]
+    }
+  ]
+}
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  canonicalPath={Astro.url.pathname}
+  ogType="website"
+  ogImage={pageSocialImage}
+  ogImageAlt="Experience timeline for Dhirendra Pratap Singh"
+  schema={timelineSchema}
+  bodyClass="timeline-page"
+>
+  <main class="shell timeline-shell">
+    <div class="timeline-topbar reveal">
+      <a class="back-link" href="../">Back to resume</a>
+      <p class="filter-note">Data-rich view for recruiters and search crawlers</p>
+    </div>
+
+    <section class="timeline-hero glass reveal delay-1">
+      <p class="eyebrow">Career chronology</p>
+      <h1>Experience timeline</h1>
+      <p>
+        Explore projects, work history, and milestones in one stream. Filter by category to focus on
+        the story that matters most to your search.
+      </p>
+    </section>
+
+    <section class="timeline-toolbar reveal delay-2" aria-label="Timeline filters">
+      <div class="filter-set">
+        <button type="button" class="filter-btn active" data-filter-id="job">Work</button>
+        <button type="button" class="filter-btn active" data-filter-id="project">Projects</button>
+        <button type="button" class="filter-btn active" data-filter-id="milestone">Milestones</button>
+      </div>
+      <div class="filter-note"><span id="timelineCount">{timelineEvents.length} entries</span> visible</div>
+    </section>
+
+    <section class="timeline-stream" id="timelineStream" aria-live="polite">
+      {timelineEvents.map((event, index) => (
+        <article
+          class="timeline-item"
+          data-event-item
+          data-type={event.type}
+          data-tags={(event.tags || []).join(',')}
+          style={`--delay:${120 + (index * 70)}ms`}
+        >
+          <span class="timeline-dot" aria-hidden="true"></span>
+
+          <div class="timeline-card">
+            <p class="date-line">{formatDateRange(event)}</p>
+            <h2>{event.title}</h2>
+            {event.company && <p class="company">{event.company}</p>}
+            <p class="description">{event.description}</p>
+
+            <div class="tech-row" aria-label="Technologies">
+              {(event.technologies || []).map((tech) => (
+                <span class="tag-chip">{tech}</span>
+              ))}
+            </div>
+
+            <details class="timeline-details">
+              <summary>View more details</summary>
+              <div class="details-grid">
+                <p><strong>Category:</strong> {event.type}</p>
+                <p><strong>Tags:</strong> {(event.tags || []).join(', ')}</p>
+                {event.url && (
+                  <p>
+                    <strong>Reference:</strong>{' '}
+                    <a href={event.url} target="_blank" rel="noopener noreferrer">{event.url}</a>
+                  </p>
+                )}
+              </div>
+            </details>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <p class="empty-state" id="timelineEmptyState" hidden>
+      No entries match the selected filters. Try enabling more categories.
+    </p>
+
+    <p class="footer-note">Timeline last updated: April 2026</p>
+  </main>
+
+  <script is:inline>
+    (() => {
+      const buttons = Array.from(document.querySelectorAll('[data-filter-id]'))
+      const cards = Array.from(document.querySelectorAll('[data-event-item]'))
+      const emptyState = document.getElementById('timelineEmptyState')
+      const countNode = document.getElementById('timelineCount')
+
+      const allFilters = ['job', 'project', 'milestone']
+      const activeFilters = new Set(allFilters)
+
+      const syncButtons = () => {
+        buttons.forEach((button) => {
+          const id = button.dataset.filterId
+          button.classList.toggle('active', activeFilters.has(id))
+          button.setAttribute('aria-pressed', activeFilters.has(id) ? 'true' : 'false')
+        })
+      }
+
+      const applyFilters = () => {
+        let visibleCount = 0
+
+        cards.forEach((card) => {
+          const type = card.dataset.type || ''
+          const tags = (card.dataset.tags || '').split(',').map((value) => value.trim()).filter(Boolean)
+          const matches = activeFilters.has(type) || tags.some((tag) => activeFilters.has(tag))
+
+          card.hidden = !matches
+          if (matches) {
+            visibleCount += 1
+          }
+        })
+
+        emptyState.hidden = visibleCount > 0
+        countNode.textContent = `${visibleCount} ${visibleCount === 1 ? 'entry' : 'entries'}`
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const filterId = button.dataset.filterId
+
+          if (activeFilters.has(filterId)) {
+            activeFilters.delete(filterId)
+          } else {
+            activeFilters.add(filterId)
+          }
+
+          if (activeFilters.size === 0) {
+            allFilters.forEach((id) => activeFilters.add(id))
+          }
+
+          syncButtons()
+          applyFilters()
+        })
+      })
+
+      syncButtons()
+      applyFilters()
+    })()
+  </script>
+</BaseLayout>

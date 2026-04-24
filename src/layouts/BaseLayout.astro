@@ -1,0 +1,135 @@
+---
+import '../styles/site.css'
+
+const {
+  title,
+  description,
+  keywords,
+  canonicalPath = Astro.url.pathname,
+  ogType = 'website',
+  ogImage = 'https://github.com/hanisntsolo.png?size=1200',
+  ogImageAlt = 'Dhirendra Pratap Singh profile image',
+  schema = null,
+  bodyClass = ''
+} = Astro.props
+
+const siteUrl = (Astro.site?.toString() || 'https://resume.hanisntsolo.com').replace(/\/$/, '')
+const canonical = new URL(canonicalPath.replace(/^\//, ''), `${siteUrl}/`).toString()
+const baseUrl = import.meta.env.BASE_URL || '/'
+const withBase = (assetPath) => `${baseUrl.replace(/\/?$/, '/')}${assetPath.replace(/^\/+/, '')}`
+const siteName = 'Dhirendra Pratap Singh Resume'
+const isPreviewDeploy = import.meta.env.VITE_DEPLOY_ENV === 'preview'
+const robotsContent = isPreviewDeploy
+  ? 'noindex,nofollow,noarchive,max-image-preview:none,max-snippet:0,max-video-preview:0'
+  : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'
+const websiteId = `${siteUrl}/#website`
+const personId = `${siteUrl}/#person`
+const baseSchemaGraph = [
+  {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    url: `${siteUrl}/`,
+    name: siteName,
+    inLanguage: 'en-US'
+  },
+  {
+    '@type': 'Person',
+    '@id': personId,
+    name: 'Dhirendra Pratap Singh',
+    url: `${siteUrl}/`,
+    image: 'https://github.com/hanisntsolo.png?size=800',
+    jobTitle: 'Full Stack Java Developer',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Citi'
+    },
+    sameAs: [
+      'https://hanisntsolo.com',
+      'https://github.com/hanisntsolo',
+      'https://www.linkedin.com/in/hanisntsolo'
+    ]
+  }
+]
+
+const pageSchemaGraph = (() => {
+  if (!schema) return []
+  if (Array.isArray(schema)) return schema
+  if (schema['@graph'] && Array.isArray(schema['@graph'])) return schema['@graph']
+  return [schema]
+})()
+
+const schemaGraph = [...baseSchemaGraph, ...pageSchemaGraph].filter((item, index, list) => {
+  const currentId = item?.['@id']
+  if (!currentId) return true
+  return list.findIndex((node) => node?.['@id'] === currentId) === index
+})
+
+const mergedSchema = {
+  '@context': 'https://schema.org',
+  '@graph': schemaGraph
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robotsContent} />
+    <meta name="googlebot" content={robotsContent} />
+    <meta name="bingbot" content={robotsContent} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no,address=no,email=no" />
+    <meta name="author" content="Dhirendra Pratap Singh" />
+    <meta name="creator" content="Dhirendra Pratap Singh" />
+    <meta name="publisher" content={siteName} />
+    <meta name="theme-color" content="#0f1828" />
+    <meta name="application-name" content={siteName} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hrefLang="en" href={canonical} />
+    <link rel="alternate" hrefLang="x-default" href={canonical} />
+    <link rel="sitemap" type="application/xml" href={withBase('sitemap.xml')} />
+
+    <link rel="icon" href={withBase('favicon.svg')} type="image/svg+xml" />
+    <link rel="manifest" href={withBase('site.webmanifest')} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+
+    <meta name="twitter:site" content="@hanisntsolo" />
+    <meta name="twitter:creator" content="@hanisntsolo" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+
+    <link rel="me" href="https://github.com/hanisntsolo" />
+    <link rel="me" href="https://www.linkedin.com/in/hanisntsolo" />
+    <link rel="me" href="mailto:ds.pratap1997@gmail.com" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(mergedSchema)}></script>
+
+    <script data-goatcounter="https://hanisntsolo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </head>
+  <body class={bodyClass}>
+    <slot />
+  </body>
+</html>
