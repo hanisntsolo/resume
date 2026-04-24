@@ -172,6 +172,39 @@ iframe {
   line-height: 1.08;
 }
 
+.name-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.profile-avatar-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  outline-offset: 3px;
+}
+
+.profile-avatar {
+  width: clamp(46px, 5vw, 60px);
+  height: clamp(46px, 5vw, 60px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(92, 200, 255, 0.72);
+  box-shadow:
+    0 0 0 3px rgba(61, 224, 200, 0.2),
+    0 10px 24px rgba(5, 14, 25, 0.35);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.profile-avatar-link:hover .profile-avatar {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow:
+    0 0 0 3px rgba(61, 224, 200, 0.35),
+    0 14px 28px rgba(5, 14, 25, 0.45);
+}
+
 .hero-card .lead {
   margin: 0;
   max-width: 70ch;
@@ -702,6 +735,15 @@ iframe {
 @media (max-width: 520px) {
   .hero-card h1 {
     font-size: 1.85rem;
+  }
+
+  .name-heading {
+    gap: 0.55rem;
+  }
+
+  .profile-avatar {
+    width: 44px;
+    height: 44px;
   }
 
   .cta-row {
