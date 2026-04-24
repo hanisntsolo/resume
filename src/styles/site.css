@@ -175,7 +175,7 @@ iframe {
 .name-heading {
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 1rem;
 }
 
 .profile-avatar-link {
@@ -196,6 +196,8 @@ iframe {
     0 0 0 3px rgba(61, 224, 200, 0.2),
     0 10px 24px rgba(5, 14, 25, 0.35);
   transition: transform 0.22s ease, box-shadow 0.22s ease;
+  /* aspect-ratio: 1 / 1; */
+  flex-shrink: 0;
 }
 
 .profile-avatar-link:hover .profile-avatar {
