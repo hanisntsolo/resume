@@ -390,13 +390,13 @@ iframe {
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid var(--line);
-  min-height: 730px;
+  min-height: 1450px;
   background: #0c1525;
 }
 
 .doc-frame-wrap iframe {
   width: 100%;
-  min-height: 730px;
+  min-height: 1450px;
   border: none;
 }
 
@@ -649,7 +649,7 @@ iframe {
 
   .doc-frame-wrap,
   .doc-frame-wrap iframe {
-    min-height: 620px;
+    min-height: 1180px;
   }
 }
 
@@ -677,7 +677,7 @@ iframe {
 
   .doc-frame-wrap,
   .doc-frame-wrap iframe {
-    min-height: 520px;
+    min-height: 920px;
   }
 
   .timeline-topbar,
@@ -730,5 +730,10 @@ iframe {
     flex: 1;
     justify-content: center;
     text-align: center;
+  }
+
+  .doc-frame-wrap,
+  .doc-frame-wrap iframe {
+    min-height: 760px;
   }
 }
