@@ -14,31 +14,23 @@ const currentRole = latestJobs.find((job) => isCurrentEvent(job)) || latestJobs[
 const pageTitle = 'Dhirendra Pratap Singh | Full Stack Java Developer Resume and Timeline'
 const pageDescription = 'Astro portfolio-resume site for Dhirendra Pratap Singh, featuring cloud-native engineering highlights, timeline, and downloadable resume assets.'
 const pageKeywords = 'Dhirendra Pratap Singh, Full Stack Java Developer, cloud-native engineering, distributed systems, resume, experience timeline'
+const pageSocialImage = 'https://github.com/hanisntsolo.png?size=1200'
 
 const profileSchema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Person',
-      '@id': 'https://resume.hanisntsolo.com/#person',
-      name: 'Dhirendra Pratap Singh',
-      jobTitle: 'Full Stack Java Developer',
-      url: 'https://resume.hanisntsolo.com/',
-      worksFor: {
-        '@type': 'Organization',
-        name: 'Citi'
-      },
-      sameAs: [
-        'https://hanisntsolo.com',
-        'https://github.com/hanisntsolo',
-        'https://www.linkedin.com/in/hanisntsolo'
-      ]
-    },
-    {
       '@type': 'ProfilePage',
       '@id': 'https://resume.hanisntsolo.com/#profile',
       name: 'Dhirendra Pratap Singh Resume',
       url: 'https://resume.hanisntsolo.com/',
+      inLanguage: 'en-US',
+      isPartOf: {
+        '@id': 'https://resume.hanisntsolo.com/#website'
+      },
+      about: {
+        '@id': 'https://resume.hanisntsolo.com/#person'
+      },
       mainEntity: {
         '@id': 'https://resume.hanisntsolo.com/#person'
       }
@@ -53,6 +45,8 @@ const profileSchema = {
   keywords={pageKeywords}
   canonicalPath={Astro.url.pathname}
   ogType="profile"
+  ogImage={pageSocialImage}
+  ogImageAlt="Dhirendra Pratap Singh - Full Stack Java Developer"
   schema={profileSchema}
 >
   <main class="shell home-shell">

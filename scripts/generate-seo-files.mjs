@@ -137,6 +137,12 @@ async function generateSitemap() {
       changefreq: 'monthly',
       priority: '0.4',
       sources: ['timeline-data.json', 'public/timeline-data.json']
+    },
+    {
+      path: 'llms.txt',
+      changefreq: 'daily',
+      priority: '0.3',
+      sources: ['scripts/generate-seo-files.mjs', 'src/pages/index.astro', 'src/pages/timeline/index.astro']
     }
   ]
 
@@ -157,6 +163,24 @@ async function generateSitemap() {
       changefreq: 'monthly',
       priority: '0.6',
       sources: ['public/hanisntsolo-cover-letter.pdf', 'public/hanisntsolo-cover-letter.pdf.1', 'hanisntsolo-cover-letter.tex']
+    })
+  }
+
+  if (await fileExists(path.join(DIST_DIR, 'favicon.svg'))) {
+    urls.push({
+      path: 'favicon.svg',
+      changefreq: 'monthly',
+      priority: '0.2',
+      sources: ['public/favicon.svg']
+    })
+  }
+
+  if (await fileExists(path.join(DIST_DIR, 'site.webmanifest'))) {
+    urls.push({
+      path: 'site.webmanifest',
+      changefreq: 'monthly',
+      priority: '0.2',
+      sources: ['public/site.webmanifest']
     })
   }
 
@@ -189,24 +213,29 @@ async function generateSitemap() {
 
 async function generateRobotsTxt() {
   const host = new URL(siteOrigin).host
+  const sharedRules = [
+    'Allow: /',
+    'Disallow: /dev/',
+    'Disallow: /wget-log'
+  ]
   const robots = [
     'User-agent: *',
-    'Allow: /',
+    ...sharedRules,
     '',
     'User-agent: GPTBot',
-    'Allow: /',
+    ...sharedRules,
     '',
     'User-agent: ChatGPT-User',
-    'Allow: /',
+    ...sharedRules,
     '',
     'User-agent: ClaudeBot',
-    'Allow: /',
+    ...sharedRules,
     '',
     'User-agent: PerplexityBot',
-    'Allow: /',
+    ...sharedRules,
     '',
     'User-agent: Google-Extended',
-    'Allow: /',
+    ...sharedRules,
     '',
     `Host: ${host}`,
     `Sitemap: ${buildUrl('sitemap.xml')}`
