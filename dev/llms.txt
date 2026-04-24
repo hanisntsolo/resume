@@ -5,6 +5,7 @@
 - Canonical website: https://resume.hanisntsolo.com/
 - Timeline page: https://resume.hanisntsolo.com/timeline/
 - Timeline data (JSON): https://resume.hanisntsolo.com/timeline-data.json
+- Cover letter PDF: https://resume.hanisntsolo.com/hanisntsolo-cover-letter.pdf
 
 ## Professional summary
 - Full Stack Java Developer focused on distributed systems, cloud-native architecture, and product engineering.
@@ -18,4 +19,4 @@
 ## Contact
 - Email: ds.pratap1997@gmail.com
 
-Last updated: 2026-04-24T11:17:38.067Z
+Last updated: 2026-04-24T11:31:28.709Z
