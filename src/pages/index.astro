@@ -280,9 +280,11 @@ const profileSchema = {
   <style>
     #force-graph-bg {
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       width: 100vw;
-      height: 100vh;
+      /* height is set by JS to viewport + parallax buffer — no CSS height constraint */
       z-index: 0;
       pointer-events: none;
     }
@@ -378,8 +380,12 @@ const profileSchema = {
 
       let W = window.innerWidth
       let H = window.innerHeight
-      canvas.width = W
-      canvas.height = H
+      // Extra canvas height so upward parallax translate never exposes a gap at the bottom.
+      // parallaxBuf = max scrollable distance × parallax factor (0.15) + small safety margin.
+      const parallaxBuf = () =>
+        Math.ceil((document.documentElement.scrollHeight - H) * 0.15) + H * 0.15 + 20
+      canvas.width  = W
+      canvas.height = H + parallaxBuf()
 
       // Content column width mirrors the CSS: min(1140px, 92vw)
       const contentW = () => Math.min(1140, W * 0.92)
@@ -627,11 +633,12 @@ const profileSchema = {
         const now = time()
 
         // 1. Trail fill (motion blur) — full clear in REDUCED mode for crispness
+        // Use canvas.height (not H) so the parallax buffer area is also cleared/filled.
         if (REDUCED) {
-          ctx.clearRect(0, 0, W, H)
+          ctx.clearRect(0, 0, W, canvas.height)
         } else {
           ctx.fillStyle = 'rgba(7, 13, 25, 0.18)'
-          ctx.fillRect(0, 0, W, H)
+          ctx.fillRect(0, 0, W, canvas.height)
         }
 
         // Garbage-collect dying nodes
@@ -962,7 +969,8 @@ const profileSchema = {
 
       window.addEventListener('resize', () => {
         W = window.innerWidth; H = window.innerHeight
-        canvas.width = W; canvas.height = H
+        canvas.width  = W
+        canvas.height = H + parallaxBuf()
         sim.force('x', d3.forceX(n => n.side === 'left' ? leftAnchor() : rightAnchor()).strength(0.015))
         sim.force('y', d3.forceY(H * 0.5).strength(0.006))
         sim.alpha(0.3)
