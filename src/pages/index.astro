@@ -552,8 +552,9 @@ const profileSchema = {
         })
       })
 
-      // ── Audio (lazy-init, opt-in via toggle) ─────────────────────────────
-      let audioOn  = false
+      // ── Audio (lazy-init, on by default; toggle to mute) ─────────────────
+      // Default: on unless user has explicitly muted (localStorage.graphAudio === 'off')
+      let audioOn  = localStorage.getItem('graphAudio') !== 'off'
       let audioCtx = null
       let lastPing = 0
 
@@ -584,10 +585,13 @@ const profileSchema = {
 
       const audioBtn = document.getElementById('graph-audio-toggle')
       if (audioBtn) {
-        if (localStorage.getItem('graphAudio') === 'on') {
-          audioOn = true
-          audioBtn.classList.add('on')
-        }
+        // Reflect initial on state in button appearance
+        audioBtn.classList.toggle('on', audioOn)
+        // First user interaction initialises AudioContext (browser autoplay policy)
+        window.addEventListener('pointerdown', () => {
+          initAudio()
+          if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume()
+        }, { once: true })
         audioBtn.addEventListener('click', () => {
           initAudio()
           if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume()
