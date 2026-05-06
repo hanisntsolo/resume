@@ -335,6 +335,15 @@ const profileSchema = {
       canvas.width = W
       canvas.height = H
 
+      // Content column width mirrors the CSS: min(1140px, 92vw)
+      const contentW = () => Math.min(1140, W * 0.92)
+      // Left/right gutter centres — where the flanks live
+      const leftAnchor  = () => contentW() < W ? (W - contentW()) / 4 : W * 0.1
+      const rightAnchor = () => W - leftAnchor()
+      // Content zone exclusion band
+      const contentLeft  = () => (W - contentW()) / 2 - 32
+      const contentRight = () => W - contentLeft()
+
       // ── Palette: [r, g, b] matching the site theme ──────────────────────
       const PALETTE = [
         [92, 200, 255],   // accent blue
@@ -344,39 +353,58 @@ const profileSchema = {
         [167, 139, 250],  // purple
       ]
 
-      // ── Seed nodes ───────────────────────────────────────────────────────
+      // ── Seed nodes (side: 'left' | 'right') ─────────────────────────────
       const SEED = [
-        { label: 'Java',               g: 0 }, { label: 'Spring Boot',    g: 0 },
-        { label: 'Microservices',      g: 0 }, { label: 'REST API',       g: 0 },
-        { label: 'Distributed Sys',    g: 0 },
-        { label: 'AWS',                g: 1 }, { label: 'Docker',         g: 1 },
-        { label: 'Kubernetes',         g: 1 }, { label: 'Redis',          g: 1 },
-        { label: 'PostgreSQL',         g: 1 }, { label: 'Kafka',          g: 1 },
-        { label: 'Cloud Native',       g: 1 },
-        { label: 'React',              g: 2 }, { label: 'TypeScript',     g: 2 },
-        { label: 'Node.js',            g: 2 }, { label: 'GraphQL',        g: 2 },
-        { label: 'CI/CD',              g: 3 }, { label: 'Linux',          g: 3 },
-        { label: 'Git',                g: 3 }, { label: 'Agile',          g: 3 },
-        { label: 'DSA',                g: 4 }, { label: 'Algorithms',     g: 4 },
-        { label: 'Data Structures',    g: 4 }, { label: 'Binary Search',  g: 4 },
-        { label: 'Fintech',            g: 4 },
+        { label: 'Java',            g: 0, side: 'left'  },
+        { label: 'Spring Boot',     g: 0, side: 'left'  },
+        { label: 'Microservices',   g: 0, side: 'left'  },
+        { label: 'Distributed Sys', g: 0, side: 'left'  },
+        { label: 'AWS',             g: 1, side: 'left'  },
+        { label: 'Docker',          g: 1, side: 'left'  },
+        { label: 'Kubernetes',      g: 1, side: 'left'  },
+        { label: 'Redis',           g: 1, side: 'left'  },
+        { label: 'Kafka',           g: 1, side: 'left'  },
+        { label: 'Cloud Native',    g: 1, side: 'left'  },
+        { label: 'CI/CD',           g: 3, side: 'left'  },
+        { label: 'Linux',           g: 3, side: 'left'  },
+        { label: 'Git',             g: 3, side: 'left'  },
+        { label: 'REST API',        g: 0, side: 'right' },
+        { label: 'React',           g: 2, side: 'right' },
+        { label: 'TypeScript',      g: 2, side: 'right' },
+        { label: 'Node.js',         g: 2, side: 'right' },
+        { label: 'GraphQL',         g: 2, side: 'right' },
+        { label: 'PostgreSQL',      g: 1, side: 'right' },
+        { label: 'Agile',           g: 3, side: 'right' },
+        { label: 'DSA',             g: 4, side: 'right' },
+        { label: 'Algorithms',      g: 4, side: 'right' },
+        { label: 'Data Structures', g: 4, side: 'right' },
+        { label: 'Binary Search',   g: 4, side: 'right' },
+        { label: 'Fintech',         g: 4, side: 'right' },
       ]
 
       let uid = 0
 
-      const makeNode = (label, g, x, y) => {
+      // Place node within its side's flank band on first spawn
+      const sideX = (side) => {
+        const cl = contentLeft()
+        if (side === 'left')  return Math.random() * (cl - 20) + 10
+        else                  return contentRight() + Math.random() * (W - contentRight() - 10)
+      }
+
+      const makeNode = (label, g, side, x, y) => {
         const rgb = PALETTE[g % PALETTE.length]
+        const ns  = side ?? (Math.random() < 0.5 ? 'left' : 'right')
         return {
-          id: uid++, label, g, rgb,
+          id: uid++, label, g, side: ns, rgb,
           r: 5 + Math.random() * 9,
-          x: x ?? W * (0.08 + Math.random() * 0.84),
+          x: x ?? sideX(ns),
           y: y ?? H * (0.08 + Math.random() * 0.84),
           vx: 0, vy: 0,
           fx: null, fy: null,
         }
       }
 
-      const nodes = SEED.map(({ label, g }) => makeNode(label, g))
+      const nodes = SEED.map(({ label, g, side }) => makeNode(label, g, side))
       const links = []
 
       // Within-group links
@@ -385,24 +413,40 @@ const profileSchema = {
           if (nodes[i].g === nodes[j].g) links.push({ source: nodes[i], target: nodes[j] })
         }
       }
-      // Cross-group links (meaningful connections)
+      // Cross-group links (same side only to avoid crossing the content column)
       const cross = [
-        [0, 5], [1, 6], [1, 7], [3, 12], [4, 6],
-        [0, 3], [5, 6], [8, 5], [10, 8], [20, 21], [20, 22],
+        [0, 4], [0, 3], [1, 5], [1, 6], [4, 5], [7, 4], [8, 7], [10, 11],
+        [13, 18], [13, 14], [14, 15], [16, 17], [20, 21], [20, 22], [21, 23],
       ]
       cross.forEach(([a, b]) => {
-        if (nodes[a] && nodes[b]) links.push({ source: nodes[a], target: nodes[b] })
+        if (nodes[a] && nodes[b] && nodes[a].side === nodes[b].side)
+          links.push({ source: nodes[a], target: nodes[b] })
       })
 
       // ── Simulation ───────────────────────────────────────────────────────
       const sim = d3.forceSimulation(nodes)
-        .force('link', d3.forceLink(links).distance(88).strength(0.22))
-        .force('charge', d3.forceManyBody().strength(-150).distanceMax(320))
-        .force('center', d3.forceCenter(W / 2, H / 2).strength(0.035))
-        .force('collide', d3.forceCollide(n => n.r + 9).strength(0.65))
+        .force('link',    d3.forceLink(links).distance(78).strength(0.25))
+        .force('charge',  d3.forceManyBody().strength(-130).distanceMax(280))
+        .force('x',       d3.forceX(n => n.side === 'left' ? leftAnchor() : rightAnchor()).strength(0.055))
+        .force('y',       d3.forceY(H * 0.5).strength(0.018))
+        .force('collide', d3.forceCollide(n => n.r + 9).strength(0.7))
         .alphaDecay(0.007)
         .velocityDecay(0.38)
         .on('tick', draw)
+
+      // Content-column exclusion: push nodes back into their flank
+      sim.force('avoid-center', () => {
+        const cl = contentLeft()
+        const cr = contentRight()
+        nodes.forEach(n => {
+          if (n.fx != null) return
+          if (n.x > cl && n.x < cr) {
+            // inside the content column — bounce toward correct side
+            if (n.side === 'left') n.vx -= 1.8
+            else                   n.vx += 1.8
+          }
+        })
+      })
 
       // Mouse-attraction custom force
       let mx = -9999, my = -9999
@@ -530,9 +574,10 @@ const profileSchema = {
       let spawnIdx = 0
 
       const spawnNode = (x, y, parent) => {
-        const g   = parent ? parent.g : Math.floor(Math.random() * 5)
-        const lbl = SPAWN_LABELS[spawnIdx++ % SPAWN_LABELS.length]
-        const nn  = makeNode(lbl, g, x, y)
+        const g    = parent ? parent.g : Math.floor(Math.random() * 5)
+        const side = parent ? parent.side : (x < W / 2 ? 'left' : 'right')
+        const lbl  = SPAWN_LABELS[spawnIdx++ % SPAWN_LABELS.length]
+        const nn   = makeNode(lbl, g, side, x, y)
         nodes.push(nn)
         if (parent) links.push({ source: parent, target: nn })
         sim.nodes(nodes)
@@ -625,7 +670,8 @@ const profileSchema = {
       window.addEventListener('resize', () => {
         W = window.innerWidth; H = window.innerHeight
         canvas.width = W; canvas.height = H
-        sim.force('center', d3.forceCenter(W / 2, H / 2).strength(0.035))
+        sim.force('x', d3.forceX(n => n.side === 'left' ? leftAnchor() : rightAnchor()).strength(0.055))
+        sim.force('y', d3.forceY(H * 0.5).strength(0.018))
         sim.alpha(0.3).restart()
       }, { passive: true })
 
