@@ -316,12 +316,49 @@ const profileSchema = {
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Audio toggle */
+    #graph-audio-toggle {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(92, 200, 255, 0.3);
+      background: rgba(14, 24, 40, 0.78);
+      color: rgba(156, 174, 208, 0.85);
+      cursor: pointer;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    #graph-audio-toggle:hover {
+      color: var(--accent);
+      border-color: rgba(92, 200, 255, 0.7);
+      transform: translateY(-1px);
+    }
+    #graph-audio-toggle.on {
+      color: var(--accent-2);
+      border-color: rgba(61, 224, 200, 0.7);
+      box-shadow: 0 0 12px rgba(61, 224, 200, 0.3);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #force-graph-bg { opacity: 0.55; }
+    }
   </style>
 
   <div id="graph-hint">
     <strong style="color: rgba(92,200,255,0.9)">Graph is live</strong><br/>
-    Hover to attract · Click node to pin &amp; spawn · Drag to move · Double-click to unpin
+    Hover to attract · Click node for burst · Drag to move · Double-click to unpin
   </div>
+
+  <button id="graph-audio-toggle" type="button" aria-label="Toggle graph sound" title="Toggle graph sound">♪</button>
 
   <script type="module" is:inline>
     (async () => {
@@ -329,6 +366,15 @@ const profileSchema = {
 
       const canvas = document.getElementById('force-graph-bg')
       const ctx = canvas.getContext('2d')
+      const time = () => performance.now()
+
+      // Accessibility: detect reduced-motion preference
+      const REDUCED = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+      // Perf budget
+      const MAX_NODES = 80
+      const FADE_MS   = 800
 
       let W = window.innerWidth
       let H = window.innerHeight
@@ -337,10 +383,8 @@ const profileSchema = {
 
       // Content column width mirrors the CSS: min(1140px, 92vw)
       const contentW = () => Math.min(1140, W * 0.92)
-      // Left/right gutter centres — where the flanks live
       const leftAnchor  = () => contentW() < W ? (W - contentW()) / 4 : W * 0.1
       const rightAnchor = () => W - leftAnchor()
-      // Content zone exclusion band
       const contentLeft  = () => (W - contentW()) / 2 - 32
       const contentRight = () => W - contentLeft()
 
@@ -352,6 +396,9 @@ const profileSchema = {
         [255, 111, 122],  // pink/red
         [167, 139, 250],  // purple
       ]
+
+      // Pentatonic C-major notes per palette index (Hz)
+      const PALETTE_NOTES = [261.63, 329.63, 392.0, 440.0, 523.25]
 
       // ── Seed nodes (side: 'left' | 'right') ─────────────────────────────
       const SEED = [
@@ -402,16 +449,22 @@ const profileSchema = {
           vx: 0, vy: 0,
           fx: null, fy: null,
           _wa: Math.random() * Math.PI * 2,   // wander angle
+          _birth: time(),                      // for FIFO eviction
+          _phase: Math.random() * Math.PI * 2, // pulse phase offset
+          _fadeStart: 0,                       // 0 = alive; >0 = dying
         }
       }
 
       const nodes = SEED.map(({ label, g, side }) => makeNode(label, g, side))
       const links = []
+      const addLink = (a, b) => {
+        links.push({ source: a, target: b, _sign: ((a.id ^ b.id) & 1) ? 1 : -1 })
+      }
 
       // Within-group links
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
-          if (nodes[i].g === nodes[j].g) links.push({ source: nodes[i], target: nodes[j] })
+          if (nodes[i].g === nodes[j].g) addLink(nodes[i], nodes[j])
         }
       }
       // Cross-group links (same side only to avoid crossing the content column)
@@ -420,21 +473,29 @@ const profileSchema = {
         [13, 18], [13, 14], [14, 15], [16, 17], [20, 21], [20, 22], [21, 23],
       ]
       cross.forEach(([a, b]) => {
-        if (nodes[a] && nodes[b] && nodes[a].side === nodes[b].side)
-          links.push({ source: nodes[a], target: nodes[b] })
+        if (nodes[a] && nodes[b] && nodes[a].side === nodes[b].side) addLink(nodes[a], nodes[b])
       })
+
+      // Cache: key = "minId,maxId" → true (for skipping in constellation pass)
+      let linkKeySet = new Set()
+      const rebuildLinkKeys = () => {
+        linkKeySet = new Set(links.map(l => {
+          const a = l.source.id, b = l.target.id
+          return a < b ? `${a},${b}` : `${b},${a}`
+        }))
+      }
+      rebuildLinkKeys()
 
       // ── Simulation ───────────────────────────────────────────────────────
       const sim = d3.forceSimulation(nodes)
         .force('link',    d3.forceLink(links).distance(78).strength(0.25))
         .force('charge',  d3.forceManyBody().strength(-90).distanceMax(240))
-        // Soft flank attractor — weak enough that wander dominates in idle
         .force('x',       d3.forceX(n => n.side === 'left' ? leftAnchor() : rightAnchor()).strength(0.015))
         .force('y',       d3.forceY(H * 0.5).strength(0.006))
         .force('collide', d3.forceCollide(n => n.r + 9).strength(0.65))
         .alphaDecay(0.007)
-        .alphaTarget(0.05)   // never fully settle — always ticking
-        .velocityDecay(0.28) // less damping so wander can breathe
+        .alphaTarget(REDUCED ? 0 : 0.05)
+        .velocityDecay(0.28)
         .on('tick', draw)
 
       // Soft content-column avoidance
@@ -463,15 +524,16 @@ const profileSchema = {
       })
 
       // Wander: smooth flowing entropy — each node drifts on a slowly-rotating angle
-      sim.force('wander', () => {
-        nodes.forEach(n => {
-          if (n.fx != null) return
-          // Nudge wander angle by a small random step (Brownian rotation)
-          n._wa += (Math.random() - 0.5) * 0.09
-          n.vx += Math.cos(n._wa) * 0.36
-          n.vy += Math.sin(n._wa) * 0.36
+      if (!REDUCED) {
+        sim.force('wander', () => {
+          nodes.forEach(n => {
+            if (n.fx != null) return
+            n._wa += (Math.random() - 0.5) * 0.09
+            n.vx += Math.cos(n._wa) * 0.36
+            n.vy += Math.sin(n._wa) * 0.36
+          })
         })
-      })
+      }
 
       // Mouse-attraction custom force
       let mx = -9999, my = -9999
@@ -490,6 +552,60 @@ const profileSchema = {
         })
       })
 
+      // ── Audio (lazy-init, opt-in via toggle) ─────────────────────────────
+      let audioOn  = false
+      let audioCtx = null
+      let lastPing = 0
+
+      const initAudio = () => {
+        if (audioCtx) return
+        const Ctor = window.AudioContext || window.webkitAudioContext
+        if (Ctor) audioCtx = new Ctor()
+      }
+
+      const playPing = (paletteIdx, vel = 1) => {
+        if (!audioOn || !audioCtx) return
+        const now = time()
+        if (now - lastPing < 80) return  // global throttle
+        lastPing = now
+
+        const t = audioCtx.currentTime
+        const osc = audioCtx.createOscillator()
+        const gain = audioCtx.createGain()
+        osc.type = 'sine'
+        osc.frequency.value = PALETTE_NOTES[paletteIdx % PALETTE_NOTES.length]
+        gain.gain.setValueAtTime(0, t)
+        gain.gain.linearRampToValueAtTime(0.06 * vel, t + 0.015)
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.24)
+        osc.connect(gain).connect(audioCtx.destination)
+        osc.start(t)
+        osc.stop(t + 0.26)
+      }
+
+      const audioBtn = document.getElementById('graph-audio-toggle')
+      if (audioBtn) {
+        if (localStorage.getItem('graphAudio') === 'on') {
+          audioOn = true
+          audioBtn.classList.add('on')
+        }
+        audioBtn.addEventListener('click', () => {
+          initAudio()
+          if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume()
+          audioOn = !audioOn
+          audioBtn.classList.toggle('on', audioOn)
+          localStorage.setItem('graphAudio', audioOn ? 'on' : 'off')
+          if (audioOn) playPing(1, 0.8)
+        })
+      }
+
+      // ── Shockwaves (visual ripples on click) ─────────────────────────────
+      const shockwaves = []
+      const SHOCK_MS = 700
+      const emitShock = (x, y, rgb) => shockwaves.push({ x, y, rgb, t0: time() })
+
+      // ── Hover-ping debounce per node ─────────────────────────────────────
+      let lastHoverPingId = null
+
       // ── Interaction state ────────────────────────────────────────────────
       let hovNode  = null
       let dragNode = null
@@ -497,40 +613,147 @@ const profileSchema = {
 
       const hitTest = (x, y) =>
         nodes.find(n => {
+          if (n._fadeStart) return false
           const dx = x - n.x, dy = y - n.y
           return dx * dx + dy * dy <= (n.r + 6) * (n.r + 6)
         }) ?? null
 
       // ── Render ───────────────────────────────────────────────────────────
       function draw () {
-        ctx.clearRect(0, 0, W, H)
+        const now = time()
 
-        // Links
+        // 1. Trail fill (motion blur) — full clear in REDUCED mode for crispness
+        if (REDUCED) {
+          ctx.clearRect(0, 0, W, H)
+        } else {
+          ctx.fillStyle = 'rgba(7, 13, 25, 0.18)'
+          ctx.fillRect(0, 0, W, H)
+        }
+
+        // Garbage-collect dying nodes
+        for (let i = nodes.length - 1; i >= 0; i--) {
+          const n = nodes[i]
+          if (n._fadeStart && now - n._fadeStart > FADE_MS) {
+            nodes.splice(i, 1)
+            for (let k = links.length - 1; k >= 0; k--) {
+              if (links[k].source === n || links[k].target === n) links.splice(k, 1)
+            }
+          }
+        }
+        if (nodes._dirty) {
+          sim.nodes(nodes)
+          sim.force('link').links(links)
+          rebuildLinkKeys()
+          nodes._dirty = false
+        }
+
+        // Helper: alpha multiplier for fading nodes
+        const aMul = (n) =>
+          n._fadeStart ? Math.max(0, 1 - (now - n._fadeStart) / FADE_MS) : 1
+
+        // 2. Cluster halos (skip in REDUCED)
+        if (!REDUCED) {
+          const groups = new Map()
+          nodes.forEach(n => {
+            if (n._fadeStart) return
+            if (!groups.has(n.g)) groups.set(n.g, [])
+            groups.get(n.g).push(n)
+          })
+          ctx.save()
+          groups.forEach((arr, g) => {
+            if (arr.length < 3) return
+            const pts = arr.map(n => [n.x, n.y])
+            const hull = d3.polygonHull(pts)
+            if (!hull) return
+            const [r, gC, b] = PALETTE[g]
+            ctx.beginPath()
+            ctx.moveTo(hull[0][0], hull[0][1])
+            for (let k = 1; k < hull.length; k++) ctx.lineTo(hull[k][0], hull[k][1])
+            ctx.closePath()
+            ctx.shadowBlur = 40
+            ctx.shadowColor = `rgba(${r},${gC},${b}, 0.4)`
+            ctx.fillStyle  = `rgba(${r},${gC},${b}, 0.06)`
+            ctx.fill()
+          })
+          ctx.restore()
+        }
+
+        // 3. Constellation (proximity) lines — skip in REDUCED
+        if (!REDUCED) {
+          const PROX = 80
+          const PROX2 = PROX * PROX
+          for (let i = 0; i < nodes.length; i++) {
+            const a = nodes[i]
+            if (a._fadeStart) continue
+            for (let j = i + 1; j < nodes.length; j++) {
+              const b = nodes[j]
+              if (b._fadeStart) continue
+              const key = a.id < b.id ? `${a.id},${b.id}` : `${b.id},${a.id}`
+              if (linkKeySet.has(key)) continue
+              const dx = a.x - b.x, dy = a.y - b.y
+              const d2 = dx * dx + dy * dy
+              if (d2 < PROX2) {
+                const alpha = 0.18 * (1 - Math.sqrt(d2) / PROX) * aMul(a) * aMul(b)
+                ctx.strokeStyle = `rgba(124, 188, 255, ${alpha})`
+                ctx.lineWidth = 0.5
+                ctx.beginPath()
+                ctx.moveTo(a.x, a.y)
+                ctx.lineTo(b.x, b.y)
+                ctx.stroke()
+              }
+            }
+          }
+        }
+
+        // 4. Explicit curved links
+        const dashOffset = -now / 30
         links.forEach(lk => {
           const s = lk.source, t = lk.target
           const lit = hovNode && (s === hovNode || t === hovNode)
+          const am  = aMul(s) * aMul(t)
+
+          // Curved control point (perpendicular offset)
+          const mx = (s.x + t.x) / 2
+          const my = (s.y + t.y) / 2
+          const px = -(t.y - s.y) * 0.18 * lk._sign
+          const py =  (t.x - s.x) * 0.18 * lk._sign
+
           ctx.beginPath()
           ctx.moveTo(s.x, s.y)
-          ctx.lineTo(t.x, t.y)
-          ctx.strokeStyle = lit
-            ? `rgba(${s.rgb.join(',')}, 0.52)`
-            : `rgba(92,200,255,0.07)`
-          ctx.lineWidth = lit ? 1.5 : 0.7
-          ctx.stroke()
+          ctx.quadraticCurveTo(mx + px, my + py, t.x, t.y)
+
+          if (lit && !REDUCED) {
+            const grad = ctx.createLinearGradient(s.x, s.y, t.x, t.y)
+            grad.addColorStop(0, `rgba(${s.rgb.join(',')}, ${0.65 * am})`)
+            grad.addColorStop(1, `rgba(${t.rgb.join(',')}, ${0.65 * am})`)
+            ctx.strokeStyle = grad
+            ctx.lineWidth = 1.6
+            ctx.setLineDash([8, 6])
+            ctx.lineDashOffset = dashOffset
+            ctx.stroke()
+            ctx.setLineDash([])
+          } else {
+            ctx.strokeStyle = `rgba(92,200,255, ${0.07 * am})`
+            ctx.lineWidth = 0.7
+            ctx.stroke()
+          }
         })
 
-        // Nodes
+        // 5. Nodes (with pulse + glow)
         nodes.forEach(n => {
+          const am = aMul(n)
+          if (am <= 0) return
           const hov    = n === hovNode
           const pinned = n.fx != null
-          const r      = hov ? n.r * 1.55 : n.r
+          const pulse  = REDUCED ? 1 : (1 + 0.08 * Math.sin(now * 0.0014 + n._phase))
+          const r      = hov ? n.r * 1.55 : n.r * pulse
           const [rc, gc, bc] = n.rgb
 
           // Glow aura
           if (hov || pinned) {
             const gr = ctx.createRadialGradient(n.x, n.y, r * 0.3, n.x, n.y, r + 18)
             const glowRgb = pinned ? [61, 224, 200] : [rc, gc, bc]
-            gr.addColorStop(0, `rgba(${glowRgb.join(',')}, 0.38)`)
+            gr.addColorStop(0, `rgba(${glowRgb.join(',')}, ${0.38 * am})`)
             gr.addColorStop(1, `rgba(${glowRgb.join(',')}, 0)`)
             ctx.beginPath()
             ctx.arc(n.x, n.y, r + 18, 0, 2 * Math.PI)
@@ -542,18 +765,18 @@ const profileSchema = {
           ctx.beginPath()
           ctx.arc(n.x, n.y, r, 0, 2 * Math.PI)
           ctx.fillStyle = hov
-            ? `rgba(${rc},${gc},${bc}, 0.85)`
+            ? `rgba(${rc},${gc},${bc}, ${0.85 * am})`
             : pinned
-              ? `rgba(61,224,200, 0.42)`
-              : `rgba(${rc},${gc},${bc}, 0.17)`
+              ? `rgba(61,224,200, ${0.42 * am})`
+              : `rgba(${rc},${gc},${bc}, ${0.17 * am})`
           ctx.fill()
 
           // Border
           ctx.strokeStyle = hov
-            ? `rgba(${rc},${gc},${bc}, 1)`
+            ? `rgba(${rc},${gc},${bc}, ${1 * am})`
             : pinned
-              ? `rgba(61,224,200, 0.9)`
-              : `rgba(${rc},${gc},${bc}, 0.4)`
+              ? `rgba(61,224,200, ${0.9 * am})`
+              : `rgba(${rc},${gc},${bc}, ${0.4 * am})`
           ctx.lineWidth = hov || pinned ? 1.5 : 0.8
           ctx.stroke()
 
@@ -561,7 +784,7 @@ const profileSchema = {
           if (pinned) {
             ctx.beginPath()
             ctx.arc(n.x, n.y, 2.5, 0, 2 * Math.PI)
-            ctx.fillStyle = 'rgba(61,224,200,0.95)'
+            ctx.fillStyle = `rgba(61,224,200, ${0.95 * am})`
             ctx.fill()
           }
 
@@ -572,11 +795,25 @@ const profileSchema = {
             ctx.textAlign = 'center'
             ctx.textBaseline = hov ? 'bottom' : 'middle'
             ctx.fillStyle = hov
-              ? '#e9eef9'
-              : `rgba(233,238,249,${pinned ? 0.85 : 0.45})`
+              ? `rgba(233,238,249, ${1 * am})`
+              : `rgba(233,238,249, ${(pinned ? 0.85 : 0.45) * am})`
             ctx.fillText(n.label, n.x, hov ? n.y - r - 5 : n.y)
           }
         })
+
+        // 6. Shockwaves on top
+        for (let i = shockwaves.length - 1; i >= 0; i--) {
+          const w = shockwaves[i]
+          const age = now - w.t0
+          if (age >= SHOCK_MS) { shockwaves.splice(i, 1); continue }
+          const k = age / SHOCK_MS
+          const radius = age * 0.5
+          ctx.beginPath()
+          ctx.arc(w.x, w.y, radius, 0, 2 * Math.PI)
+          ctx.strokeStyle = `rgba(${w.rgb.join(',')}, ${1 - k})`
+          ctx.lineWidth   = 2.5 * (1 - k)
+          ctx.stroke()
+        }
       }
 
       // ── Spawn helpers ────────────────────────────────────────────────────
@@ -594,10 +831,42 @@ const profileSchema = {
         const lbl  = SPAWN_LABELS[spawnIdx++ % SPAWN_LABELS.length]
         const nn   = makeNode(lbl, g, side, x, y)
         nodes.push(nn)
-        if (parent) links.push({ source: parent, target: nn })
+        if (parent) addLink(parent, nn)
+
+        // Perf cap: gracefully fade oldest non-pinned, non-fading node
+        if (nodes.length > MAX_NODES) {
+          let oldest = null
+          for (const cand of nodes) {
+            if (cand.fx != null || cand._fadeStart) continue
+            if (!oldest || cand._birth < oldest._birth) oldest = cand
+          }
+          if (oldest) oldest._fadeStart = time()
+        }
+
+        nodes._dirty = true
         sim.nodes(nodes)
         sim.force('link').links(links)
+        rebuildLinkKeys()
         sim.alpha(0.5).restart()
+        playPing(g, 0.7)
+      }
+
+      // ── Burst spawn (3–5 children radially with stagger) ──────────────
+      const burstFrom = (parent) => {
+        const N = 3 + Math.floor(Math.random() * 3)
+        const baseAngle = Math.random() * Math.PI * 2
+        emitShock(parent.x, parent.y, parent.rgb)
+        for (let i = 0; i < N; i++) {
+          const angle = baseAngle + (i * 2 * Math.PI) / N + (Math.random() - 0.5) * 0.4
+          const dist  = 60 + Math.random() * 50
+          setTimeout(() => {
+            spawnNode(
+              parent.x + Math.cos(angle) * dist,
+              parent.y + Math.sin(angle) * dist,
+              parent,
+            )
+          }, i * 60)
+        }
       }
 
       // ── Window-level events (canvas is pointer-events:none) ──────────────
@@ -614,7 +883,15 @@ const profileSchema = {
           hovNode = hitTest(mx, my)
           if (hovNode !== prev) {
             document.body.style.cursor = hovNode ? 'grab' : ''
-            if (hovNode) sim.alphaTarget(0.08).restart()
+            if (hovNode) {
+              sim.alphaTarget(0.08).restart()
+              if (hovNode.id !== lastHoverPingId) {
+                lastHoverPingId = hovNode.id
+                playPing(hovNode.g, 0.4)
+              }
+            } else {
+              lastHoverPingId = null
+            }
           }
         }
       }, { passive: true })
@@ -636,16 +913,10 @@ const profileSchema = {
         const x = e.clientX, y = e.clientY
         if (dragNode) {
           if (!dragMoved) {
-            // Click on node → keep pinned, spawn child
+            // Click on node → burst spawn (keep parent pinned)
             dragNode.fx = dragNode.x
             dragNode.fy = dragNode.y
-            const angle = Math.random() * 2 * Math.PI
-            const dist  = 72 + Math.random() * 52
-            spawnNode(
-              dragNode.x + Math.cos(angle) * dist,
-              dragNode.y + Math.sin(angle) * dist,
-              dragNode,
-            )
+            burstFrom(dragNode)
           } else {
             // Drag ended → keep pinned at drop position
             dragNode.fx = x
@@ -653,15 +924,17 @@ const profileSchema = {
           }
           document.body.style.cursor = hovNode ? 'grab' : ''
         } else if (!dragMoved) {
-          // Click on empty space → spawn free node (skip if on UI element)
+          // Click on empty space → spawn free node + small shockwave
           const el = document.elementFromPoint(x, y)
           if (!el || !el.closest('a,button,input,select,textarea,iframe,[data-interactive]')) {
+            const g = Math.floor(Math.random() * 5)
+            emitShock(x, y, PALETTE[g])
             spawnNode(x, y, null)
           }
         }
         dragNode  = null
         dragMoved = false
-        sim.alphaTarget(0.05)  // back to idle wander
+        sim.alphaTarget(REDUCED ? 0 : 0.05)
       })
 
       // Double-click to unpin
@@ -677,8 +950,9 @@ const profileSchema = {
       window.addEventListener('mouseleave', () => {
         mx = -9999; my = -9999
         hovNode = null
+        lastHoverPingId = null
         if (dragNode) { dragNode.fx = null; dragNode.fy = null; dragNode = null }
-        sim.alphaTarget(0.05)  // back to idle wander
+        sim.alphaTarget(REDUCED ? 0 : 0.05)
         document.body.style.cursor = ''
       }, { passive: true })
 
@@ -688,6 +962,18 @@ const profileSchema = {
         sim.force('x', d3.forceX(n => n.side === 'left' ? leftAnchor() : rightAnchor()).strength(0.015))
         sim.force('y', d3.forceY(H * 0.5).strength(0.006))
         sim.alpha(0.3)
+      }, { passive: true })
+
+      // ── Scroll parallax ────────────────────────────────────────────────
+      let scrollRaf = false
+      window.addEventListener('scroll', () => {
+        if (scrollRaf) return
+        scrollRaf = true
+        requestAnimationFrame(() => {
+          const off = window.scrollY * -0.15
+          canvas.style.transform = `translate3d(0, ${off}px, 0)`
+          scrollRaf = false
+        })
       }, { passive: true })
 
       // Show hint briefly after load
