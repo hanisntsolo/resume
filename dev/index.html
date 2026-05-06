@@ -632,9 +632,14 @@ Hover to attract · Click node for burst · Drag to move · Double-click to unpi
       }
 
       // ── Window-level events (canvas is pointer-events:none) ──────────────
+      // The canvas is CSS-translated up by scrollY × 0.15 for parallax, so all
+      // client coordinates must be shifted into canvas space before use.
+      const toCanvas = (cx, cy) => ({ x: cx, y: cy + window.scrollY * 0.15 })
+
       window.addEventListener('mousemove', e => {
-        mx = e.clientX
-        my = e.clientY
+        const { x, y } = toCanvas(e.clientX, e.clientY)
+        mx = x
+        my = y
         if (dragNode) {
           dragNode.fx = mx
           dragNode.fy = my
@@ -659,7 +664,8 @@ Hover to attract · Click node for burst · Drag to move · Double-click to unpi
       }, { passive: true })
 
       window.addEventListener('mousedown', e => {
-        const node = hitTest(e.clientX, e.clientY)
+        const { x, y } = toCanvas(e.clientX, e.clientY)
+        const node = hitTest(x, y)
         dragMoved = false
         if (node) {
           e.preventDefault()
@@ -672,7 +678,7 @@ Hover to attract · Click node for burst · Drag to move · Double-click to unpi
       })
 
       window.addEventListener('mouseup', e => {
-        const x = e.clientX, y = e.clientY
+        const { x, y } = toCanvas(e.clientX, e.clientY)
         if (dragNode) {
           if (!dragMoved) {
             // Click on node → burst spawn (keep parent pinned)
@@ -687,7 +693,7 @@ Hover to attract · Click node for burst · Drag to move · Double-click to unpi
           document.body.style.cursor = hovNode ? 'grab' : ''
         } else if (!dragMoved) {
           // Click on empty space → spawn free node + small shockwave
-          const el = document.elementFromPoint(x, y)
+          const el = document.elementFromPoint(e.clientX, e.clientY)
           if (!el || !el.closest('a,button,input,select,textarea,iframe,[data-interactive]')) {
             const g = Math.floor(Math.random() * 5)
             emitShock(x, y, PALETTE[g])
@@ -701,7 +707,8 @@ Hover to attract · Click node for burst · Drag to move · Double-click to unpi
 
       // Double-click to unpin
       window.addEventListener('dblclick', e => {
-        const node = hitTest(e.clientX, e.clientY)
+        const { x, y } = toCanvas(e.clientX, e.clientY)
+        const node = hitTest(x, y)
         if (node) {
           node.fx = null
           node.fy = null
