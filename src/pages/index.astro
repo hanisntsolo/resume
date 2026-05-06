@@ -388,9 +388,16 @@ const profileSchema = {
       canvas.height = H + parallaxBuf()
 
       // Content column width mirrors the CSS: min(1140px, 92vw)
-      const contentW = () => Math.min(1140, W * 0.92)
-      const leftAnchor  = () => contentW() < W ? (W - contentW()) / 4 : W * 0.1
-      const rightAnchor = () => W - leftAnchor()
+      const contentW     = () => Math.min(1140, W * 0.92)
+      // leftAnchor sits at ~18% of the total W-contentW gap from the left edge
+      // (previously /4 = 25%), keeping the cluster well clear of the profile card.
+      // ── Tweak these two values to reposition each cluster independently ──
+      // leftAnchor:  X position of left cluster centre (distance from left edge)
+      //   smaller = further left.  Try: W*0.01 … (W-contentW())*0.15
+      // rightAnchor: X position of right cluster centre (distance from left edge)
+      //   larger = further right.  Try: W - (W-contentW())*0.15 … W - W*0.01
+      const leftAnchor   = () => Math.max(W * 0.01, (W - contentW()) * -0.10)
+      const rightAnchor  = () => W - Math.max(W * 0.04, (W - contentW()) * 0.20)
       const contentLeft  = () => (W - contentW()) / 2 - 32
       const contentRight = () => W - contentLeft()
 
@@ -437,11 +444,16 @@ const profileSchema = {
 
       let uid = 0
 
-      // Place node within its side's flank band on first spawn
+      // Place node within its side's flank band on first spawn.
+      // Left nodes use only the leftmost 55% of the available flank so the cluster
+      // stays well clear of the content column even before forces settle.
       const sideX = (side) => {
         const cl = contentLeft()
-        if (side === 'left')  return Math.random() * (cl - 20) + 10
-        else                  return contentRight() + Math.random() * (W - contentRight() - 10)
+        if (side === 'left') {
+          const maxX = Math.max(20, cl * 0.25)
+          return Math.random() * (maxX - 10) + 10
+        }
+        return contentRight() + Math.random() * (W - contentRight() - 10)
       }
 
       const makeNode = (label, g, side, x, y) => {
@@ -496,7 +508,10 @@ const profileSchema = {
       const sim = d3.forceSimulation(nodes)
         .force('link',    d3.forceLink(links).distance(78).strength(0.25))
         .force('charge',  d3.forceManyBody().strength(-90).distanceMax(240))
-        .force('x',       d3.forceX(n => n.side === 'left' ? leftAnchor() : rightAnchor()).strength(0.015))
+        // Left nodes use stronger forceX (0.028) to counteract link forces pulling
+        // the cluster toward the content column; right stays at 0.015.
+        .force('x',       d3.forceX(n => n.side === 'left' ? leftAnchor() : rightAnchor())
+                            .strength(n => n.side === 'left' ? 0.028 : 0.015))
         .force('y',       d3.forceY(H * 0.5).strength(0.006))
         .force('collide', d3.forceCollide(n => n.r + 9).strength(0.65))
         .alphaDecay(0.007)
@@ -504,15 +519,24 @@ const profileSchema = {
         .velocityDecay(0.28)
         .on('tick', draw)
 
-      // Soft content-column avoidance
+      // Content-column avoidance: strong wall inside + graduated buffer zone that
+      // starts pushing nodes back 60 px BEFORE they reach the content boundary.
       sim.force('avoid-center', () => {
         const cl = contentLeft()
         const cr = contentRight()
+        const BUF = 60  // pre-boundary buffer width (px)
         nodes.forEach(n => {
           if (n.fx != null) return
           if (n.x > cl && n.x < cr) {
-            if (n.side === 'left') n.vx -= 0.55
-            else                   n.vx += 0.55
+            // Inside column → strong push out
+            if (n.side === 'left') n.vx -= 1.2
+            else                   n.vx += 1.2
+          } else if (n.side === 'left' && n.x > cl - BUF) {
+            // Left node entering buffer zone → graduated push away from content
+            n.vx -= 0.6 * (1 - (cl - n.x) / BUF)
+          } else if (n.side === 'right' && n.x < cr + BUF) {
+            // Right node entering buffer zone
+            n.vx += 0.6 * (1 - (n.x - cr) / BUF)
           }
         })
       })
@@ -978,7 +1002,8 @@ const profileSchema = {
         W = window.innerWidth; H = window.innerHeight
         canvas.width  = W
         canvas.height = H + parallaxBuf()
-        sim.force('x', d3.forceX(n => n.side === 'left' ? leftAnchor() : rightAnchor()).strength(0.015))
+        sim.force('x', d3.forceX(n => n.side === 'left' ? leftAnchor() : rightAnchor())
+                          .strength(n => n.side === 'left' ? 0.028 : 0.015))
         sim.force('y', d3.forceY(H * 0.5).strength(0.006))
         sim.alpha(0.3)
       }, { passive: true })
