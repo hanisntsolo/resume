@@ -49,6 +49,7 @@ const profileSchema = {
   ogImageAlt="Dhirendra Pratap Singh - Full Stack Java Developer"
   schema={profileSchema}
 >
+  <canvas id="force-graph-bg" aria-hidden="true"></canvas>
   <main class="shell home-shell">
     <section class="hero-card glass reveal">
       <p class="eyebrow">Focused on distributed systems and product velocity</p>
@@ -272,6 +273,371 @@ const profileSchema = {
 
       void updateDocument('resume')
       void loadDownloadCount()
+    })()
+  </script>
+
+  <!-- D3 Force Graph Background -->
+  <style>
+    #force-graph-bg {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .home-shell {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Tooltip for graph hint */
+    #graph-hint {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: rgba(14, 24, 40, 0.82);
+      border: 1px solid rgba(92, 200, 255, 0.25);
+      border-radius: 10px;
+      padding: 0.55rem 0.9rem;
+      font-size: 0.72rem;
+      color: rgba(156, 174, 208, 0.75);
+      pointer-events: none;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      line-height: 1.55;
+      max-width: 220px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    #graph-hint.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <div id="graph-hint">
+    <strong style="color: rgba(92,200,255,0.9)">Graph is live</strong><br/>
+    Hover to attract · Click node to pin &amp; spawn · Drag to move · Double-click to unpin
+  </div>
+
+  <script type="module" is:inline>
+    (async () => {
+      const d3 = await import('https://cdn.jsdelivr.net/npm/d3@7/+esm')
+
+      const canvas = document.getElementById('force-graph-bg')
+      const ctx = canvas.getContext('2d')
+
+      let W = window.innerWidth
+      let H = window.innerHeight
+      canvas.width = W
+      canvas.height = H
+
+      // ── Palette: [r, g, b] matching the site theme ──────────────────────
+      const PALETTE = [
+        [92, 200, 255],   // accent blue
+        [61, 224, 200],   // accent teal
+        [255, 189, 89],   // accent orange
+        [255, 111, 122],  // pink/red
+        [167, 139, 250],  // purple
+      ]
+
+      // ── Seed nodes ───────────────────────────────────────────────────────
+      const SEED = [
+        { label: 'Java',               g: 0 }, { label: 'Spring Boot',    g: 0 },
+        { label: 'Microservices',      g: 0 }, { label: 'REST API',       g: 0 },
+        { label: 'Distributed Sys',    g: 0 },
+        { label: 'AWS',                g: 1 }, { label: 'Docker',         g: 1 },
+        { label: 'Kubernetes',         g: 1 }, { label: 'Redis',          g: 1 },
+        { label: 'PostgreSQL',         g: 1 }, { label: 'Kafka',          g: 1 },
+        { label: 'Cloud Native',       g: 1 },
+        { label: 'React',              g: 2 }, { label: 'TypeScript',     g: 2 },
+        { label: 'Node.js',            g: 2 }, { label: 'GraphQL',        g: 2 },
+        { label: 'CI/CD',              g: 3 }, { label: 'Linux',          g: 3 },
+        { label: 'Git',                g: 3 }, { label: 'Agile',          g: 3 },
+        { label: 'DSA',                g: 4 }, { label: 'Algorithms',     g: 4 },
+        { label: 'Data Structures',    g: 4 }, { label: 'Binary Search',  g: 4 },
+        { label: 'Fintech',            g: 4 },
+      ]
+
+      let uid = 0
+
+      const makeNode = (label, g, x, y) => {
+        const rgb = PALETTE[g % PALETTE.length]
+        return {
+          id: uid++, label, g, rgb,
+          r: 5 + Math.random() * 9,
+          x: x ?? W * (0.08 + Math.random() * 0.84),
+          y: y ?? H * (0.08 + Math.random() * 0.84),
+          vx: 0, vy: 0,
+          fx: null, fy: null,
+        }
+      }
+
+      const nodes = SEED.map(({ label, g }) => makeNode(label, g))
+      const links = []
+
+      // Within-group links
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          if (nodes[i].g === nodes[j].g) links.push({ source: nodes[i], target: nodes[j] })
+        }
+      }
+      // Cross-group links (meaningful connections)
+      const cross = [
+        [0, 5], [1, 6], [1, 7], [3, 12], [4, 6],
+        [0, 3], [5, 6], [8, 5], [10, 8], [20, 21], [20, 22],
+      ]
+      cross.forEach(([a, b]) => {
+        if (nodes[a] && nodes[b]) links.push({ source: nodes[a], target: nodes[b] })
+      })
+
+      // ── Simulation ───────────────────────────────────────────────────────
+      const sim = d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(links).distance(88).strength(0.22))
+        .force('charge', d3.forceManyBody().strength(-150).distanceMax(320))
+        .force('center', d3.forceCenter(W / 2, H / 2).strength(0.035))
+        .force('collide', d3.forceCollide(n => n.r + 9).strength(0.65))
+        .alphaDecay(0.007)
+        .velocityDecay(0.38)
+        .on('tick', draw)
+
+      // Mouse-attraction custom force
+      let mx = -9999, my = -9999
+      sim.force('mouse', () => {
+        if (mx < -100) return
+        nodes.forEach(n => {
+          if (n === dragNode) return
+          const dx = mx - n.x, dy = my - n.y
+          const d2 = dx * dx + dy * dy
+          if (d2 < 220 * 220 && d2 > 0) {
+            const dist = Math.sqrt(d2)
+            const s = 0.35 * (1 - dist / 220)
+            n.vx += (dx / dist) * s
+            n.vy += (dy / dist) * s
+          }
+        })
+      })
+
+      // Gentle jitter to keep the graph perpetually alive
+      sim.force('jitter', () => {
+        nodes.forEach(n => {
+          if (n.fx == null && n.fy == null) {
+            n.vx += (Math.random() - 0.5) * 0.28
+            n.vy += (Math.random() - 0.5) * 0.28
+          }
+        })
+      })
+
+      // ── Interaction state ────────────────────────────────────────────────
+      let hovNode  = null
+      let dragNode = null
+      let dragMoved = false
+
+      const hitTest = (x, y) =>
+        nodes.find(n => {
+          const dx = x - n.x, dy = y - n.y
+          return dx * dx + dy * dy <= (n.r + 6) * (n.r + 6)
+        }) ?? null
+
+      // ── Render ───────────────────────────────────────────────────────────
+      function draw () {
+        ctx.clearRect(0, 0, W, H)
+
+        // Links
+        links.forEach(lk => {
+          const s = lk.source, t = lk.target
+          const lit = hovNode && (s === hovNode || t === hovNode)
+          ctx.beginPath()
+          ctx.moveTo(s.x, s.y)
+          ctx.lineTo(t.x, t.y)
+          ctx.strokeStyle = lit
+            ? `rgba(${s.rgb.join(',')}, 0.52)`
+            : `rgba(92,200,255,0.07)`
+          ctx.lineWidth = lit ? 1.5 : 0.7
+          ctx.stroke()
+        })
+
+        // Nodes
+        nodes.forEach(n => {
+          const hov    = n === hovNode
+          const pinned = n.fx != null
+          const r      = hov ? n.r * 1.55 : n.r
+          const [rc, gc, bc] = n.rgb
+
+          // Glow aura
+          if (hov || pinned) {
+            const gr = ctx.createRadialGradient(n.x, n.y, r * 0.3, n.x, n.y, r + 18)
+            const glowRgb = pinned ? [61, 224, 200] : [rc, gc, bc]
+            gr.addColorStop(0, `rgba(${glowRgb.join(',')}, 0.38)`)
+            gr.addColorStop(1, `rgba(${glowRgb.join(',')}, 0)`)
+            ctx.beginPath()
+            ctx.arc(n.x, n.y, r + 18, 0, 2 * Math.PI)
+            ctx.fillStyle = gr
+            ctx.fill()
+          }
+
+          // Circle fill
+          ctx.beginPath()
+          ctx.arc(n.x, n.y, r, 0, 2 * Math.PI)
+          ctx.fillStyle = hov
+            ? `rgba(${rc},${gc},${bc}, 0.85)`
+            : pinned
+              ? `rgba(61,224,200, 0.42)`
+              : `rgba(${rc},${gc},${bc}, 0.17)`
+          ctx.fill()
+
+          // Border
+          ctx.strokeStyle = hov
+            ? `rgba(${rc},${gc},${bc}, 1)`
+            : pinned
+              ? `rgba(61,224,200, 0.9)`
+              : `rgba(${rc},${gc},${bc}, 0.4)`
+          ctx.lineWidth = hov || pinned ? 1.5 : 0.8
+          ctx.stroke()
+
+          // Pin indicator dot
+          if (pinned) {
+            ctx.beginPath()
+            ctx.arc(n.x, n.y, 2.5, 0, 2 * Math.PI)
+            ctx.fillStyle = 'rgba(61,224,200,0.95)'
+            ctx.fill()
+          }
+
+          // Label
+          if (hov || r > 9) {
+            const fs = hov ? 11 : 8
+            ctx.font = `${hov ? 600 : 400} ${fs}px Manrope, sans-serif`
+            ctx.textAlign = 'center'
+            ctx.textBaseline = hov ? 'bottom' : 'middle'
+            ctx.fillStyle = hov
+              ? '#e9eef9'
+              : `rgba(233,238,249,${pinned ? 0.85 : 0.45})`
+            ctx.fillText(n.label, n.x, hov ? n.y - r - 5 : n.y)
+          }
+        })
+      }
+
+      // ── Spawn helpers ────────────────────────────────────────────────────
+      const SPAWN_LABELS = [
+        'Graph', 'Tree', 'HashMap', 'Queue', 'Stack', 'BFS', 'DFS',
+        'Dynamic Prog', 'Heap', 'Trie', 'Recursion', 'Greedy', 'O(n log n)',
+        'Sorting', 'Pointer', 'Array', 'Cache', 'Thread', 'Socket',
+        'Index', 'Schema', 'Query', 'Buffer', 'Linked List', 'Binary Tree',
+      ]
+      let spawnIdx = 0
+
+      const spawnNode = (x, y, parent) => {
+        const g   = parent ? parent.g : Math.floor(Math.random() * 5)
+        const lbl = SPAWN_LABELS[spawnIdx++ % SPAWN_LABELS.length]
+        const nn  = makeNode(lbl, g, x, y)
+        nodes.push(nn)
+        if (parent) links.push({ source: parent, target: nn })
+        sim.nodes(nodes)
+        sim.force('link').links(links)
+        sim.alpha(0.5).restart()
+      }
+
+      // ── Window-level events (canvas is pointer-events:none) ──────────────
+      window.addEventListener('mousemove', e => {
+        mx = e.clientX
+        my = e.clientY
+        if (dragNode) {
+          dragNode.fx = mx
+          dragNode.fy = my
+          dragMoved = true
+          sim.alphaTarget(0.18).restart()
+        } else {
+          const prev = hovNode
+          hovNode = hitTest(mx, my)
+          if (hovNode !== prev) {
+            document.body.style.cursor = hovNode ? 'grab' : ''
+            if (hovNode) sim.alphaTarget(0.08).restart()
+          }
+        }
+      }, { passive: true })
+
+      window.addEventListener('mousedown', e => {
+        const node = hitTest(e.clientX, e.clientY)
+        dragMoved = false
+        if (node) {
+          e.preventDefault()
+          dragNode = node
+          node.fx = node.x
+          node.fy = node.y
+          document.body.style.cursor = 'grabbing'
+          sim.alphaTarget(0.3).restart()
+        }
+      })
+
+      window.addEventListener('mouseup', e => {
+        const x = e.clientX, y = e.clientY
+        if (dragNode) {
+          if (!dragMoved) {
+            // Click on node → keep pinned, spawn child
+            dragNode.fx = dragNode.x
+            dragNode.fy = dragNode.y
+            const angle = Math.random() * 2 * Math.PI
+            const dist  = 72 + Math.random() * 52
+            spawnNode(
+              dragNode.x + Math.cos(angle) * dist,
+              dragNode.y + Math.sin(angle) * dist,
+              dragNode,
+            )
+          } else {
+            // Drag ended → keep pinned at drop position
+            dragNode.fx = x
+            dragNode.fy = y
+          }
+          document.body.style.cursor = hovNode ? 'grab' : ''
+        } else if (!dragMoved) {
+          // Click on empty space → spawn free node (skip if on UI element)
+          const el = document.elementFromPoint(x, y)
+          if (!el || !el.closest('a,button,input,select,textarea,iframe,[data-interactive]')) {
+            spawnNode(x, y, null)
+          }
+        }
+        dragNode  = null
+        dragMoved = false
+        sim.alphaTarget(0)
+      })
+
+      // Double-click to unpin
+      window.addEventListener('dblclick', e => {
+        const node = hitTest(e.clientX, e.clientY)
+        if (node) {
+          node.fx = null
+          node.fy = null
+          sim.alpha(0.3).restart()
+        }
+      })
+
+      window.addEventListener('mouseleave', () => {
+        mx = -9999; my = -9999
+        hovNode = null
+        if (dragNode) { dragNode.fx = null; dragNode.fy = null; dragNode = null }
+        sim.alphaTarget(0)
+        document.body.style.cursor = ''
+      }, { passive: true })
+
+      window.addEventListener('resize', () => {
+        W = window.innerWidth; H = window.innerHeight
+        canvas.width = W; canvas.height = H
+        sim.force('center', d3.forceCenter(W / 2, H / 2).strength(0.035))
+        sim.alpha(0.3).restart()
+      }, { passive: true })
+
+      // Keep simulation gently warm forever
+      setInterval(() => { if (sim.alpha() < 0.04) sim.alpha(0.08).restart() }, 2800)
+
+      // Show hint briefly after load
+      const hint = document.getElementById('graph-hint')
+      if (hint) {
+        setTimeout(() => hint.classList.add('visible'), 1200)
+        setTimeout(() => hint.classList.remove('visible'), 7000)
+      }
     })()
   </script>
 </BaseLayout>
