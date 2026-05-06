@@ -401,6 +401,7 @@ const profileSchema = {
           y: y ?? H * (0.08 + Math.random() * 0.84),
           vx: 0, vy: 0,
           fx: null, fy: null,
+          _wa: Math.random() * Math.PI * 2,   // wander angle
         }
       }
 
@@ -426,25 +427,49 @@ const profileSchema = {
       // ── Simulation ───────────────────────────────────────────────────────
       const sim = d3.forceSimulation(nodes)
         .force('link',    d3.forceLink(links).distance(78).strength(0.25))
-        .force('charge',  d3.forceManyBody().strength(-130).distanceMax(280))
-        .force('x',       d3.forceX(n => n.side === 'left' ? leftAnchor() : rightAnchor()).strength(0.055))
-        .force('y',       d3.forceY(H * 0.5).strength(0.018))
-        .force('collide', d3.forceCollide(n => n.r + 9).strength(0.7))
+        .force('charge',  d3.forceManyBody().strength(-90).distanceMax(240))
+        // Soft flank attractor — weak enough that wander dominates in idle
+        .force('x',       d3.forceX(n => n.side === 'left' ? leftAnchor() : rightAnchor()).strength(0.015))
+        .force('y',       d3.forceY(H * 0.5).strength(0.006))
+        .force('collide', d3.forceCollide(n => n.r + 9).strength(0.65))
         .alphaDecay(0.007)
-        .velocityDecay(0.38)
+        .alphaTarget(0.05)   // never fully settle — always ticking
+        .velocityDecay(0.28) // less damping so wander can breathe
         .on('tick', draw)
 
-      // Content-column exclusion: push nodes back into their flank
+      // Soft content-column avoidance
       sim.force('avoid-center', () => {
         const cl = contentLeft()
         const cr = contentRight()
         nodes.forEach(n => {
           if (n.fx != null) return
           if (n.x > cl && n.x < cr) {
-            // inside the content column — bounce toward correct side
-            if (n.side === 'left') n.vx -= 1.8
-            else                   n.vx += 1.8
+            if (n.side === 'left') n.vx -= 0.55
+            else                   n.vx += 0.55
           }
+        })
+      })
+
+      // Elastic screen boundary walls
+      sim.force('bounds', () => {
+        const m = 30
+        nodes.forEach(n => {
+          if (n.fx != null) return
+          if (n.x < m)       n.vx += (m - n.x) * 0.14
+          if (n.x > W - m)   n.vx -= (n.x - (W - m)) * 0.14
+          if (n.y < m)       n.vy += (m - n.y) * 0.14
+          if (n.y > H - m)   n.vy -= (n.y - (H - m)) * 0.14
+        })
+      })
+
+      // Wander: smooth flowing entropy — each node drifts on a slowly-rotating angle
+      sim.force('wander', () => {
+        nodes.forEach(n => {
+          if (n.fx != null) return
+          // Nudge wander angle by a small random step (Brownian rotation)
+          n._wa += (Math.random() - 0.5) * 0.09
+          n.vx += Math.cos(n._wa) * 0.36
+          n.vy += Math.sin(n._wa) * 0.36
         })
       })
 
@@ -461,16 +486,6 @@ const profileSchema = {
             const s = 0.35 * (1 - dist / 220)
             n.vx += (dx / dist) * s
             n.vy += (dy / dist) * s
-          }
-        })
-      })
-
-      // Gentle jitter to keep the graph perpetually alive
-      sim.force('jitter', () => {
-        nodes.forEach(n => {
-          if (n.fx == null && n.fy == null) {
-            n.vx += (Math.random() - 0.5) * 0.28
-            n.vy += (Math.random() - 0.5) * 0.28
           }
         })
       })
@@ -646,7 +661,7 @@ const profileSchema = {
         }
         dragNode  = null
         dragMoved = false
-        sim.alphaTarget(0)
+        sim.alphaTarget(0.05)  // back to idle wander
       })
 
       // Double-click to unpin
@@ -663,20 +678,17 @@ const profileSchema = {
         mx = -9999; my = -9999
         hovNode = null
         if (dragNode) { dragNode.fx = null; dragNode.fy = null; dragNode = null }
-        sim.alphaTarget(0)
+        sim.alphaTarget(0.05)  // back to idle wander
         document.body.style.cursor = ''
       }, { passive: true })
 
       window.addEventListener('resize', () => {
         W = window.innerWidth; H = window.innerHeight
         canvas.width = W; canvas.height = H
-        sim.force('x', d3.forceX(n => n.side === 'left' ? leftAnchor() : rightAnchor()).strength(0.055))
-        sim.force('y', d3.forceY(H * 0.5).strength(0.018))
-        sim.alpha(0.3).restart()
+        sim.force('x', d3.forceX(n => n.side === 'left' ? leftAnchor() : rightAnchor()).strength(0.015))
+        sim.force('y', d3.forceY(H * 0.5).strength(0.006))
+        sim.alpha(0.3)
       }, { passive: true })
-
-      // Keep simulation gently warm forever
-      setInterval(() => { if (sim.alpha() < 0.04) sim.alpha(0.08).restart() }, 2800)
 
       // Show hint briefly after load
       const hint = document.getElementById('graph-hint')
