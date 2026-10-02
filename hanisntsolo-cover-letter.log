@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.7.1)  1 OCT 2026 05:30
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.10.1)  2 OCT 2026 05:18
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
 **hanisntsolo-cover-letter.tex
 (./hanisntsolo-cover-letter.tex
 LaTeX2e <2026-06-01>
-L3 programming layer <2026-06-18>
+L3 programming layer <2026-09-09>
 (./hanisntsolo-resume.cls
 Document Class: hanisntsolo-resume 2014/04/30 CV class
 (/opt/texlive/texdir/texmf-dist/tex/latex/base/article.cls
@@ -208,34 +208,22 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 File: dvipsnam.def 2026-05-17 v3.0m Driver-dependent file (DPC,SPQR)
 )
 (/opt/texlive/texdir/texmf-dist/tex/latex/fontspec/fontspec.sty
-(/opt/texlive/texdir/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(/opt/texlive/texdir/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2026-06-18 L3 programming layer (loader) 
-
-(/opt/texlive/texdir/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
-File: l3backend-xetex.def 2026-02-18 L3 backend support: XeTeX
-\g__graphics_track_int=\count298
-\g__pdfannot_backend_int=\count299
-\g__pdfannot_backend_link_int=\count300
-))
-Package: xparse 2025-10-09 L3 Experimental document command parser
-)
-Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
+Package: fontspec 2026/08/11 v2.9h Font selection for XeLaTeX and LuaLaTeX
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
-Package: fontspec-xetex 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTe
+Package: fontspec-xetex 2026/08/11 v2.9h Font selection for XeLaTeX and LuaLaTe
 X
-\l__fontspec_script_int=\count301
-\l__fontspec_language_int=\count302
-\l__fontspec_strnum_int=\count303
-\l__fontspec_tmp_int=\count304
-\l__fontspec_tmpa_int=\count305
-\l__fontspec_tmpb_int=\count306
-\l__fontspec_tmpc_int=\count307
-\l__fontspec_em_int=\count308
-\l__fontspec_emdef_int=\count309
-\l__fontspec_strong_int=\count310
-\l__fontspec_strongdef_int=\count311
+\l__fontspec_script_int=\count298
+\l__fontspec_language_int=\count299
+\l__fontspec_strnum_int=\count300
+\l__fontspec_tmp_int=\count301
+\l__fontspec_tmpa_int=\count302
+\l__fontspec_tmpb_int=\count303
+\l__fontspec_tmpc_int=\count304
+\l__fontspec_em_int=\count305
+\l__fontspec_emdef_int=\count306
+\l__fontspec_strong_int=\count307
+\l__fontspec_strongdef_int=\count308
 \l__fontspec_tmpa_dim=\dimen163
 \l__fontspec_tmpb_dim=\dimen164
 \l__fontspec_tmpc_dim=\dimen165
@@ -326,7 +314,7 @@ Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 )
 (/opt/texlive/texdir/texmf-dist/tex/latex/substr/substr.sty
 Package: substr 2009/10/20 v1.2 Handle substrings
-\c@su@anzahl=\count312
+\c@su@anzahl=\count309
 )
 (/opt/texlive/texdir/texmf-dist/tex/latex/isodate/english.idf
 File: english.idf 2010/01/03 v2.30 Language definitions for isodate package (HH
@@ -334,14 +322,14 @@ File: english.idf 2010/01/03 v2.30 Language definitions for isodate package (HH
 
 Define commands for English date format
 )
-\c@iso@tmpmonth=\count313
-\c@iso@yeartwo=\count314
-\c@iso@slash=\count315
-\c@iso@minus=\count316
-\c@iso@dot=\count317
-\c@iso@@slash=\count318
-\c@iso@@minus=\count319
-\c@iso@@dot=\count320
+\c@iso@tmpmonth=\count310
+\c@iso@yeartwo=\count311
+\c@iso@slash=\count312
+\c@iso@minus=\count313
+\c@iso@dot=\count314
+\c@iso@@slash=\count315
+\c@iso@@minus=\count316
+\c@iso@@dot=\count317
 ) (/opt/texlive/texdir/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box56
@@ -372,6 +360,12 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthC=\skip66
 \f@nch@widthR=\skip67
 \@temptokenb=\toks21
+)
+(/opt/texlive/texdir/texmf-dist/tex/latex/l3kernel/l3backend-xetex.def
+File: l3backend-xetex.def 2026-09-09 L3 backend support: XeTeX
+\g__graphics_track_int=\count318
+\g__pdfannot_backend_int=\count319
+\g__pdfannot_backend_link_int=\count320
 )
 No file hanisntsolo-cover-letter.aux.
 \openout1 = `hanisntsolo-cover-letter.aux'.
@@ -506,7 +500,7 @@ isodate: babel.sty, (n)german.sty have not been loaded
 ] (output/hanisntsolo-cover-letter.aux)
  ***********
 LaTeX2e <2026-06-01>
-L3 programming layer <2026-06-18>
+L3 programming layer <2026-09-09>
  ***********
 
 
@@ -520,12 +514,12 @@ Package rerunfilecheck Info: Checksums for `hanisntsolo-cover-letter.out':
 (rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 12411 strings out of 467814
- 244946 string characters out of 5425313
- 750203 words of memory out of 5000000
- 41377 multiletter control sequences out of 15000+600000
- 628177 words of font info for 53 fonts, out of 8000000 for 9000
+ 12330 strings out of 467696
+ 242844 string characters out of 5422163
+ 750661 words of memory out of 5000000
+ 41421 multiletter control sequences out of 15000+600000
+ 628945 words of font info for 53 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 88i,11n,130p,564b,331s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 86i,11n,130p,564b,331s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on output/hanisntsolo-cover-letter.pdf (1 page).
